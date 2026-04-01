@@ -446,6 +446,106 @@ a:focus {
     font-weight: 700;
 }
 
+/* header slide show for hero image*/
+
+
+
+.img {
+    vertical-align: middle;
+  }
+  
+  /* Position the image container (needed to position the left and right arrows) */
+  /* .container-slide {
+    position: relative;
+  } */
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+    /* background-image: url(../img/hero-bg5.png); */
+  }
+  
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    /* position: absolute; */
+    top: 40%;
+    width: auto;
+    padding: 5px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #2e3e4d;
+    font-size: 12px;
+    padding: 2px 3px;
+    top: 0;
+  }
+  
+  /* Container for image text */
+  .caption-container {
+    text-align: center;
+    background-color: #febd45;
+    padding: 2px 8px;
+    color: white;
+    width: 40%;
+    border-radius: 50px;
+    margin: auto;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Six columns side by side */
+  .column {
+    float: left;
+    width: 16.66%;
+    height: 15%;
+  }
+  
+  #caption{
+      margin: 0 auto;
+  }
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+
+  /*header slid show hero image end*/
+
 @media (max-width: 991.98px) {
     .hero {
         padding-top: 60px;
