@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="fontawesome-free-6.1.2-web/css/all.css" rel="stylesheet">
+</head>
+<body oncontextmenu="return false">
+    <main>
+       <section class="glass">
+          <div class="navbar">
+             <div class="container">
+                <span class="logo" href="#"><i class="fas fa-biohazard"></i><span class="lgnm">Teammate</span></span>
+                <img id="mobile-exit" class="mobile-menu-exit" alt="menu">
+                <nav class="">
+                   <img id="mibile-cta" class="mobile-menu" alt="hamburger">
+                   <ul class="primary-nav">
+                      <li class="current"><a href="#">Pricing</a></li>
+                      <li><a href="#">Features</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Support</a></li>
+                      <li><a href="#">Blog</a></li>
+                   </ul>
+                   <ul class="secondary-nav">
+                      <li class="lgin"><a href="#">Login</a></li>
+                      <li class="go-premium-cta"><a href="index.html">Back to main pages</a></li>
+                   </ul>
+                </nav>
+             </div>
+          </div>
+          <div class="content">
+             <div class="ltx">
+                <p><span><i class="fab fa-500px"></i> </span></i>Update Available</p>
+                <div class="herotxt">Who is your <span>Associate</span></div>
+                <div class="smtxt">Using our app you can manage your team mate and upgrade your team to the next level</div>
+                <div>
+                   <form id="search-form">
+                      <div class="search">
+                         <input type="text" name="search" class="round" placeholder="Your email address" />
+                         <button type="Go Premium" class="corner" placeholder="Go Premium"> Go Premium</button>
+                      </div>
+                   </form>
+                </div>
+             </div>
+             <div class="iphone">
+               <img src="https://i.postimg.cc/BQ1whPCW/tab-phone.png"; style="width: 110%;"/>
+             </div>
+       <div class="scroll"><a href="#"><span class="dwn"><i class="fas fa-arrow-down"></i></span></a></div>
+          </div>
+       </section>
+    </main>
+    <div class="circle"></div>
+ <div class="circle1"></div>
+ </body>
+ <style>
+    * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'JosefinSans-VariableFont_wght.ttf', sans-serif;
+font-weight: 400;
+}
+input:focus {
+outline:none !important;
+}
+@font-face{
+font-family: "JosefinSans-VariableFont_wght";
+src: '../google-fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf';
+}
+:root {
+--primary-color: #947af4;
+--shado-color:#a8aede;
+}
+a:hover{
+    cursor: pointer;
+}
+body {
+margin: 0;
+padding: 0;
+font-family: "JosefinSans-VariableFont_wght";
+font-weight: 400;
+}
+
+
+.navbar {
+background: none;
+padding: 1em;
+.container {
+    display: flex;
+    place-content: space-between;
+}
+
+nav {
+    display: none;
+}
+}
+.mobile-menu {
+    cursor: pointer;
+}
+.logo {
+text-decoration: none;
+font-weight: bold;
+color: black;
+font-size: 1.8em;
+color: var(--primary-color);
+align-self: center;
+}
+.logo i{
+border: 2px solid;
+border-radius: 50%;
+}
+
+.lgnm {
+font-size: 0.6em;
+color: #000;
+margin: 0;
+padding: 0 0.5em;
+vertical-align: middle;
+}
+
+main {
+min-height: 100vh;
+background: linear-gradient(45deg, #7295e6 10%, #b2cae9 30%, #fff 50%, #7295e6 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.content {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-gap: 10px;
+}
+
+.iphone {
+color:#fff;
+background-repeat: no-repeat;
+}
+
+.ltx p {
+color: var(--primary-color);
+font-size: 0.9em;
+}
+
+.ltx {
+margin: 5em;
+}
+
+.herotxt {
+font-size: 3em;
+margin-top: 0.6em;
+font-weight: 300;
+}
+
+.herotxt span {
+font-weight: 700;
+}
+
+.smtxt {
+font-size: 0.8em;
+color: #8f9591;
+margin-top: 2em;
+}
+.scroll{
+margin:1em 0 2em 4.1em;
+}
+.round, .dwn {
+background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+box-shadow: 6px 6px 10px var(--shado-color);
+border-radius: 1.5rem;
+padding: 0.6rem 1.2rem;
+border: 1px solid #fff;
+width: 100%;
+}
+.dwn{
+padding: 0.3rem 0.5rem;
+color:#fff;
+background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
+}
+
+.corner {
+color: #fff;
+}
+
+.corner {
+position: absolute;
+top: 3px;
+right: 3px;
+height: 32px;
+width: 90px;
+z-index: 10;
+border-radius: 30px;
+border: none;
+background: var(--primary-color);
+/* Set the bg image here. with "no-repeat" */
+font-size: 0.7em;
+font-weight: 700;
+cursor:pointer;
+}
+
+.search {
+position: relative;
+width: 100%;
+height: 30px;
+margin-top: 2em;
+}
+
+.glass {
+background: #fff;
+min-height: 80vh;
+width: 60%;
+background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+border: 1px solid #fff;
+border-radius: 2rem;
+backdrop-filter: blur(1rem);
+z-index: 1;
+margin: 1rem auto;
+}
+
+.circle {
+background: #fff;
+background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+height: 10rem;
+width: 10rem;
+border-radius: 50%;
+position: absolute;
+top: 5%;
+left: 12%;
+}
+.circle1 {
+background: #fff;
+background: linear-gradient(45deg, #9671fb 24%, #e6cffe 45%, #c7bffc 73%, #e3e7fd 83%);
+height: 10rem;
+width: 10rem;
+border-radius: 50%;
+position: absolute;
+top: 70%;
+right: 12%;
+z-index:1;
+}
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+.nav.menu-btn {
+display: block;
+}
+
+.nav {
+position: fixed;
+z-index: 999;
+width: 66%;
+right: 0;
+top: 0;
+height: 100vh;
+padding: 1em;
+}
+ul.primary-nav li a {
+text-decoration: none;
+color: #8f9591;
+display: block;
+font-size: 0.8em;
+padding: .5em;
+text-align: right;
+
+}
+ul.primary-nav li a:hover{
+    color: #8669ec;
+    font-weight: 600;
+    text-decoration-line: underline;
+}
+.mobile-menu-exit {
+float: right;
+margin: 0.5em;
+}
+
+
+/* 
+.go-premium-cta a{
+
+} */
+
+
+
+
+.mobile-menu,
+.mobile-menu-exit {
+display: none;
+}
+
+.navbar .container {
+display: grid;
+grid-template-columns: 180px auto;
+Justify-content: unset;
+}
+
+.navbar nav {
+display: flex;
+Justify-content: space-between;
+background: none;
+position: unset;
+height: auto;
+width: 100%;
+padding: 0;
+}
+
+ul {
+display: flex;
+}
+
+a {
+font-size: 1em;
+padding: .1em 1em;
+font-weight: semi-bold;
+cursor:pointer;
+}
+
+ul.primary-nav {
+margin: auto 0;
+}
+
+li.current a {
+font-weight: 400;
+}
+
+.lgin,
+li.go-premium-cta {
+background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+box-shadow: 6px 6px 10px var(--shado-color);
+border-radius: 1.5rem;
+margin: 0rem 0.5rem;
+padding: 0.6rem 1.2rem;
+color: #8f9591;
+}
+.lgin:hover,
+li.go-premium-cta:hover {
+background: #8669ec;
+color: #fff;
+box-shadow: 0;
+}
+li.go-premium-cta {
+background: var(--primary-color);
+}
+li.go-premium-cta{
+background: var(--primary-color);
+}
+.lgin a,
+li.go-premium-cta a {
+text-decoration: none;
+color: #8f9591;
+display: block;
+font-size: 0.7em;
+font-weight:800;
+}
+.lgin a:hover,
+li.go-premium-cta a:hover {
+    background-color: #8669ec;
+color: #fff;
+}
+li.go-premium-cta a {
+color: #fff
+}
+
+.corner:hover{
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+box-shadow: 6px 6px 10px var(--shado-color);
+color: #8f9591;
+}
+/* li.lgin a, li.go-premium-cta a{
+background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+border-radius: 1.5rem;
+margin: 4rem 0rem;
+padding: 0.2rem;
+box-shadow: 6px 6px 20px rgba(122, 122, 122 0.212);
+
+} */
+
+
+/* } */
+@media only screen and (max-width:767px) {
+main{
+display: grid;
+justify-content: space-between;
+}
+.ltx {
+margin: 2em;
+}
+.content{
+  grid-template-columns: repeat(1, 1fr);
+}
+.ltx p {
+font-size: 1.7em;
+}
+.smtxt {
+font-size: 1.6em;
+}
+.search {
+  width: 95%;
+}
+.corner {
+  width: 120px;
+  font-size:1em;
+}
+.scroll {
+margin: 1em 0 2em 0.1em;
+display: grid;
+text-align: center;
+}
+.glass {
+width: 93%;
+margin: 1em auto;
+}
+.navbar nav{
+  display:none;
+}
+}
+</style>
+</html>
