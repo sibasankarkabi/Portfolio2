@@ -1,0 +1,383 @@
+{
+  "_readme": "This is YOUR personal knowledge base. The AI agent reads ONLY from this file to answer visitor questions. Edit any field freely — add new projects, update metrics, add certifications. Save the file and reload the page. No coding needed.",
+
+  "identity": {
+    "name": "Siba Sankar Kabi",
+    "role": "Studio Head & Principal UX Strategist",
+    "company": "Capgemini India Ltd",
+    "studio": "Bengaluru Digital Customer Experience Studio Lead",
+    "location": "Bengaluru, India",
+    "experience_years": "17+",
+    "email": "sksankar0@gmail.com",
+    "phone": "+91 7259985080",
+    "linkedin": "https://www.linkedin.com/in/siba-sankar-kabi-57134013",
+    "portfolio": "https://www.sankarkabi.co.in",
+    "behance": "https://www.behance.net/sankarkabi",
+    "availability": "Open to senior UX leadership roles, consulting, and AI-integrated design partnerships"
+  },
+
+  "philosophy": {
+    "design_belief": "Great design is invisible — felt, not noticed.",
+    "ai_belief": "AI is not changing WHAT we do — it is changing HOW FAST it is done.",
+    "approach": "I am equally comfortable presenting strategy in a boardroom and refining micro-interactions in Figma. The thread connecting both is empathy applied at every level of the work.",
+    "passions": [
+      "Human-centred AI experience design",
+      "Design system governance at scale",
+      "Mentoring the next generation of UX designers",
+      "Bridging business strategy and craft",
+      "Making accessibility the default, not an afterthought"
+    ]
+  },
+
+  "current_role": {
+    "title": "Studio Head & Principal UX Strategist",
+    "company": "Capgemini India Ltd",
+    "studio": "Bengaluru Digital Customer Experience Studio Lead",
+    "since": "October 2022",
+    "direct_reports": 6,
+    "extended_team": 24,
+    "responsibilities": [
+      "Running the Bengaluru CX studio end-to-end — strategy, delivery, people, culture",
+      "Spearheading 15+ major RFPs — effort estimation, resource loading, UX activity scoping",
+      "Governing multi-brand design systems for Goodyear, Victoria's Secret, and BHSF",
+      "Pioneering Gen AI and MCP (Model Context Protocol) training for the entire studio",
+      "Leading design critiques, creative sessions, and team mentorship programmes",
+      "Conducting 60+ UX interviews per fiscal year for talent acquisition",
+      "Driving POC initiatives for Subway, Siemens, Daimler Trucks, and Tetrapack"
+    ]
+  },
+
+  "impact_metrics": {
+    "rfp_acv_increase": "13%",
+    "dev_time_reduction": "32%",
+    "patient_bookings_increase": "18%",
+    "ideation_speed_increase": "40%",
+    "support_ticket_reduction": "35%",
+    "team_retention": "90%+",
+    "ux_interviews_per_year": "60+",
+    "rfps_led": "15+",
+    "presentation_speed": "50% faster with Gamma AI"
+  },
+
+  "awards": [
+    {
+      "name": "GEM Award",
+      "org": "Capgemini",
+      "reason": "Consistently going above and beyond expectations across studio leadership, RFP wins, and client delivery"
+    },
+    {
+      "name": "Pine App Award — 4 Categories",
+      "org": "Industry",
+      "reason": "Won Responsive Web & Mobile Design, Mobile Website, Patient Portal, and Mobile Application categories for the Baptist Healthcare redesign"
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "baptist",
+      "name": "Baptist Healthcare — Pine App",
+      "client": "Capgemini × Baptist Healthcare",
+      "role": "UX Lead | Product Strategy & Design",
+      "image": "images/CaseStudy/Baptist.jpg",
+      "featured": true,
+      "tags": ["Healthcare", "Award Winning", "UX Strategy", "Design System", "AI-Assisted"],
+      "summary": "Redesigned five interconnected healthcare modules — PineApp mobile, Phressia Dashboard, Shopify Pharmacy, a Chatbot called PineApp Connect, and the Employee App.",
+      "detail": "The rethought appointment booking flow drove an 18% increase in patient bookings and reduced drop-off significantly. The project won four award categories. I used Claude and Figma Make to generate design system components 40% faster than traditional methods.",
+      "outcomes": [
+        "18% increase in patient bookings",
+        "Won 4 award categories including Mobile Website and Patient Portal",
+        "40% faster design system component creation using Claude + Figma Make",
+        "Reduced appointment drop-off rates significantly"
+      ],
+      "ai_tools_used": ["Claude", "Figma Make"],
+      "case_study": {
+        "challenge": "Baptist Healthcare was losing patients at the appointment booking stage. The existing PineApp had 5 interconnected systems (patient app, provider dashboard, pharmacy, chatbot, employee app) that weren't designed to work together. Drop-off rates were 40% — meaning 4 in 10 patients starting to book an appointment were abandoning the process. No cohesive design system existed.",
+        "research": {
+          "phase": "6 weeks",
+          "methods": ["Patient interviews (15 participants)", "Provider interviews (8 providers)", "User testing of existing flow", "Heatmap analysis of drop-off points", "Competitive analysis of 5 healthcare apps"],
+          "key_findings": "Patients were confused by multiple logins, unclear appointment availability display, and lack of confirmation messaging. Providers complained about scattered patient data across systems. The biggest drop-off was after selecting time — patients couldn't see the full appointment cost upfront."
+        },
+        "strategy": "Create a unified design system that treats all 5 touchpoints as one ecosystem. Redesign the appointment booking flow to show cost upfront, use progressive disclosure, and provide real-time confirmation. Build a shared component library to eliminate inconsistency.",
+        "design_approach": "Atomic Design methodology — start with atoms (buttons, inputs), build molecules (date pickers, time slots), then organisms (full booking card, dashboard panels). Each component was designed for accessibility (WCAG 2.1 AA) and tested across iOS, Android, web, and internal systems.",
+        "team": {
+          "size": 7,
+          "structure": "Me (UX Lead + Strategy), 2 interaction designers, 1 visual designer, 2 product managers, 1 researcher"
+        },
+        "timeline": "4 months from kickoff to launch",
+        "phases": {
+          "phase_1": "Research & Strategy (4 weeks)",
+          "phase_2": "Design System & Components (5 weeks)",
+          "phase_3": "High-Fi Redesign (4 weeks)",
+          "phase_4": "Testing & Refinement (3 weeks)"
+        },
+        "key_decisions": [
+          {
+            "decision": "Made appointment cost visible immediately, not at checkout",
+            "reasoning": "Data showed 35% of drop-offs happened at payment. Showing cost upfront eliminated the surprise factor and reduced cart abandonment by 22%.",
+            "trade_off": "Meant redesigning the entire booking flow and negotiating pricing rules with the backend team."
+          },
+          {
+            "decision": "Used a unified login across all 5 apps",
+            "reasoning": "Patient interviews showed frustration with multiple passwords. One login reduced friction and increased feature discovery.",
+            "trade_off": "Required significant backend integration work — worth it for 18% booking increase."
+          },
+          {
+            "decision": "Used Claude + Figma Make to auto-generate component variants",
+            "reasoning": "With 200+ design system components needed, manual design would take 6 weeks. Prompt-based generation cut it to 2 weeks.",
+            "trade_off": "Required heavy QA and refinement — I spent 3 weeks auditing and adjusting the AI outputs."
+          }
+        ],
+        "design_methodology": "Atomic Design, mobile-first, progressive disclosure, gestalt principles for visual hierarchy",
+        "tools": ["Figma", "FigJam", "Claude", "Figma Make", "Hotjar", "Maze", "Jira"],
+        "metrics_tracked": ["Appointment booking completion rate", "Time to book", "Drop-off by step", "Feature usage", "Support ticket reduction"],
+        "launch_impact": {
+          "patient_bookings_increase": "18%",
+          "time_to_book_reduction": "40%",
+          "support_tickets_reduction": "28%"
+        },
+        "ai_methodology": "I wrote detailed component description prompts, fed them to Claude, and used the outputs as a starting template. Then I manually refined colors, spacing, and interaction states. This hybrid approach was 70% faster than pure manual design without compromising quality.",
+        "learnings": [
+          "In healthcare, showing cost early builds trust even if it causes some drop-off — users prefer honesty to surprises.",
+          "A shared design system across 5 interconnected apps is worth the upfront investment; it pays back in consistency and team velocity.",
+          "AI is fastest when you have a clear rubric. Vague prompts create unusable outputs; detailed component briefs create 80% usable templates.",
+          "The appointment booking is the critical moment in healthcare UX — every 1% improvement here compounds into significant revenue."
+        ]
+      }
+    },
+    {
+      "id": "tamm",
+      "name": "TAMM Conversational AI Design System",
+      "client": "TAMM · Dubai Government",
+      "role": "Design System Contributor",
+      "image": "images/CaseStudy/Tamm.png",
+      "featured": false,
+      "tags": ["AI Design System", "Gov Tech", "Dubai", "Conversational AI"],
+      "summary": "Built the component library and visual framework for a government-facing conversational AI platform.",
+      "detail": "One cohesive design system across all digital touchpoints — which meant users interacted with consistent, well-designed AI across every government service. The measurable outcome was a 35% drop in B2B manual support tickets. When conversational AI is designed properly, people self-serve more.",
+      "outcomes": [
+        "35% reduction in B2B manual support tickets",
+        "Scalable component library adopted across all touchpoints",
+        "Cohesive brand language across government AI services"
+      ],
+      "ai_tools_used": [],
+      "case_study": {
+        "challenge": "TAMM (a UAE government AI platform) had 12+ government agencies using its conversational AI services, but each was implementing it differently. Inconsistent chatbot designs were confusing users and creating fragmented experiences. Support tickets were high because users didn't understand how to interact with the AI. There was no agreed-upon design language for how a government AI should 'feel.'",
+        "research": {
+          "phase": "8 weeks",
+          "methods": ["User interviews across 8 government agencies", "Observation of live chat interactions", "Analysis of 10,000+ support tickets", "Competitive analysis of enterprise AI platforms", "Accessibility audit of existing AI interfaces"],
+          "key_findings": "Users didn't understand that they were talking to an AI (some thought they were chatting with humans). The chatbot's responses were inconsistent in tone and detail. Mobile experience was clunky — long response cards didn't reflow well. Users needed clear indicators of what the AI could and couldn't do."
+        },
+        "strategy": "Build a scalable Conversational AI Design System that makes it obvious you're talking to an AI while maintaining a professional government tone. Design for clarity, scannability, and progressive disclosure. Create reusable patterns for common queries (FAQs, forms, escalation).",
+        "design_approach": "Conversational Design + Systems Thinking. First, I defined AI personality (professional, accurate, empathetic). Then I built patterns: greeting cards, response bubbles with metadata, quick-reply suggestions, escalation paths, empty states. Each pattern was designed to work on mobile, tablet, and desktop.",
+        "team": {
+          "size": 12,
+          "structure": "Me (Design System Lead), 3 conversation designers, 2 UX researchers, 4 product managers (one per agency), 2 engineers"
+        },
+        "timeline": "5 months from kickoff to adoption across all agencies",
+        "phases": {
+          "phase_1": "Research & AI Personality Definition (3 weeks)",
+          "phase_2": "Pattern Documentation (4 weeks)",
+          "phase_3": "Component Library Build (6 weeks)",
+          "phase_4": "Rollout & Agency Training (4 weeks)"
+        },
+        "key_decisions": [
+          {
+            "decision": "Made it explicit that users were talking to an AI, not a human",
+            "reasoning": "Some users felt deceived when they realized. Being transparent from the start built trust and set correct expectations.",
+            "trade_off": "Some users initially preferred the illusion of human contact, but support tickets dropped 35% once expectations were clear."
+          },
+          {
+            "decision": "Designed quick-reply suggestions instead of free-text input for complex queries",
+            "reasoning": "Government agencies had high accuracy requirements. Guided interactions reduced misunderstandings and improved first-contact resolution.",
+            "trade_off": "Less user freedom, but better outcomes — users adapted within 2 weeks."
+          },
+          {
+            "decision": "Built escalation pathways into the design, not the backend",
+            "reasoning": "Making 'talk to a human' obvious reduced support anxiety and increased feature adoption. Users felt safer trying the AI.",
+            "trade_off": "Required alignment with 12 agency staffing models — took 2 weeks of stakeholder negotiation."
+          }
+        ],
+        "design_methodology": "Conversational Design (Moore & Moran), Card-Based UI patterns, Progressive Disclosure, Accessibility-First",
+        "tools": ["Figma", "Miro", "Conversation Design Canvas", "Google Analytics", "Intercom"],
+        "metrics_tracked": ["Support ticket volume", "Chat initiation rate", "First-contact resolution", "User satisfaction (CSAT)", "AI escalation rate"],
+        "launch_impact": {
+          "support_tickets_reduction": "35%",
+          "first_contact_resolution": "68%",
+          "user_adoption": "Increased from 42% to 78% within 6 weeks"
+        },
+        "governance": "Created a 'Design System RFC' process where each agency could propose variations, but all had to start from the system. This maintained consistency while allowing for agency-specific needs.",
+        "learnings": [
+          "Conversational AI needs visual scaffolding — users need help understanding the bounds of what the AI can do.",
+          "Governments require a different tone than consumer apps; authority and accuracy build trust, not personality.",
+          "The most powerful feature of good conversational design is clarity about what happens next.",
+          "Support ticket reduction is a leading indicator of design quality in AI systems — when users understand how to interact, they self-serve.",
+          "Scaling a design system across 12 stakeholders requires governance, not just documentation."
+        ]
+      }
+    },
+    {
+      "id": "goodyear",
+      "name": "Goodyear B2C & B2B Website Redesign",
+      "client": "Goodyear APAC",
+      "role": "UX Strategist | Design Lead",
+      "image": "images/CaseStudy/Goodyear.png",
+      "featured": false,
+      "tags": ["APAC", "B2C", "B2B", "UX Strategy", "Design System"],
+      "summary": "Full UX strategy for Goodyear's APAC digital presence — personas, journey maps, IA, and a governed design system.",
+      "detail": "Delivered SOW, personas, journey maps, IA, and business metric mapping for both B2C and B2B surfaces. The governed design system cut front-end build time by 32% and delivered 100% visual consistency across global markets.",
+      "outcomes": [
+        "32% reduction in front-end build time",
+        "100% visual consistency across global APAC markets",
+        "Future-ready design roadmap delivered"
+      ],
+      "ai_tools_used": []
+    },
+    {
+      "id": "vs",
+      "name": "Victoria's Secret Fashion e-Commerce",
+      "client": "Victoria's Secret",
+      "role": "UX/UI Designer | Design System Lead",
+      "image": "images/CaseStudy/VS.png",
+      "featured": false,
+      "tags": ["Fashion", "E-Commerce", "Atomic Design", "Accessibility"],
+      "summary": "Atomic Design system for mobile and web — style guides, UI kits, accessibility audits, engineering handoff.",
+      "detail": "Built a scalable Atomic Design system that delivered 100% visual consistency globally. Every component came with accessibility audits and comprehensive style guides, making engineering handoff genuinely seamless.",
+      "outcomes": [
+        "100% visual consistency across global markets",
+        "Full accessibility compliance",
+        "Seamless engineering handoff with comprehensive documentation"
+      ],
+      "ai_tools_used": []
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle for Startups — StartupBeat",
+      "client": "Oracle India Pvt Ltd",
+      "role": "UX Designer",
+      "image": null,
+      "featured": false,
+      "tags": ["Enterprise UX", "SaaS", "Redwood DS", "Oracle"],
+      "summary": "End-to-end UX for Oracle's startup portal — GTM, Credit to Scale, Mentorship, Migration, Virtual Library modules.",
+      "detail": "Built using OJET 11 and the Redwood Design System across iOS, Android, and web. Each module was a distinct research and design cycle with its own user interviews, flows, and prototypes.",
+      "outcomes": [
+        "Shipped across iOS, Android and web",
+        "6 distinct modules delivered end-to-end",
+        "Oracle Redwood Design System governance"
+      ],
+      "ai_tools_used": []
+    },
+    {
+      "id": "gamemela",
+      "name": "Gamemela — Online Gaming Platform",
+      "client": "Funizen Solutions Pvt Ltd",
+      "role": "UI/UX Designer",
+      "image": "images/port-1.jpg",
+      "featured": false,
+      "tags": ["Gaming", "UX Research", "Case Study"],
+      "summary": "Full end-to-end UX for a gaming discovery and purchase platform — research through hi-fi artwork.",
+      "detail": "Users could discover, play, and purchase game codes and keys. The project ran the full Double Diamond — user interviews, usability testing, wireframes, and final hi-fi designs across Android, web, and desktop.",
+      "outcomes": [
+        "Full case study published on Behance",
+        "Complete Double Diamond process documented"
+      ],
+      "ai_tools_used": [],
+      "behance": "https://www.behance.net/gallery/150078893/Game-Mela-Case-study"
+    }
+  ],
+
+  "work_history": [
+    
+  ],
+
+  "skills": {
+    "proficiency": [
+      { "name": "AI — Claude, Gamma, Perplexity, Notebook LM, Figma Make", "pct": 72 },
+      { "name": "Web Design — Figma, Photoshop, Illustrator, Sketch", "pct": 85 },
+      { "name": "Design Systems — Material, HIG, Oracle JET Cookbook", "pct": 93 },
+      { "name": "Wireframing — Sketch, Figma Jam, Axure, InVision", "pct": 87 },
+      { "name": "Print Design — Adobe Creative Suite, CorelDraw X5", "pct": 67 },
+      { "name": "Motion Graphics — After Effects, Premiere Pro", "pct": 43 },
+      { "name": "Front-end — HTML5, CSS3, Bootstrap, Tailwind", "pct": 65 }
+    ],
+    "design_tools": ["Figma", "Adobe XD", "Photoshop", "Illustrator", "Sketch", "InVision", "Axure", "Balsamiq", "Procreate", "Miro", "After Effects", "Canva"],
+    "ai_tools": [
+      { "name": "Claude", "use": "Logic, ideation, component documentation, system design" },
+      { "name": "ChatGPT", "use": "Content ideation and copywriting" },
+      { "name": "Figma Make", "use": "AI-driven component and design system generation" },
+      { "name": "UIZard", "use": "Rapid prototyping from text prompts" },
+      { "name": "Perplexity", "use": "Data-backed research and fact-checking" },
+      { "name": "Grok", "use": "Real-time market and trend research" },
+      { "name": "Notebook LM", "use": "Synthesising complex project documentation" },
+      { "name": "Gamma", "use": "Stakeholder presentations — 50% faster turnaround" },
+      { "name": "Flux / Nano Banana", "use": "Rapid high-fidelity visual asset creation" },
+      { "name": "MCP (Model Context Protocol)", "use": "Data-to-design automation and studio workflow orchestration" }
+    ],
+    "frameworks": ["Design Thinking", "Double Diamond", "Agile / Scrum", "Atomic Design", "Hooked Model"],
+    "frontend": ["HTML5", "CSS3 / SCSS", "Bootstrap", "Tailwind CSS", "JavaScript", "Dreamweaver"]
+  },
+
+  "certifications": [
+    "HFI Certified UX Analyst (CXA) — Human Factors International",
+    "Google UX Foundation Certificate (2020–21)",
+    "Google AI Professional Certificate",
+    "Claude Code in Action — Anthropic",
+    "Certified Agile Scrum Master (2021)",
+    "Intro to ChatGPT and Generative AI"
+  ],
+
+  "education": [
+    { "degree": "Bachelor of Science", "institution": "Sambalpur University", "year": "2000–2003" },
+    { "degree": "Multimedia Design", "institution": "Animaster Multimedia Institute, Bangalore", "year": "2006–2008" }
+  ],
+
+  "testimonials": [
+    {
+      "name": "Joshua A. Davies",
+      "role": "Senior UX Designer, Oracle Cloud",
+      "photo": "images/josh.jpg",
+      "initials": "JD",
+      "text": "He respected the desire for user-focused design and prioritised it with every implementation — which contributed directly to our product's success. He wasn't afraid to push back constructively and always had users' best interests at heart. An excellent teammate and absolute joy to work with. Any company would be lucky to have him."
+    },
+    {
+      "name": "Lourdes Saca",
+      "role": "Product Manager, Oracle for Startups",
+      "photo": "images/lourdes.jpg",
+      "initials": "LS",
+      "text": "Siba has impeccable attention to detail and sharp critical thinking. He translates business requirements into design solutions by questioning every detail and seeing the full picture. He always knows the right questions to ask, stays communicative, and ensures full understanding before a pixel moves. A true team player."
+    },
+    { "name": "Pratibha Sharma",
+      "role": "Senior Director, Capgemini",
+      "photo": "images/ankit.jpg",
+      "initials": "PS",
+      "text": "Siba is a phenomenal mentor and leader. He has an incredible ability to break down complex design problems into manageable pieces and guide you through them with patience and clarity. He genuinely cares about your growth and success, and his feedback is always constructive and actionable. Working under his leadership has been a transformative experience for me."
+    }
+  ],
+
+  "portfolio_items": [
+    { "name": "Gamemela — Full Flow", "type": "UX Case Study", "cat": "ux", "image": "images/port-1.jpg", "link": "https://www.behance.net/gallery/150078893/Game-Mela-Case-study" },
+    { "name": "Review & Rating — Pitch Day", "type": "UX Case Study", "cat": "ux", "image": "images/port-2.jpg", "link": "https://www.behance.net/gallery/151423637/Rating-and-feedback" },
+    { "name": "CA Website", "type": "Web Design", "cat": "web", "image": "images/port-3.jpg", "link": "https://www.sankarkabi.co.in/caindex.html" },
+    { "name": "NGO Website", "type": "UX / Web Design", "cat": "web", "image": "images/port-4.jpg", "link": "https://www.sankarkabi.co.in/ngo-index.html" },
+    { "name": "Farm to Home App", "type": "UX Design", "cat": "ux", "image": null, "link": null },
+    { "name": "Company App", "type": "UI / UX Design", "cat": "ux", "image": null, "link": null },
+    { "name": "ADP E-Commerce", "type": "E-Commerce UX", "cat": "web", "image": null, "link": null },
+    { "name": "Weekend Trip Website", "type": "Web Design", "cat": "web", "image": null, "link": null },
+    { "name": "Hi-Fi Wireframes", "type": "Wireframe Design", "cat": "ux", "image": null, "link": null },
+    { "name": "Logo Designs", "type": "Brand Identity", "cat": "logo", "image": null, "link": null },
+    { "name": "Icon Assets", "type": "UI Icon System", "cat": "logo", "image": null, "link": null },
+    { "name": "Flyer & Poster Series", "type": "Print Design", "cat": "logo", "image": null, "link": null }
+  ],
+
+  "quick_search_pills": [
+    { "label": "Who is Siba?", "icon": "ti-user" },
+    { "label": "Baptist Healthcare project", "icon": "ti-heart-rate-monitor" },
+    { "label": "GEM Award story", "icon": "ti-award" },
+    { "label": "AI tools & workflow", "icon": "ti-robot" },
+    { "label": "Studio leadership", "icon": "ti-users" },
+    { "label": "Design philosophy", "icon": "ti-bulb" },
+    { "label": "Business results", "icon": "ti-chart-line" },
+    { "label": "TAMM Dubai project", "icon": "ti-message-chatbot" },
+    { "label": "What colleagues say", "icon": "ti-quote" },
+    { "label": "How to reach Siba", "icon": "ti-mail" }
+  ]
+}
