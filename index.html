@@ -10,8 +10,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/tabler-icons.min.css"/>
+  <!-- Upgrade any accidental HTTP requests to HTTPS -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <!-- Icons — SRI hash pins the exact file content; if jsDelivr CDN is ever compromised
+       and serves a modified file, the browser refuses to load it. -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/tabler-icons.min.css"
+        integrity="sha384-/Bmojb1H/9dHvtYa2TzEQ1MldjNefaS+t7DcnOYHpP+yer5gvd3LONWEpWhHK+Yo="
+        crossorigin="anonymous"/>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css"/>
@@ -86,6 +93,12 @@
           <div class="avail-row"><span class="avail-dot"></span>Available</div>
         </div>
       </div>
+      <div class="hero-btns r d3" style="margin-top: 12px;">
+        <a class="btn-gold" href="./images/UX_Siba_Sankar_Kabi_Resume.docx" download="Siba_Sankar_Kabi_Resume.docx">
+          <i class="ti ti-download" aria-hidden="true"></i>Download Resume
+        </a>
+        
+    </div>
     </div>
     <!-- RIGHT: floating avatar card — exact from uploaded -->
     
@@ -682,19 +695,22 @@
     e.preventDefault(); return false;
   }, true);
 
-  // 4. Detect DevTools open via window size delta (desktop only)
+  // 4. Detect DevTools open via window size delta (desktop only).
+  // Uses 2-second interval (not 1s) — reduces CPU usage on all visitor devices.
+  // False-positive guard: require 200px delta (not 160) to reduce mobile triggers.
   var _devToolsOpen = false;
   setInterval(function() {
-    var widthDelta  = window.outerWidth  - window.innerWidth  > 160;
-    var heightDelta = window.outerHeight - window.innerHeight > 160;
-    if ((widthDelta || heightDelta) && !_devToolsOpen) {
+    var widthDelta  = window.outerWidth  - window.innerWidth  > 200;
+    var heightDelta = window.outerHeight - window.innerHeight > 200;
+    var isOpen = widthDelta || heightDelta;
+    if (isOpen && !_devToolsOpen) {
       _devToolsOpen = true;
       document.body.style.filter = 'blur(8px)';
-    } else if (!widthDelta && !heightDelta && _devToolsOpen) {
+    } else if (!isOpen && _devToolsOpen) {
       _devToolsOpen = false;
       document.body.style.filter = '';
     }
-  }, 1000);
+  }, 2000);
 
 })();
 </script>

@@ -8,10 +8,47 @@ let busy = false;
 
 const $ = id => document.getElementById(id);
 
-function escapeHtml(text) {
+/* ── SECURITY UTILITIES ────────────────────────────────────────────────── */
+
+function escapeHtml(str) {
+  if (str == null) return '';
   const map = { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' };
-  return text.replace(/[&<>"']/g, m => map[m]);
+  return String(str).replace(/[&<>"']/g, m => map[m]);
 }
+
+// Validate that a URL is safe to use in href attributes.
+// Only allows https:// http:// mailto: tel: and relative paths.
+// Blocks javascript: data: vbscript: and other dangerous schemes.
+function safeUrl(url) {
+  if (!url || typeof url !== 'string') return '#';
+  const trimmed = url.trim();
+  if (/^(https?:\/\/|mailto:|tel:|\/|#)/i.test(trimmed)) return trimmed;
+  return '#';
+}
+
+// Sanitize raw API text at the point it enters our system.
+// Only escapes HTML entities — does NOT convert to HTML yet.
+// parseResp() handles the markdown→HTML conversion afterwards.
+// Why here and not in parseResp(): localAnswer() returns pre-built HTML
+// that must pass through parseResp() unchanged. API text is plain text
+// that needs escaping. Sanitizing at the boundary keeps both paths clean.
+function sanitizeApiText(text) {
+  if (!text || typeof text !== 'string') return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Rate-limit guard: minimum ms between AI search calls.
+// Prevents rapid-fire abuse of the /api/search endpoint.
+const SEARCH_THROTTLE_MS = 1500;
+let _lastSearchTs = 0;
+
+// Maximum characters accepted from the search input.
+// Long enough for a full job description paste; short enough to prevent abuse.
+const SEARCH_MAX_CHARS = 3000;
 
 /* ── LOAD KNOWLEDGE BASE ── */
 async function loadDB() {
@@ -174,19 +211,29 @@ function buildPortfolio() {
 
 function buildTestimonials() {
   if ($('tgrid')) {
-    $('tgrid').innerHTML = DB.testimonials.map((t, i) => `
+    $('tgrid').innerHTML = DB.testimonials.map((t, i) => {
+      // Escape all values from JSON before injecting into HTML.
+      // siba.json is self-authored, but defensive escaping prevents
+      // an accidental special character from breaking the template.
+      const text     = escapeHtml(t.text);
+      const name     = escapeHtml(t.name);
+      const role     = escapeHtml(t.role);
+      const initials = escapeHtml(t.initials || (t.name || '??').slice(0,2).toUpperCase());
+      // Only allow relative image paths or https:// — block javascript: data: etc.
+      const photo    = safeUrl(t.photo);
+      return `
       <div class="tcard r${i ? ' d'+i : ''}">
-        <p class="ttext">"${t.text}"</p>
+        <p class="ttext">"${text}"</p>
         <div class="tauthor">
-          <img class="tphoto" src="${t.photo}" alt="${t.name}" loading="lazy"
-            onerror="this.outerHTML='<div class=\\'tphoto\\'style=\\'display:flex;align-items:center;justify-content:center;background:var(--bg3);font-family:var(--serif);font-size:15px;color:var(--gold)\\'>${t.initials}</div>'"/>
+          <img class="tphoto" src="${photo}" alt="${name}" loading="lazy"
+            onerror="this.outerHTML='<div class=\\'tphoto\\'style=\\'display:flex;align-items:center;justify-content:center;background:var(--bg3);font-family:var(--serif);font-size:15px;color:var(--gold)\\'>${initials}</div>'"/>
           <div>
-            <div class="tname">${t.name}</div>
-            <div class="trole">${t.role}</div>
+            <div class="tname">${name}</div>
+            <div class="trole">${role}</div>
           </div>
         </div>
-      </div>`
-    ).join('');
+      </div>`;
+    }).join('');
   }
 }
 
@@ -462,7 +509,11 @@ async function toggleAiSummary() {
     if (r.ok) {
       const d = await r.json();
       if (d.text) {
-        const clean = d.text.replace(/\|\|\|CHIPS:.*?\|\|\|/gs,'').replace(/\|\|\|FOLLOWUP:.*?\|\|\|/gs,'').trim();
+        // SECURITY: sanitize at the API boundary before building HTML
+        const clean = sanitizeApiText(d.text)
+          .replace(/\|\|\|CHIPS:.*?\|\|\|/gs,'')
+          .replace(/\|\|\|FOLLOWUP:.*?\|\|\|/gs,'')
+          .trim();
         const html = `<p>${clean.replace(/\n\n+/g,'</p><p>')}</p>`;
         _aiSummaryCache[pid] = html;
         if (_currentCsProject === pid) $('csf-ai-text').innerHTML = html;
@@ -585,7 +636,11 @@ function addAgentMessage(text) {
   const container = $('deepdive-messages');
   const msg = document.createElement('div');
   msg.className = 'deepdive-message agent-msg';
-  msg.innerHTML = `<div class="deepdive-msg-avatar">🎯</div><div class="deepdive-msg-content"><p style="font-size:14px;line-height:1.6;color:var(--t2);margin:0;">${text}</p></div>`;
+  // SECURITY: escapeHtml() prevents prompt-injection XSS.
+  // Deep-dive responses are prose only — no markdown expected here,
+  // so plain escaping is correct (no <strong> conversion needed).
+  const safeText = escapeHtml(text);
+  msg.innerHTML = `<div class="deepdive-msg-avatar">🎯</div><div class="deepdive-msg-content"><p style="font-size:14px;line-height:1.6;color:var(--t2);margin:0;">${safeText}</p></div>`;
   container.appendChild(msg);
   container.scrollTop = container.scrollHeight;
 }
@@ -647,11 +702,53 @@ function parseResp(raw) {
   const fm = raw.match(/\|\|\|FOLLOWUP:(.*?)\|\|\|/);
   const chips = cm ? cm[1].split(',').map(s => s.trim()).filter(Boolean) : [];
   const fus   = fm ? fm[1].split('|').map(s => s.trim()).filter(s => s.length > 4 && s.includes('?')) : [];
+  // Strip metadata markers; API text was already sanitized in callAgent() before
+  // arriving here. localAnswer() pre-builds safe HTML and arrives unsanitized —
+  // that is correct; both paths produce safe output via different entry points.
   let txt = raw.replace(/\|\|\|CHIPS:.*?\|\|\|/gs,'').replace(/\|\|\|FOLLOWUP:.*?\|\|\|/gs,'').trim();
   txt = txt.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   txt = txt.split(/\n\n+/).map(p => p.trim()).filter(Boolean)
     .map(p => p.startsWith('<ul') || p.startsWith('<li') ? p : `<p>${p}</p>`).join('');
   return { txt, chips, fus: fus.slice(0, 3) };
+}
+
+function buildUxKnowledgeBlock() {
+  if (!DB || !DB.ux_knowledge) return '';
+  const ux = DB.ux_knowledge;
+  const h  = ux.ten_heuristics.map(h => `${h.id}. ${h.name}: ${h.principle}`).join('\n');
+  const glossary = Object.entries(ux.ux_concepts_glossary)
+    .map(([k, v]) => `${k.replace(/_/g,' ')}: ${v}`).join('\n');
+  return `
+UX KNOWLEDGE BASE (source: Nielsen Norman Group — nngroup.com):
+When someone asks a UX methodology, theory, or process question, answer using this knowledge. Always connect concepts back to Siba's real project experience where natural.
+
+USABILITY (5 components): ${ux.usability.five_components.join(' | ')}
+
+10 USABILITY HEURISTICS (Jakob Nielsen):
+${h}
+
+DESIGN THINKING (6 phases): ${ux.design_thinking.six_phases.join(' → ')}
+
+UX RESEARCH FRAMEWORK:
+- Attitudinal vs Behavioral: ${ux.research_methods.three_dimensions.attitudinal_vs_behavioral}
+- Qualitative vs Quantitative: ${ux.research_methods.three_dimensions.qualitative_vs_quantitative}
+- 20 Methods: ${ux.research_methods.twenty_methods.join(', ')}
+- Top recommendation: ${ux.research_methods.top_recommendation}
+
+JOURNEY MAPPING: ${ux.journey_mapping.definition} Components: ${ux.journey_mapping.five_components.join(' | ')}
+SERVICE BLUEPRINTS: ${ux.service_blueprints.definition} vs Journey Maps: ${ux.service_blueprints.vs_journey_maps}
+EMPATHY MAPPING: ${ux.empathy_mapping.definition} Quadrants: Says (direct quotes) | Thinks (internal thoughts) | Does (actions) | Feels (emotions)
+USABILITY TESTING: ${ux.usability_testing.definition} Think-aloud method: ${ux.usability_testing.think_aloud_method} Sample size: ${ux.usability_testing.sample_size}
+PERSONAS: ${ux.personas.definition} Critical principle: ${ux.personas.critical_principle}
+CARD SORTING: ${ux.card_sorting.definition} Types: Open (user creates categories) | Closed (predefined categories) | Hybrid
+MENTAL MODELS: ${ux.mental_models.definition} Key principle: ${ux.mental_models.key_principle}
+DESIGN SYSTEMS: ${ux.design_systems.definition} Components: Style guide + Component library + Pattern library. When to invest: ${ux.design_systems.when_to_invest}
+F-PATTERN READING: Users read web content in an F-shape when text lacks formatting. Solutions: ${ux.f_pattern_reading.design_implications.solutions.join('; ')}
+JAKOB'S LAW: ${ux.jakob_law.statement} Application: ${ux.jakob_law.application}
+HEURISTIC EVALUATION: ${ux.heuristic_evaluation.definition} Evaluator count: ${ux.heuristic_evaluation.evaluator_count}
+
+UX GLOSSARY:
+${glossary}`;
 }
 
 function buildSystemPrompt() {
@@ -663,12 +760,15 @@ function buildSystemPrompt() {
   const aiTools = DB.skills.ai_tools.map(t => `${t.name} — ${t.use}`).join(', ');
   const certs   = DB.certifications.join('; ');
   const testimonials = DB.testimonials.map(t => `${t.name} (${t.role}): "${t.text}"`).join('\n');
+  const uxKnowledge = buildUxKnowledgeBlock();
 
   return `You are the personal AI agent for ${d.name}. Visitors come to this portfolio to understand who Siba is and what he can do. Make them feel like they talked to a knowledgeable colleague who knows Siba deeply.
 
 VOICE: Conversational, not corporate. Use contractions. React naturally — if someone asks about a great project, be genuinely enthusiastic. Use phrases like "Oh, that one's worth a proper conversation" or "Here's what made this interesting". Never passive voice if active works. Never say "As an AI". Never write a press release or read from a CV.
 
 STYLE: Third-person ("Siba's approach", "he ran", "his team") but feel like a sharp colleague saying it out loud, not a recruiter screen. Lead with the most interesting angle — not the job title. 2-3 sentence paragraphs. No jargon walls.
+
+When answering UX methodology or theory questions: answer confidently from the UX knowledge base below, then naturally connect to how Siba has applied this in real projects. Don't just define — explain it the way an experienced practitioner would.
 
 PROFILE:
 Name: ${d.name} | Role: ${cr.title} at ${cr.company} | Studio: ${cr.studio} | Location: ${d.location} | Experience: ${d.experience_years} years | Availability: ${d.availability}
@@ -684,6 +784,7 @@ PROJECTS: ${projectSummaries}
 AI TOOLS: ${aiTools}
 CERTIFICATIONS: ${certs}
 TESTIMONIALS: ${testimonials}
+${uxKnowledge}
 
 FORMAT: 130–220 words. **Bold** key facts. Bullet lists only for 4+ items. Lead with the most interesting angle. Sound like a real person in a real conversation.
 End EVERY response with: |||CHIPS:topic1,topic2,topic3|||FOLLOWUP:q1?|q2?|q3?|||`;
@@ -697,7 +798,14 @@ async function callAgent(query) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, systemPrompt })
     });
-    if (r.ok) { const d = await r.json(); if (d.text) return d.text; }
+    if (r.ok) {
+      const d = await r.json();
+      // SECURITY: sanitize API text HERE — at the boundary where external text
+      // first enters our system. parseResp() then safely converts ** markdown
+      // to <strong> (** are not HTML chars, so escaping doesn't affect them).
+      // localAnswer() is NOT sanitized here — it builds known-safe HTML directly.
+      if (d.text) return sanitizeApiText(d.text);
+    }
   } catch (_) {}
   return localAnswer(query);
 }
@@ -710,8 +818,8 @@ function localAnswer(query) {
 
   const matchedProject = DB.projects.find(p =>
     q.includes(p.id) ||
-    p.name.toLowerCase().split(' ').some(w => w.length > 3 && q.includes(w)) ||
-    (p.client && p.client.toLowerCase().split(' ').some(w => w.length > 3 && q.includes(w)))
+    p.name.toLowerCase().split(' ').some(w => w.length > 6 && q.includes(w)) ||
+    (p.client && p.client.toLowerCase().split(' ').some(w => w.length > 6 && q.includes(w)))
   );
 
   if (matchedProject) {
@@ -729,12 +837,12 @@ function localAnswer(query) {
     txt = `<p>Three things that are genuinely hard to find in one person: <strong>${d.experience_years} years of hands-on craft</strong>, the business acumen to run 15+ RFPs and drive a <strong>${m.rfp_acv_increase} ACV increase</strong>, and the technical depth to pioneer <strong>Model Context Protocol</strong> training for an entire studio.</p><p>He's also a GEM Award winner — not for a side project, but for work that drove <strong>${m.patient_bookings_increase} more patient bookings</strong> in a live healthcare product. Most senior UX people are strong in one of these. Siba does all three.</p>`;
     chips = ['GEM Award', 'Projects', 'Contact'];
     fus   = ['Tell me about the healthcare project', 'What does he lead at Capgemini?', 'How do I get in touch?'];
-  } else if (/ai|tool|workflow|mcp|model context|figma make|claude/i.test(q)) {
+  } else if (/\bai\b|\btool\b|workflow|\bmcp\b|model context|figma make|claude/i.test(q)) {
     const tools = DB.skills.ai_tools.slice(0, 6);
     txt = `<p>Siba's not just using AI tools — he's changed how his whole ${cr.extended_team}-person studio works with them. He pioneered <strong>Model Context Protocol (MCP)</strong> training across the team, which cut ideation time by <strong>${m.ideation_speed_increase}</strong>.</p><ul>${tools.map(t => `<li><strong>${t.name}</strong> — ${t.use}</li>`).join('')}</ul><p>The philosophy: "AI isn't changing what we do — it's changing how fast." He lives that, doesn't just say it.</p>`;
     chips = ['Design process', 'Studio leadership', 'Baptist Healthcare'];
     fus   = ['How did MCP training change the studio output?', 'How has AI changed his approach to research?', 'What was the Baptist Healthcare project?'];
-  } else if (/philosoph|approach|believe|passion|think/i.test(q)) {
+  } else if (/philosoph|approach|believe|passion|think(?!ing)/i.test(q)) {
     txt = `<p><em>"${ph.ai_belief}"</em></p><p><em>"${ph.design_belief}"</em></p><p>${ph.approach}</p>`;
     chips = ['Design process', 'AI workflow', 'Projects'];
     fus   = ['How does he translate that into how he leads?', 'Which project reflects his philosophy best?', 'What AI tools does he use daily?'];
@@ -743,7 +851,9 @@ function localAnswer(query) {
     chips = ['GEM Award', 'AI tools', 'Contact'];
     fus   = ['What approach does he take to design critique and mentorship?', 'How does he balance strategy with hands-on design?', 'How can I get in touch?'];
   } else if (/contact|reach|avail|email|phone|talk|connect/i.test(q)) {
-    txt = `<p>Siba's ${d.availability.toLowerCase()}.</p><p>📧 <a href="mailto:${d.email}">${d.email}</a><br>📱 <a href="tel:${d.phone}">${d.phone}</a><br>💼 <a href="${d.linkedin}" target="_blank">LinkedIn</a><br>🌐 <a href="${d.portfolio}" target="_blank">${d.portfolio}</a></p><p>Email gets the fastest response — usually within a working day.</p>`;
+    // safeUrl() validates each href — blocks javascript:/data: schemes if JSON is ever tampered.
+    // escapeHtml() prevents special chars in email/phone from breaking the HTML template.
+    txt = `<p>Siba's ${escapeHtml(d.availability.toLowerCase())}.</p><p>📧 <a href="${safeUrl('mailto:'+d.email)}">${escapeHtml(d.email)}</a><br>📱 <a href="${safeUrl('tel:'+d.phone)}">${escapeHtml(d.phone)}</a><br>💼 <a href="${safeUrl(d.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn</a><br>🌐 <a href="${safeUrl(d.portfolio)}" target="_blank" rel="noopener noreferrer">${escapeHtml(d.portfolio)}</a></p><p>Email gets the fastest response — usually within a working day.</p>`;
     chips = ['Open to roles', 'Current studio', 'Portfolio'];
     fus   = ['What kind of role is he looking for?', 'What has he built at Capgemini?', 'Where can I see the case studies?'];
   } else if (/testimonial|colleague|say|recommend|peer|review/i.test(q)) {
@@ -751,6 +861,87 @@ function localAnswer(query) {
     txt = `<p>Here's what people who've worked closely with him say:</p><p><strong>${t1.name}</strong> (${t1.role}): <em>"${t1.text}"</em></p><p><strong>${t2.name}</strong> (${t2.role}): <em>"${t2.text}"</em></p>`;
     chips = ['Oracle work', 'Current role', 'Contact'];
     fus   = ['What did Siba work on at Oracle?', 'What is he doing now at Capgemini?', 'How do I reach him?'];
+
+  /* ── UX KNOWLEDGE — sourced from Nielsen Norman Group ── */
+  } else if (DB.ux_knowledge && /heuristic|usability heuristic|10 heuristic|jakob nielsen heuristic/i.test(q)) {
+    const ux = DB.ux_knowledge;
+    const topH = ux.ten_heuristics.slice(0, 5);
+    txt = `<p>Jakob Nielsen's <strong>10 Usability Heuristics</strong> are the gold standard for UI evaluation — developed in 1990 and still the most widely used usability framework today.</p><ul>${topH.map(h => `<li><strong>${h.name}</strong> — ${h.principle}</li>`).join('')}</ul><p>...and 5 more: Recognition over Recall, Flexibility & Efficiency, Aesthetic & Minimalist Design, Error Recovery, and Help & Documentation. Siba applies these in heuristic evaluations before and during usability testing.</p>`;
+    chips = ['Usability testing', 'Design process', 'UX research'];
+    fus   = ['How does a heuristic evaluation work?', 'What is usability testing?', 'How has Siba applied these on real projects?'];
+
+  } else if (DB.ux_knowledge && /design thinking|design process|double diamond/i.test(q)) {
+    const dt = DB.ux_knowledge.design_thinking;
+    txt = `<p><strong>Design Thinking</strong> is a structured, user-centered approach to problem solving with six phases: <strong>${dt.six_phases.slice(0,3).join(' → ')}</strong> — and then Prototype, Test, Implement.</p><p>What matters most is that it's iterative, not linear. Teams regularly loop back to Empathize after testing reveals something unexpected. The Implement phase — actually shipping — is where most frameworks fall short, and where design leadership matters most.</p><p>Siba has run this process across healthcare, government, and automotive contexts — adapting the framework to the constraints of each engagement without losing the human-centered core.</p>`;
+    chips = ['UX research', 'Journey mapping', 'Design systems'];
+    fus   = ['What research methods does Siba use?', 'How does journey mapping fit into the design process?', 'Tell me about the Baptist Healthcare project'];
+
+  } else if (DB.ux_knowledge && /journey map|experience map/i.test(q)) {
+    const jm = DB.ux_knowledge.journey_mapping;
+    txt = `<p>A <strong>journey map</strong> visualizes the process a person goes through to accomplish a goal — compiling actions into a timeline enriched with thoughts, emotions, and pain points.</p><p>The five components: <strong>Actor</strong> (one persona per map), <strong>Scenario</strong>, <strong>Journey Phases</strong>, <strong>Actions/Mindsets/Emotions</strong>, and <strong>Opportunities</strong>. That last one is the whole point — the map is a vehicle for spotting where to intervene, not just a pretty deliverable.</p><p>For Goodyear APAC, Siba mapped the B2B fleet owner's full purchase journey — quote creation through payment — which surfaced critical friction points in the checkout handoff that the client hadn't tracked before.</p>`;
+    chips = ['Service blueprints', 'Empathy mapping', 'Goodyear project'];
+    fus   = ['How is a service blueprint different from a journey map?', 'What is empathy mapping?', 'Tell me about the Goodyear APAC project'];
+
+  } else if (DB.ux_knowledge && /service blueprint/i.test(q)) {
+    const sb = DB.ux_knowledge.service_blueprints;
+    txt = `<p>A <strong>service blueprint</strong> maps the organizational infrastructure behind a customer experience. Think of it as the operational "part two" to a journey map — while the journey map shows what the customer experiences, the blueprint exposes <em>why</em> that experience happens the way it does.</p><p>It has five layers: Customer Actions, Frontstage Actions (visible to customers), Backstage Actions (invisible), Processes, and Evidence. The lines separating these — the Line of Visibility in particular — are where the real design problems live.</p><p>It's especially powerful for omnichannel and healthcare contexts, where what happens behind the scenes directly determines what the patient or customer actually feels.</p>`;
+    chips = ['Journey mapping', 'UX research', 'Healthcare UX'];
+    fus   = ['How does this differ from a journey map?', 'When should you use a service blueprint?', 'How did Siba apply this in healthcare?'];
+
+  } else if (DB.ux_knowledge && /empathy map/i.test(q)) {
+    const em = DB.ux_knowledge.empathy_mapping;
+    txt = `<p>An <strong>empathy map</strong> is a collaborative tool that captures what is known about a user type across four dimensions: <strong>Says</strong> (direct quotes), <strong>Thinks</strong> (internal concerns they may not voice), <strong>Does</strong> (actual behaviors), and <strong>Feels</strong> (emotional state).</p><p>The "Thinks" quadrant is where it gets interesting — it captures the gap between what users say and what they actually mean. That gap is usually where the best design decisions hide.</p><p>Empathy maps work best as a team exercise immediately after research synthesis — they force alignment and surface disagreements about who you're actually designing for before you commit to a direction.</p>`;
+    chips = ['User research', 'Personas', 'Design process'];
+    fus   = ['How is an empathy map different from a persona?', 'What UX research methods does Siba use?', 'How does he run research with his team?'];
+
+  } else if (DB.ux_knowledge && /usability test|user test|think aloud|think-aloud/i.test(q)) {
+    const ut = DB.ux_knowledge.usability_testing;
+    txt = `<p><strong>Usability testing</strong> is a researcher observing a participant perform realistic tasks on a product to identify friction, confusion, and failure points. It's the most effective single method for improving an existing system.</p><p>The think-aloud method — where participants narrate what they're doing and why — is the core technique. It surfaces the gap between user intent and system response in real time. <strong>Five participants</strong> typically uncover the majority of significant issues; running more users in fewer but smaller rounds of testing beats one big test at the end.</p><p>Siba ran two full rounds of moderated usability testing on the Baptist Healthcare Pine App — including A/B testing between two visual directions — before committing to the final Morphism approach.</p>`;
+    chips = ['Baptist Healthcare', 'UX research methods', 'Design process'];
+    fus   = ['What were the Baptist Healthcare test findings?', 'What research methods does Siba use?', 'How many users do you need for usability testing?'];
+
+  } else if (DB.ux_knowledge && /persona|user persona/i.test(q)) {
+    const p = DB.ux_knowledge.personas;
+    txt = `<p>A <strong>persona</strong> is a fictional but research-grounded representation of a target user — specific enough to make real design decisions, not a demographic average that stands for no one in particular.</p><p>The critical principle: every detail in a persona should either influence a design decision or make the persona more memorable. Age, photo, and a quote do the latter. Goals, pain points, and context do the former. Anything else is noise.</p><p>On the Goodyear APAC project, Siba's team built distinct personas for B2C individual buyers and B2B fleet owners — two fundamentally different decision journeys that required separate content architectures. Treating them as one user type would have been a serious mistake.</p>`;
+    chips = ['Empathy mapping', 'User research', 'Goodyear project'];
+    fus   = ['How do you create personas from research?', 'How is a persona different from an empathy map?', 'Tell me about the Goodyear APAC project'];
+
+  } else if (DB.ux_knowledge && /card sort|information architecture|ia |tree test/i.test(q)) {
+    const cs = DB.ux_knowledge.card_sorting;
+    txt = `<p><strong>Card sorting</strong> reveals how users mentally organize information — and it's one of the most direct ways to design navigation that matches real mental models instead of internal org-chart logic.</p><p>Three types: <strong>Open</strong> (users create their own categories — best for discovery), <strong>Closed</strong> (users place cards into your existing categories — best for validation), and <strong>Hybrid</strong>. You need at least 15 participants for qualitative insight, 30–50 for statistical confidence.</p><p>Tree testing complements card sorting by testing whether users can actually <em>find</em> things in the structure you've built — without any visual design to mask IA problems. Together they make your navigation decisions defensible.</p>`;
+    chips = ['UX research', 'Design systems', 'Information architecture'];
+    fus   = ['What is tree testing?', 'How does IA relate to navigation design?', 'What research methods does Siba use?'];
+
+  } else if (DB.ux_knowledge && /mental model/i.test(q)) {
+    const mm = DB.ux_knowledge.mental_models;
+    txt = `<p>A <strong>mental model</strong> is what users <em>believe</em> a system does — based on their prior experiences, not on how the system actually works. The gap between user mental models and system behavior is where most usability failures live.</p><p><strong>Jakob's Law</strong> makes this concrete: users spend most of their time on <em>other</em> products, so they expect yours to work similarly. This is why radical novelty in standard UI patterns almost always backfires — you're fighting years of accumulated expectation.</p><p>Mental model inertia is powerful. The best design strategy is to align with existing models for standard interactions and reserve innovation for where it genuinely creates value the user can immediately appreciate.</p>`;
+    chips = ['Jakob\'s Law', 'Usability heuristics', 'Design process'];
+    fus   = ['What is Jakob\'s Law?', 'How do you uncover user mental models?', 'What usability methods does Siba use?'];
+
+  } else if (DB.ux_knowledge && /design system/i.test(q)) {
+    const ds = DB.ux_knowledge.design_systems;
+    txt = `<p>A <strong>design system</strong> is a complete set of standards for managing design at scale — style guide, component library, and pattern library working together. The real value isn't the components themselves; it's the shared language and the time it gives designers back to solve harder problems.</p><p>Governance is what separates a functioning design system from a beautiful Figma file no one uses. You need a dedicated team — at minimum one interaction designer, one visual designer, one developer — and an executive sponsor who understands why it matters to the business.</p><p>Siba has governed multi-brand design systems at Goodyear and Baptist Healthcare — two very different product contexts — and cut front-end development time by <strong>32%</strong> at Goodyear by establishing a governed component library.</p>`;
+    chips = ['Goodyear project', 'Component library', 'Design process'];
+    fus   = ['How did the Goodyear design system work?', 'What is Siba\'s approach to design system governance?', 'Tell me about the Baptist Healthcare project'];
+
+  } else if (DB.ux_knowledge && /cognitive load|cognitive|hick|fitts|gestalt/i.test(q)) {
+    const g = DB.ux_knowledge.ux_concepts_glossary;
+    txt = `<p><strong>Cognitive load</strong> is the total mental effort required by working memory at any moment. UX design's job is to minimize unnecessary cognitive load so users can focus on their actual goals — not on figuring out the interface.</p><p><strong>Hick's Law</strong> says decision time increases with the number and complexity of choices — which is why progressive disclosure, clear hierarchies, and focused onboarding flows matter. <strong>Fitts's Law</strong> says target acquisition time depends on size and distance — which is why primary actions should be large and positioned where the cursor naturally travels.</p><p>On the Baptist Healthcare login redesign, Siba applied Hick's Law explicitly — reducing the login screen to three clear paths with progressive reveal, directly addressing the 'too many choices' confusion users reported in research.</p>`;
+    chips = ['Baptist Healthcare', 'Usability principles', 'Design decisions'];
+    fus   = ['How did Siba apply these on the Baptist project?', 'What usability heuristics does he use?', 'What is progressive disclosure?'];
+
+  } else if (DB.ux_knowledge && /accessibility|wcag|inclusive design|a11y/i.test(q)) {
+    const g = DB.ux_knowledge.ux_concepts_glossary;
+    txt = `<p><strong>Accessibility</strong> means designing products that work for people with disabilities — and in practice, it means designing better products for everyone. WCAG organises accessibility around four principles: <strong>Perceivable, Operable, Understandable, and Robust</strong> (POUR).</p><p>The most common mistake is treating accessibility as a compliance checklist at the end of the project. Contrast ratios, touch target sizes, screen reader compatibility, and keyboard navigation need to be designed in from the start — retrofitting is 5x more expensive and always incomplete.</p><p>On the Baptist Healthcare project, Siba's team discovered contrast ratio issues in the Morphism concept only at the moderated testing stage. His key learning: run dedicated accessibility audits in parallel with visual preference testing — not after.</p>`;
+    chips = ['Baptist Healthcare', 'Design process', 'Usability'];
+    fus   = ['How did accessibility affect the Baptist Healthcare project?', 'What is WCAG?', 'How does Siba approach inclusive design?'];
+
+  } else if (DB.ux_knowledge && /f.pattern|eye.track|reading pattern|scan pattern/i.test(q)) {
+    const fp = DB.ux_knowledge.f_pattern_reading;
+    txt = `<p>Eye-tracking research from Nielsen Norman Group shows users read web content in an <strong>F-shaped pattern</strong> when text lacks formatting — two horizontal scans across the top, then a vertical scan down the left side. The result: content on the right gets missed, and paragraphs get skimmed, not read.</p><p>The fix is strategic formatting: <strong>front-load critical information</strong> in opening sentences, use descriptive headings that work as standalone summaries, and put meaningful keywords in the first few words of every paragraph and link.</p><p>This isn't just academic — it directly influences how Siba structures content hierarchy in the products he designs, particularly in high-information environments like the Baptist Healthcare patient portal and the TAMM government services platform.</p>`;
+    chips = ['Content design', 'Information architecture', 'UX research'];
+    fus   = ['How does information hierarchy affect usability?', 'What is information architecture?', 'Tell me about the TAMM project'];
+
   } else {
     txt = `<p>Siba Sankar Kabi — <strong>${d.experience_years} years</strong> designing for healthcare, automotive, fashion, and enterprise SaaS. He's heading the <strong>${cr.studio}</strong> at ${cr.company}, leading a team of ${cr.extended_team}, and just won the <strong>GEM Award</strong> for design excellence.</p><p>Ask me anything specific — a project, how he leads, his AI workflow, or why he'd be the right hire.</p>`;
     chips = ['Projects', 'AI tools', 'Contact'];
@@ -764,6 +955,17 @@ function localAnswer(query) {
 /* ── SEARCH FLOW ── */
 async function doSearch(query) {
   if (!query || busy) return;
+
+  // SECURITY: enforce maximum input length — prevents oversized payloads reaching /api/search.
+  if (query.length > SEARCH_MAX_CHARS) {
+    query = query.slice(0, SEARCH_MAX_CHARS);
+  }
+
+  // SECURITY: rate limiting — enforce minimum gap between calls.
+  // Prevents rapid-fire abuse of the AI endpoint.
+  const now = Date.now();
+  if (now - _lastSearchTs < SEARCH_THROTTLE_MS) return;
+  _lastSearchTs = now;
   busy = true;
   const ab = $('ais-btn'), mb = $('modal-btn');
   if (ab) { ab.classList.add('busy'); ab.disabled = true; }
@@ -828,12 +1030,20 @@ async function doSearch(query) {
 }
 
 function runSearch() {
-  const q = ($('ais-input').value || '').trim();
+  // SECURITY: strip HTML angle brackets from input before sending to API.
+  // This prevents users from injecting HTML into the system prompt.
+  const raw = ($('ais-input').value || '').trim();
+  const q   = raw.replace(/[<>]/g, '').slice(0, SEARCH_MAX_CHARS);
   doSearch(q);
 }
 function modalAsk() {
-  const q = ($('modal-input').value || '').trim();
-  if (q) { $('modal-q').textContent = q; resetModal(); $('modal-input').value = ''; doSearch(q); }
+  const raw = ($('modal-input').value || '').trim();
+  if (!raw) return;
+  const q = raw.replace(/[<>]/g, '').slice(0, SEARCH_MAX_CHARS);
+  $('modal-q').textContent = q;
+  resetModal();
+  $('modal-input').value = '';
+  doSearch(q);
 }
 function qSearch(btn) {
   const q = btn.textContent.trim();

@@ -442,5 +442,290 @@
     { "label": "TAMM Abu Dhabi project", "icon": "ti-message-chatbot" },
     { "label": "Goodyear APAC project", "icon": "ti-car" },
     { "label": "What colleagues say", "icon": "ti-quote" }
-  ]
+  ],
+
+  "ux_knowledge": {
+    "_source": "Nielsen Norman Group (nngroup.com) — the world's leading UX research and consulting firm, founded by Jakob Nielsen and Don Norman.",
+    "_note": "Use this knowledge to answer UX methodology, theory, and process questions. Always connect concepts to real project experience where relevant.",
+
+    "usability": {
+      "definition": "Usability is a quality attribute that assesses how easy user interfaces are to use. It encompasses both the design characteristic itself and methods for improving ease-of-use during development.",
+      "five_components": [
+        "Learnability — How quickly users accomplish basic tasks on first encounter",
+        "Efficiency — Speed of task performance once users understand the design",
+        "Memorability — Ease of regaining proficiency after periods of non-use",
+        "Errors — Frequency, severity, and recoverability from user mistakes",
+        "Satisfaction — Overall pleasantness and subjectivity of the experience"
+      ],
+      "why_it_matters": "On the web, usability is a necessary condition for survival. Users abandon difficult websites immediately. Investing roughly 10% of project budget on usability typically doubles quality metrics.",
+      "how_to_improve": "The fundamental method is user testing with representative users performing realistic tasks. Test with ~5 users to identify major problems. Use iterative design, testing between refinements."
+    },
+
+    "ten_heuristics": [
+      {
+        "id": 1,
+        "name": "Visibility of System Status",
+        "principle": "The design should always keep users informed about what is going on, through appropriate feedback within a reasonable amount of time.",
+        "why": "Builds predictability and trust. Users need to understand prior interaction outcomes and know what comes next.",
+        "example": "Progress bars, loading spinners, breadcrumbs, 'You Are Here' mall map indicators."
+      },
+      {
+        "id": 2,
+        "name": "Match Between System and Real World",
+        "principle": "The design should speak the users' language. Use words, phrases, and concepts familiar to the user, rather than internal jargon.",
+        "why": "Reduces cognitive load. Design should follow real-world conventions and natural logical ordering.",
+        "example": "Stovetop controls positioned to match heating element layouts. Shopping cart icon for e-commerce."
+      },
+      {
+        "id": 3,
+        "name": "User Control and Freedom",
+        "principle": "Users often perform actions by mistake. They need a clearly marked emergency exit to leave the unwanted action without going through an extended process.",
+        "why": "Prevents frustration and builds confidence. Freedom to undo reduces the cost of errors.",
+        "example": "Undo/Redo functions, Cancel buttons, browser Back button, Ctrl+Z."
+      },
+      {
+        "id": 4,
+        "name": "Consistency and Standards",
+        "principle": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
+        "why": "Reduces cognitive load. Users' expectations are shaped by other products they use regularly (Jakob's Law).",
+        "example": "Hotel check-in counters consistently at the entrance. Save icon universally represented as a floppy disk."
+      },
+      {
+        "id": 5,
+        "name": "Error Prevention",
+        "principle": "Good error messages are important, but the best designs carefully prevent problems from occurring in the first place. Prefer prevention over recovery.",
+        "why": "Preventing errors is always cheaper than fixing them after the fact. Constraints and confirmation dialogs save user effort.",
+        "example": "Guard rails on mountain roads. Form validation before submission. Confirmation dialogs for irreversible actions."
+      },
+      {
+        "id": 6,
+        "name": "Recognition Rather Than Recall",
+        "principle": "Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.",
+        "why": "Humans have limited short-term memory. Interfaces that promote recognition reduce required cognitive effort significantly.",
+        "example": "Visible navigation menus vs. memorized commands. Recently used files list in apps."
+      },
+      {
+        "id": 7,
+        "name": "Flexibility and Efficiency of Use",
+        "principle": "Shortcuts — hidden from novice users — may speed up interaction for expert users so the design caters to both inexperienced and experienced users.",
+        "why": "Accommodates different skill levels. Accelerators like keyboard shortcuts, personalization and customization improve expert productivity.",
+        "example": "Keyboard shortcuts (Ctrl+C, Ctrl+V). Power user modes. Customisable dashboards."
+      },
+      {
+        "id": 8,
+        "name": "Aesthetic and Minimalist Design",
+        "principle": "Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information competes with relevant information and diminishes its visibility.",
+        "why": "Visual noise reduces signal strength. Focused design supports primary user goals without distracting decorative elements.",
+        "example": "Google's homepage. Apple product pages. Decluttered checkout flows."
+      },
+      {
+        "id": 9,
+        "name": "Help Users Recognize, Diagnose, and Recover from Errors",
+        "principle": "Error messages should be expressed in plain language (no error codes), precisely indicate the problem, and constructively suggest a solution.",
+        "why": "Error recovery is inevitable. Clear, actionable error messages reduce user frustration and support task completion.",
+        "example": "'Wrong Way' road signs. Gmail's 'Message not sent — Retry' with a clear action."
+      },
+      {
+        "id": 10,
+        "name": "Help and Documentation",
+        "principle": "It is best if the system does not need any additional explanation. However, it may be necessary to provide documentation to help users understand how to complete their tasks.",
+        "why": "Some tasks are complex enough to require support. Documentation should be searchable, contextual, and action-oriented.",
+        "example": "Airport information kiosks. Contextual tooltips. In-app tutorials triggered at the right moment."
+      }
+    ],
+
+    "design_thinking": {
+      "definition": "An ideology paired with a structured process emphasizing a hands-on, user-centric approach to problem solving that drives innovation and competitive advantage.",
+      "six_phases": [
+        "Empathize — Conduct user research to understand what people do, say, think, and feel",
+        "Define — Identify user problems and unmet needs from research data",
+        "Ideate — Generate diverse, creative ideas addressing identified gaps",
+        "Prototype — Build tangible representations to test concept viability",
+        "Test — Validate solutions with real users and gather feedback",
+        "Implement — Execute the vision to reach end users (the most critical phase)"
+      ],
+      "core_principles": [
+        "User-centered — begins with real user data, never assumptions",
+        "Iterative — phases loop back, teams frequently return to research after prototyping",
+        "Flexible — functions as scaffolding, not rigid prescription",
+        "Scalable — applicable from small features to organizational restructuring"
+      ],
+      "origin": "The formal framework emerged in the 1990s through David Kelley, Tim Brown, and Roger Martin at IDEO, building on decades of human-centered design."
+    },
+
+    "research_methods": {
+      "overview": "UX research has 20 primary methods organized across 3 dimensions and 4 product phases.",
+      "three_dimensions": {
+        "attitudinal_vs_behavioral": "Attitudinal captures stated beliefs (surveys, focus groups). Behavioral observes actual usage (usability testing, A/B testing, eyetracking). They often diverge — what people say differs from what they do.",
+        "qualitative_vs_quantitative": "Qualitative answers WHY and HOW — based on observing or hearing behaviors directly. Quantitative answers HOW MANY and HOW MUCH — gathered through measurement instruments.",
+        "context_of_use": "Ranges from natural/near-natural use to scripted use, limited product interaction, or no product interaction at all."
+      },
+      "twenty_methods": ["Usability testing", "Field studies", "Contextual inquiry", "Participatory design", "Focus groups", "Interviews", "Eyetracking", "Usability benchmarking", "Remote moderated testing", "Unmoderated testing", "Concept testing", "Diary studies", "Customer feedback", "Desirability studies", "Card sorting", "Tree testing", "Analytics", "Clickstream analytics", "A/B testing", "Surveys"],
+      "by_phase": {
+        "strategize": "Generative research — field studies, interviews, concept testing. Goal: find directions and opportunities.",
+        "design": "Formative research — usability testing, card sorting, tree testing. Goal: improve usability.",
+        "launch_and_assess": "Summative research — A/B testing, benchmarking, analytics. Goal: measure performance."
+      },
+      "top_recommendation": "If you can do only one activity to improve an existing system, do qualitative (think-aloud) usability testing. It is the most effective usability improvement method."
+    },
+
+    "journey_mapping": {
+      "definition": "A visualization of the process that a person goes through in order to accomplish a goal. It compiles user actions into a timeline, enriches it with thoughts and emotions, then condenses everything into a visual narrative.",
+      "five_components": [
+        "Actor — the persona experiencing the journey; one user perspective per map",
+        "Scenario + Expectations — the situation addressed, including the user's goal and specific expectations",
+        "Journey Phases — high-level stages organizing the experience (e.g., discover, try, buy, use, support)",
+        "Actions, Mindsets, Emotions — user behaviors, thoughts/questions, and emotional responses throughout phases",
+        "Opportunities — insights revealing how to optimize the experience and address pain points"
+      ],
+      "related_artifacts": {
+        "experience_maps": "Broader, generic human behavior without specific product focus",
+        "service_blueprints": "Internal business perspective supporting the customer journey — the operational 'how'",
+        "user_story_maps": "Tactical planning tool for feature implementation and sprint planning"
+      },
+      "best_for": "Scenarios involving multiple events, sequential processes, or multi-channel interactions requiring a comprehensive view."
+    },
+
+    "service_blueprints": {
+      "definition": "A diagram that visualizes the relationships between different service components — people, props (physical or digital evidence), and processes.",
+      "five_components": [
+        "Customer Actions — steps customers take to reach their goals",
+        "Frontstage Actions — visible employee or technology interactions with customers",
+        "Backstage Actions — behind-the-scenes support activities invisible to customers",
+        "Processes — internal steps enabling service delivery",
+        "Evidence — physical/digital props involved in service exchanges"
+      ],
+      "organizing_lines": [
+        "Line of Interaction — direct customer-organization exchanges",
+        "Line of Visibility — separates visible from hidden activities",
+        "Line of Internal Interaction — distinguishes customer-facing from support staff"
+      ],
+      "vs_journey_maps": "Journey maps focus on the customer experience (the front stage). Service blueprints expose the organizational infrastructure behind it. Blueprints are 'part two' to journey maps.",
+      "best_for": "Complex, omnichannel scenarios involving multiple touchpoints and cross-departmental coordination. Excellent for exposing systemic weaknesses and root causes of service failures."
+    },
+
+    "empathy_mapping": {
+      "definition": "A collaborative visualization tool that articulates what is known about a particular user type. Serves dual purposes: create shared understanding of user needs and aid in decision making.",
+      "four_quadrants": {
+        "says": "Direct quotes from user research — e.g., 'I want something reliable'",
+        "thinks": "User's internal thoughts and concerns, including unspoken worries — e.g., 'Am I dumb for not understanding this?'",
+        "does": "Physical actions and behaviors — e.g., refreshes page repeatedly, compares prices across tabs",
+        "feels": "Emotional state as adjectives with context — e.g., 'Impatient due to slow page loads'"
+      },
+      "types": "Individual maps (based on single user) or aggregated maps (synthesizing multiple similar users — can precede persona development).",
+      "benefits": ["Removes bias and aligns teams on shared user understanding", "Identifies gaps in existing research", "Uncovers needs users may not consciously recognize", "Creates digestible communication tool for stakeholders"]
+    },
+
+    "usability_testing": {
+      "definition": "A researcher asks a participant to perform tasks, usually using specific user interfaces, while observing behavior and gathering feedback.",
+      "three_elements": {
+        "facilitator": "Guides participants through testing, administers tasks, asks follow-up questions without accidentally influencing behavior",
+        "tasks": "Realistic activities the participant might perform in real life — ranging from specific to open-ended",
+        "participant": "Should represent realistic users of the product"
+      },
+      "approaches": {
+        "qualitative_vs_quantitative": "Qualitative focuses on insights and problem discovery. Quantitative collects metrics like task success rates and time-on-task.",
+        "moderated_vs_unmoderated": "Moderated involves direct facilitator interaction. Remote unmoderated uses platforms to deliver tasks independently."
+      },
+      "think_aloud_method": "Participants narrate their actions and thoughts during task performance, revealing behaviors, goals, and motivations.",
+      "sample_size": "Five participants typically uncover the majority of usability issues in qualitative studies (Nielsen's Law of diminishing returns after 5 users)."
+    },
+
+    "personas": {
+      "definition": "A fictional, yet realistic, description of a typical or target user grounded in concrete research rather than assumptions.",
+      "core_components": ["Demographic details (age, gender, occupation)", "User behaviors and interaction patterns", "Goals, needs, and concerns", "Experience level with the product", "Context for how they use the product", "Memorable quotes reflecting their perspective"],
+      "benefits": ["Foster empathy — make user groups feel tangible and real", "Create shared vocabulary — personas serve as shorthand across teams", "Combat design-for-everyone tendencies by focusing on specific individuals", "Support recruiting testers, expert reviews, and analytics segmentation"],
+      "critical_principle": "Do not add details that are irrelevant to the design. Every element should either influence decisions or enhance memorability."
+    },
+
+    "card_sorting": {
+      "definition": "A research method in which study participants place individually labeled cards into groups according to criteria that make the most sense to them.",
+      "purpose": "Reveals user mental models and informs information architecture design, making content more discoverable and easier to navigate.",
+      "types": {
+        "open": "No predefined categories — users create their own groupings. Best for understanding how users think.",
+        "closed": "Researchers provide fixed categories for validation. Best for testing existing structure.",
+        "hybrid": "Mix of predefined and user-created categories."
+      },
+      "sample_size": "Qualitative studies: minimum 15 participants. Quantitative studies: 30-50+ for statistical validity.",
+      "best_for": "Restructuring content organization, categorizing product offerings, designing navigation that matches user mental models."
+    },
+
+    "mental_models": {
+      "definition": "A mental model is what the user believes about the system at hand. These beliefs — whether accurate or not — guide how users predict system behavior.",
+      "how_they_work": "Mental models develop through users' existing knowledge and past experiences. Each user constructs their own unique model based on individual background, creating potential gaps between designer and user understanding.",
+      "design_application": [
+        "Align interfaces with established user expectations (Jakob's Law — users spend most of their time on other sites)",
+        "Redesign systems to conform to user mental models when mismatches cause friction",
+        "Use think-aloud sessions to surface erroneous mental models early"
+      ],
+      "key_principle": "Mental-model inertia is powerful. Established beliefs persist strongly. Succeed by respecting this resistance rather than fighting it."
+    },
+
+    "design_systems": {
+      "definition": "A complete set of standards intended to manage design at scale using reusable components and patterns.",
+      "three_components": {
+        "style_guide": "Documentation covering branding (colors, typography, logos), content guidance (tone of voice), and visual/interaction design standards",
+        "component_library": "Reusable UI elements with specifications: names, descriptions, customizable attributes, state variations, code snippets, implementation frameworks",
+        "pattern_library": "Collections of grouped UI elements, layouts, templates, and content structures designed for reuse and adaptation"
+      },
+      "benefits": ["Enables rapid design replication at scale", "Frees designers to focus on complex problems beyond basic UI tweaks", "Establishes unified terminology across cross-functional teams", "Ensures visual consistency across products and departments"],
+      "governance": "Requires dedicated management: minimum one interaction designer, one visual designer, one developer. Ideally adds part-time researcher, architect, and content writer. An executive sponsor helps secure resources.",
+      "implementation": "Adopt existing systems (lowest cost) → Adapt existing to needs → Create custom proprietary system (highest investment). ROI justifies investment only when sustained, replicable design work is anticipated over years.",
+      "when_to_invest": "Design systems generate ROI when organizations anticipate sustained, replicable design work across years — not for one-off prototypes or proof-of-concept projects."
+    },
+
+    "f_pattern_reading": {
+      "definition": "An eye-tracking research finding showing users read web content in an F-shaped pattern when content lacks formatting cues.",
+      "three_movements": [
+        "Horizontal scan across the upper content area (top bar of the F)",
+        "Second shorter horizontal scan partway down the page (lower bar of the F)",
+        "Vertical scan along the left side of the content (stem of the F)"
+      ],
+      "other_patterns": ["Layer-cake (scanning headings only)", "Spotted (searching for specific elements)", "Marking", "Bypassing", "Commitment (reading everything)"],
+      "design_implications": {
+        "problems": "Users miss important right-side content. Critical information buried in paragraphs is skipped.",
+        "solutions": ["Front-load critical information in opening paragraphs", "Use descriptive headings, subheadings, and bold text", "Implement bullets, numbers, and visual grouping", "Ensure links contain meaningful terminology", "Eliminate unnecessary prose"]
+      },
+      "key_insight": "Strong formatting and strategic content hierarchy override F-pattern scanning behavior."
+    },
+
+    "heuristic_evaluation": {
+      "definition": "A usability inspection method where evaluators examine the interface and judge its compliance with recognised usability principles (the heuristics).",
+      "process": "Each evaluator independently inspects the interface against the 10 Nielsen heuristics, identifying violations and rating severity. Results are then aggregated.",
+      "severity_scale": "0 = Not a usability problem, 1 = Cosmetic problem only, 2 = Minor usability problem, 3 = Major usability problem (important to fix), 4 = Usability catastrophe (imperative to fix before product is released)",
+      "evaluator_count": "3-5 evaluators find approximately 75% of usability issues. Fewer than 3 miss too many problems; more than 5 offers diminishing returns.",
+      "advantage": "Quick, cheap, and requires no users. Best early in the design process to catch obvious issues before user testing."
+    },
+
+    "jakob_law": {
+      "statement": "Users spend most of their time on OTHER websites. This means they expect your website to work the same way as all the other sites they already know.",
+      "implication": "Designers can make users' lives easier by following established patterns and conventions. Users transfer expectations from prior experiences.",
+      "application": "Innovate only where it adds clear value. Match existing mental models for navigation, form behavior, and interaction patterns. Reserve innovation for competitive differentiators — not standard UI patterns.",
+      "named_after": "Jakob Nielsen, co-founder of the Nielsen Norman Group, who articulated this principle in 2000."
+    },
+
+    "ux_concepts_glossary": {
+      "information_architecture": "The structural design of shared information environments — organizing, labeling, and creating navigation systems to help users find and manage information efficiently.",
+      "interaction_design": "Designing interactive products to support the way people communicate and interact. Concerned with the behavior of products — how they respond to user input.",
+      "progressive_disclosure": "An interaction design technique that sequences information and actions across several screens, presenting only the minimum necessary at each step to reduce cognitive load.",
+      "affordance": "A design property that signals how an object should be used. Visual affordances communicate possible interactions — e.g., a button looks pressable.",
+      "gestalt_principles": "Psychological principles describing how humans perceive visual elements as unified wholes — including proximity, similarity, continuity, closure, and figure-ground.",
+      "hicks_law": "The time it takes to make a decision increases with the number and complexity of choices. Reduce options to speed up decision-making.",
+      "fitts_law": "The time to acquire a target is a function of the distance to and size of the target. Make important buttons large and close to likely cursor positions.",
+      "cognitive_load": "The total amount of mental effort being used in working memory. UX design should minimize extraneous cognitive load and support germane (learning-related) load.",
+      "information_scent": "The degree to which interface elements suggest the value and destination of content ahead, helping users decide whether to click a link or navigate in a direction.",
+      "accessibility": "Designing products usable by people with disabilities. WCAG guidelines organize accessibility around four principles: Perceivable, Operable, Understandable, and Robust (POUR).",
+      "double_diamond": "A design process model with two diamonds — Discover and Define (problem space) followed by Develop and Deliver (solution space). Popularized by the UK Design Council.",
+      "mvp": "Minimum Viable Product — the simplest version of a product that allows a team to collect the maximum amount of validated learning about customers with the least effort.",
+      "atomic_design": "A methodology for creating design systems by breaking interfaces into atoms (basic HTML elements), molecules, organisms, templates, and pages. Created by Brad Frost.",
+      "ux_maturity": "The degree to which an organization has integrated user experience thinking into its processes, culture, and strategy. Ranges from absent to pervasive.",
+      "kano_model": "A model for prioritizing product features based on customer satisfaction. Categorizes features as Basic needs, Performance attributes, and Delighters (excitement factors).",
+      "north_star_metric": "A single metric that best captures the core value your product delivers to customers. Aligns the team around what truly matters for long-term product success.",
+      "tree_testing": "A technique for evaluating the findability of topics in a website's navigation. Tests the information architecture without visual design, using text-only hierarchy.",
+      "contextual_inquiry": "A field research method where researchers observe and interview users in their natural environment while they work, to understand how context influences behavior.",
+      "diary_study": "A longitudinal research method where participants self-report their experiences, behaviors, and perceptions over time in a structured journal or log.",
+      "storyboarding": "A sequence of illustrations or sketches depicting how a user would interact with a product or service in a specific context over time.",
+      "value_proposition": "A clear statement of the tangible results a customer gets from using your product. Answers: what it is, who it is for, and why it matters."
+    }
+  }
 }
