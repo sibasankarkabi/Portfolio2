@@ -94,10 +94,9 @@
         </div>
       </div>
       <div class="hero-btns r d3" style="margin-top: 12px;">
-        <a class="btn-gold" href="./images/UX_Siba_Sankar_Kabi_Resume.docx" download="Siba_Sankar_Kabi_Resume.docx">
+        <a class="btn-gold" href="./images/UX_Siba_Sankar_Kabi_Resume.docx" download="Siba_Sankar_Kabi_Resume.docx" data-allow-download>
           <i class="ti ti-download" aria-hidden="true"></i>Download Resume
         </a>
-        
     </div>
     </div>
     <!-- RIGHT: floating avatar card — exact from uploaded -->
@@ -631,17 +630,17 @@
             node.addEventListener('contextmenu', _block, true);
             node.querySelectorAll && node.querySelectorAll('*').forEach(function(el) {
               el.addEventListener('contextmenu', _block, true);
-              if (el.hasAttribute('download')) el.removeAttribute('download');
+              if (el.hasAttribute('download') && !el.hasAttribute('data-allow-download')) el.removeAttribute('download');
             });
-            if (node.hasAttribute('download')) node.removeAttribute('download');
+            if (node.hasAttribute('download') && !node.hasAttribute('data-allow-download')) node.removeAttribute('download');
           }
         });
       });
     }).observe(document.body, { childList: true, subtree: true });
   }
 
-  // 5. Strip all existing download attributes on page load
-  document.querySelectorAll('[download]').forEach(function(el) {
+  // 5. Strip all existing download attributes on page load (skip explicitly allowed links)
+  document.querySelectorAll('[download]:not([data-allow-download])').forEach(function(el) {
     el.removeAttribute('download');
   });
 
@@ -650,6 +649,7 @@
   document.addEventListener('click', function(e) {
     var el = e.target.closest('a[href]');
     if (!el) return;
+    if (el.hasAttribute('data-allow-download')) return; // resume download is allowed
     var href = el.getAttribute('href') || '';
     // Block direct file downloads; allow same-page anchors and mailto/tel
     if (_fileExt.test(href) && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel')) {
