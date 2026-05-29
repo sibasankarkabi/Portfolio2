@@ -328,7 +328,6 @@ const CASE_STUDY_FILES = {
       { name: 'Customer Experience',   type: 'pdf',   src: 'images/CaseStudy/PineApp Refresh Customer Experience.pdf' },
       { name: 'Login Flow',            type: 'pdf',   src: 'images/CaseStudy/PineApp Refresh Login flow.pdf' },
       { name: 'Visual Design',         type: 'pdf',   src: 'images/CaseStudy/PineApp Refresh Visual Design.pdf' },
-      { name: 'Overview',              type: 'image', src: 'images/CaseStudy/Baptist.jpg' },
       { name: 'Research',              type: 'image', src: 'images/CaseStudy/PineApp Refresh with Research.jpg' },
     ]
   },
@@ -337,7 +336,6 @@ const CASE_STUDY_FILES = {
     client: 'TAMM · Dubai Government',
     files: [
       { name: 'Full Case Study', type: 'pdf',   src: 'images/CaseStudy/TAMM.pdf' },
-      { name: 'Overview',        type: 'image', src: 'images/CaseStudy/Tamm.png' },
     ]
   },
   goodyear: {
@@ -345,7 +343,6 @@ const CASE_STUDY_FILES = {
     client: 'Goodyear APAC',
     files: [
       { name: 'Full Case Study', type: 'pdf',   src: 'images/CaseStudy/Goodyear.pdf' },
-      { name: 'Overview',        type: 'image', src: 'images/CaseStudy/Goodyear.png' },
     ]
   },
   vs: {
@@ -353,7 +350,6 @@ const CASE_STUDY_FILES = {
     client: "Victoria's Secret",
     files: [
       { name: 'Full Case Study', type: 'pdf',   src: 'images/CaseStudy/Victoria secret.pdf' },
-      { name: 'Overview',        type: 'image', src: 'images/CaseStudy/VS.png' },
     ]
   },
 };
@@ -406,17 +402,14 @@ function switchCsFileTab(idx) {
 function showCsFile(file) {
   const content = $('cs-file-content');
   if (file.type === 'image') {
-    content.innerHTML = `<img src="${file.src}" alt="${file.name}" class="csf-image"/>`;
+    content.innerHTML = `<div class="csf-img-wrap"><img src="${file.src}" alt="${file.name}" class="csf-image"/></div>`;
   } else {
-    const isLocal = ['localhost','127.0.0.1'].includes(window.location.hostname);
+    // #toolbar=0 hides Chrome/Edge PDF toolbar (download, print, save buttons).
+    // navpanes=0 hides the side panel. view=FitH fits width for cleaner view.
+    const src = file.src + '#toolbar=0&navpanes=0&scrollbar=1&view=FitH';
     content.innerHTML = `
       <div class="csf-pdf-wrap">
-        <iframe src="${file.src}" class="csf-pdf-frame" title="${file.name}"></iframe>
-        ${isLocal ? `<div class="csf-pdf-actions">
-          <a href="${file.src}" target="_blank" class="csf-btn csf-btn-primary">
-            <i class="ti ti-external-link"></i> Open in new tab
-          </a>
-        </div>` : ''}
+        <iframe src="${src}" class="csf-pdf-frame" title="${file.name}"></iframe>
       </div>`;
   }
 }

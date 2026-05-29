@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Siba Sankar Kabi — UX Design Leader</title>
+  <meta name="description" content="Portfolio of Siba Sankar Kabi — Studio Head, Capgemini Bengaluru."/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/tabler-icons.min.css"/>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="logo" href="#"><span class="logo-pip"></span>Sankar Kabi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Journey</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-hire" href="mailto:sksankar0@gmail.com">Hire me</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-glow-r"></div>
+  <div class="hero-glow-l"></div>
+
+  <!-- Bio + profile photo -->
+  <div class="hero-grid">
+    <div>
+      <div class="hero-kicker r" id="hero-kicker">Studio Head · Capgemini Bengaluru</div>
+      <h1 class="r d1" id="hero-name">Siba<br><em>Sankar</em>&nbsp;Kabi</h1>
+      <div class="hero-meta r d2">
+        <span><i class="ti ti-map-pin" style="font-size:13px;color:var(--gold)" aria-hidden="true"></i>Bengaluru, India</span>
+        <span class="meta-dot"></span>
+        <span id="hero-company">Capgemini · Oct 2022 – Present</span>
+        <span class="meta-dot"></span>
+        <span style="color:var(--gold)" id="hero-avail-text">Open to leadership roles</span>
+      </div>
+      <p class="hero-intro r d2" id="hero-intro">Crafting digital experiences that feel invisible — and outcomes that don't.</p>
+      <div class="hero-award r d2">
+        <i class="ti ti-award" aria-hidden="true"></i>
+        <strong>GEM Award Winner</strong> — Design Excellence, Capgemini 2025–26
+      </div>
+      <div class="hero-stats reveal reveal-d3">
+        <div class="stat"><div class="stat-n">17+</div><div class="stat-l">Years Exp.</div></div>
+        <div class="stat"><div class="stat-n">24</div><div class="stat-l">Team Size</div></div>
+        <div class="stat"><div class="stat-n">15+</div><div class="stat-l">RFPs Led</div></div>
+        <div class="stat"><div class="stat-n">13%</div><div class="stat-l">ACV Increase</div></div>
+      </div>
+      <div class="hero-btns r d3">
+        <a class="btn-gold" href="#contact">
+          <i class="ti ti-send" aria-hidden="true"></i>Get In Touch
+        </a>
+        <a class="btn-outline" href="#work">
+          <i class="ti ti-layout-grid" aria-hidden="true"></i>View Work
+        </a>
+      </div>
+    </div>
+    <div class="r d2">
+      <div class="profile-card">
+        <div class="hero-right">
+      <div class="avatar-card">
+        <div class="avatar-badges">
+          <div class="a-badge"><span class="badge-live"></span> Bengaluru DCX Studio UX lead</div>
+          <div class="a-badge"><i class="ti ti-certificate"></i> HFI Certified CXA</div>
+        </div>
+      </div>
+    </div>
+        
+        <div class="profile-stats" id="profile-stats"></div>
+        <div class="profile-footer">
+          <div class="gem-badge"><i class="ti ti-award" aria-hidden="true"></i>GEM Award Winner 2025-2026</div>
+          <div class="avail-row"><span class="avail-dot"></span>Available</div>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT: floating avatar card — exact from uploaded -->
+    
+  </div>
+
+  <!-- AI Agent search — lives in the hero -->
+  <div class="hero-search r d4">
+    <div class="search-lbl">
+      <i class="ti ti-sparkles" aria-hidden="true"></i>Ask my AI agent — anything about me
+    </div>
+    <div class="search-bar" id="search-bar">
+      <i class="ti ti-search search-ico" aria-hidden="true"></i>
+      <input
+        id="ais-input" type="text"
+        placeholder="Have a JD? Paste it here for an instant fit analysis — or ask anything about Siba…"
+        autocomplete="off" spellcheck="false"
+        aria-label="Ask about Siba"/>
+      <button class="ask-btn" id="ais-btn" onclick="runSearch()">
+        <span class="lbl"><i class="ti ti-send" aria-hidden="true"></i>Ask</span>
+        <span class="spin"></span>
+      </button>
+    </div>
+    <div class="search-jd-hint"><i class="ti ti-briefcase" aria-hidden="true"></i> Have a job description? Paste it above — the agent will give you an instant fit analysis.</div>
+    <div class="pill-row" id="pill-row">
+      <!-- Pills injected from siba.json by main.js -->
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-user" aria-hidden="true"></i>Who is Siba?</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i>Baptist Healthcare</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-award" aria-hidden="true"></i>GEM Award story</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-robot" aria-hidden="true"></i>AI tools & workflow</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-users" aria-hidden="true"></i>Studio leadership</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-bulb" aria-hidden="true"></i>Design philosophy</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-chart-line" aria-hidden="true"></i>Business results</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-message-chatbot" aria-hidden="true"></i>TAMM Dubai</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-quote" aria-hidden="true"></i>What colleagues say</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-mail" aria-hidden="true"></i>How to reach me</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker">
+    <span class="tick-item">UX Strategy<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Design Systems<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Healthcare UX<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Conversational AI<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Figma Make<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Team Leadership<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Atomic Design<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Double Diamond<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Accessibility<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Model Context Protocol<span class="tick-sep">✦</span></span>
+    <span class="tick-item">UX Research<span class="tick-sep">✦</span></span>
+    <span class="tick-item">Design Thinking<span class="tick-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow r">Background</div>
+        <h2 class="r d1">Designing for humans.<br><em>Leading with empathy.</em></h2>
+        <p class="body-text r d1">Spent the last decade and a half translating complex business challenges into experiences people actually enjoy using. My strength is seeing both the big picture and the pixel.</p>
+        <blockquote class="pull-quote r d2" id="about-quote">"AI is not changing WHAT we do — it is changing HOW FAST it is done."</blockquote>
+        <p class="body-text r d2" id="about-body">Running a 24-person design studio at Capgemini Bengaluru. Before that — Oracle, gaming startups, fashion e-commerce, maternity brands. Every project, the same north star: make it feel inevitable.</p>
+        <div class="tag-lbl" style="margin-top: 60px;">Skill Proficiency</div>
+        <div class="skill-stack r d3" id="skill-stack">
+          <!-- Injected from siba.json -->
+        </div>
+        <div class="r d1" style="margin-top:24px">
+          <div class="tag-lbl">Design Toolkit</div>
+          <div class="tag-wrap" id="design-tools"></div>
+          <div class="tag-wrap" id="ai-tools"></div>
+          
+        </div>
+      </div>
+      <div>
+        <img class="about-photo r" src="images/Presentation/P1.png" alt="Siba at work" loading="lazy"/>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;" class="reveal reveal-d3 visible">
+          <img src="images/Presentation/P2.png" alt="Capgemini DCX@WORK studio session" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;filter:saturate(.9);" loading="lazy">
+          <img src="images/Presentation/P3.png" alt="Client presentation at DCX@WORK" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;filter:saturate(.9);" loading="lazy">
+          <img src="images/Presentation/P4.jpeg" alt="Team workshop at Capgemini studio" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;filter:saturate(.9);" loading="lazy">
+        </div>
+        <p style="font-size:11px;color:var(--ink4);margin:8px 0px;letter-spacing:.3px;" class="reveal reveal-d3 visible">
+          Capgemini DCX@WORK Design Studio, Bengaluru
+        </p>
+        <div class="tag-lbl">Awards</div>
+        <img class="award-image" src="images/Award_Baptist.png" style="margin-top: 8px;" alt="Siba at work" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top: 30px;">
+      <div class="tag-lbl">Credentials</div><br>
+          <div class="cred-list" id="cred-list"></div></div>
+  </div>
+</section>
+<!-- ═══ AI TOOLS ═══ -->
+<section id="aitools" class="section" style="padding-top:80px;padding-bottom:80px;">
+  <div class="container">
+    <div class="s-label reveal">AI-Augmented Workflow</div>
+    <h2 class="s-title reveal reveal-d1">Designing <em>faster</em> with AI.</h2>
+    <p style="font-size:15px;color:var(--t2);max-width:600px;margin-bottom:0;" class="reveal reveal-d2">
+      "AI is not changing <strong>WHAT</strong> we do — it is changing <strong>HOW FAST</strong> it is done."
+    </p>
+    <div class="tools-grid">
+      <div class="tool-pill reveal"><span class="tool-icon">🤖</span><div class="tool-name">Claude</div><div class="tool-role">Logic &amp; Ideation</div></div>
+      <div class="tool-pill reveal reveal-d1"><span class="tool-icon">💬</span><div class="tool-name">ChatGPT</div><div class="tool-role">Ideation</div></div>
+      <div class="tool-pill reveal reveal-d2"><span class="tool-icon">🔍</span><div class="tool-name">Perplexity</div><div class="tool-role">Research</div></div>
+      <div class="tool-pill reveal reveal-d3"><span class="tool-icon">⚡</span><div class="tool-name">Grok</div><div class="tool-role">Real-time Data</div></div>
+      <div class="tool-pill reveal"><span class="tool-icon">📓</span><div class="tool-name">Notebook LM</div><div class="tool-role">Synthesis</div></div>
+      <div class="tool-pill reveal reveal-d1"><span class="tool-icon">🎨</span><div class="tool-name">Figma Make</div><div class="tool-role">Component Gen</div></div>
+      <div class="tool-pill reveal reveal-d2"><span class="tool-icon">🖼️</span><div class="tool-name">Flux / Nano</div><div class="tool-role">Asset Creation</div></div>
+      <div class="tool-pill reveal reveal-d3"><span class="tool-icon">🧩</span><div class="tool-name">UIZard</div><div class="tool-role">Rapid Prototyping</div></div>
+      <div class="tool-pill reveal"><span class="tool-icon">📊</span><div class="tool-name">Gamma</div><div class="tool-role">Presentations</div></div>
+      <div class="tool-pill reveal reveal-d1"><span class="tool-icon">🔗</span><div class="tool-name">MCP</div><div class="tool-role">Data-to-Design</div></div>
+      <div class="tool-pill reveal reveal-d2"><span class="tool-icon">🎯</span><div class="tool-name">Figma</div><div class="tool-role">Core Design</div></div>
+      <div class="tool-pill reveal reveal-d3"><span class="tool-icon">🗺️</span><div class="tool-name">Miro</div><div class="tool-role">Workshops</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NUMBERS ═══ -->
+<section id="numbers" style="padding:72px 52px;">
+  <div class="wrap">
+    <div class="num-grid" id="num-grid">
+      <!-- Injected from siba.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK ═══ -->
+<section id="work" class="sec">
+  <div class="wrap">
+    <div class="work-head">
+      <div>
+        <div class="eyebrow r">Selected Work</div>
+        <h2 class="r d1">Projects that<br><em>moved the needle.</em></h2>
+      </div>
+      <a class="btn-outline r" href="https://www.behance.net/sankarkabi" target="_blank">
+        <i class="ti ti-brand-behance" aria-hidden="true"></i>Full Portfolio
+      </a>
+    </div>
+    <div class="work-grid" id="work-grid">
+      <!-- Injected from siba.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+
+<!-- ═══ EXPERIENCE TIMELINE — exact structure from uploaded HTML ═══ -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="s-label reveal">Career Journey</div>
+    <h2 class="s-title reveal reveal-d1">The craft, the clients,<em> the context.</em></h2>
+    <div class="tl">
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr"><img src="images/Logos/Capgemini-Logo.wine.svg" style="width: 180px;height: 46px;margin-left: 18px;margin-top: -5px;"><br>2022 – Present</div>
+          <div class="tl-loc">Bengaluru, Karnataka</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">Senior Manager — Lead UX Designer &amp; Studio Head</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Capgemini India Ltd</div>
+          <div class="tl-desc">Leading the Bengaluru Design &amp; CX Studio. Directly managing 6 UX designers, strategic oversight of 24. Spearheaded 15+ RFPs → 13% ACV increase. Pioneered Gen AI and Conversational UX integration. 90%+ team retention.</div>
+          <div class="tl-chips">
+            <span class="award-chip"><i class="ti ti-award"></i> GEM Award Winner</span>
+            <span class="tl-chip">Studio Head</span>
+            <span class="tl-chip">Team of 24</span>
+            <span class="tl-chip">RFP Strategy</span>
+            <span class="tl-chip">Gen AI Integration</span>
+            <span class="tl-chip">MCP Training</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr"><img src="images/Logos/Oracle_logo.svg.png" style="width: 150px;height: auto;margin-left: 28px;margin-top: 5px;"><br>2018 – 2022</div>
+          <div class="tl-loc">Bengaluru, Karnataka</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">UX Designer</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Oracle India Pvt Ltd</div>
+          <div class="tl-desc">Oracle for Startups portal (StartupBeat) — user flows, wireframes, prototypes. OJET 11 &amp; Redwood Design System. GTM, Mentorship, Migration, Virtual Library modules.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">Enterprise UX</span>
+            <span class="tl-chip">Redwood DS</span>
+            <span class="tl-chip">Multi-platform</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr"><img src="images/Logos/oracle_logo.jpeg" style="width: 36px;height: auto;margin: auto;margin-right: 24px;margin-top: -5px;"><br>2017 – 2018</div>
+          <div class="tl-loc">Bengaluru, Karnataka</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">UX Designer — Startup Accelerator</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Primus Global (Oracle India)</div>
+          <div class="tl-desc">Oracle Cookbook navigation and Redwood Design System. OSCA products: GTM, Alumni, Cloud Usage, Mentor Pool. CRM dashboards for startups.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">Oracle Cookbook</span>
+            <span class="tl-chip">Redwood DS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr"><img src="images/Logos/Funizen.png" style="width: 150px;height: auto;margin-left: 28px;margin-top: -5px;"><br>2016 – 2017</div>
+          <div class="tl-loc">Bengaluru, Karnataka</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">UI/UX Designer</div>
+          <div class="tl-org"><i class="ti ti-gamepad"></i> Funizen Solutions (Gamemela)</div>
+          <div class="tl-desc">Online gaming platform — user research, usability testing, iterative redesign across Android, web, desktop. Full case study on Behance.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">Gaming UX</span>
+            <span class="tl-chip">User Research</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr"><img src="images/Logos/Cherish.png" style="width: 80px;height: auto;margin: auto;margin-top: -5px;margin-right:24px;"><br>2012 – 2016</div>
+          <div class="tl-loc">Bengaluru, Karnataka</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">Art Director — Visual Designer</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Cherish Maternity Pvt Ltd</div>
+          <div class="tl-desc">E-commerce portal, product packaging, banners. High-profile client deliverables for Mahindra, HCL, and ITC internal projects.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">E-commerce</span>
+            <span class="tl-chip">Visual Design</span>
+            <span class="tl-chip">Art Direction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr"><img src="images/Logos/Jivity.jpeg" style="width: 50px;height: auto;margin: auto;margin-top: -5px;margin-right:24px;"><br>2011 – 2012</div>
+          <div class="tl-loc">Bengaluru, Karnataka</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">Web Designer</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Jivity India Pvt Ltd</div>
+          <div class="tl-desc">E-commerce websites and front-end development for client projects including Mahindra and HCL internal portals.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ PORTFOLIO ═══ -->
+<section id="portfolio" class="sec">
+  <div class="wrap">
+    <div class="eyebrow r">Portfolio</div>
+    <h2 class="r d1">Work across<br><em>formats & industries.</em></h2>
+    <div class="filter-row r d2">
+      <button class="fbtn on" onclick="filterPort(this,'all')">All</button>
+      <button class="fbtn" onclick="filterPort(this,'ux')">UX Design</button>
+      <button class="fbtn" onclick="filterPort(this,'web')">Web Design</button>
+      <button class="fbtn" onclick="filterPort(this,'logo')">Logo & Brand</button>
+    </div>
+    <div class="port-grid" id="port-grid">
+      <!-- Injected from siba.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials" class="sec">
+  <div class="wrap">
+    <div class="eyebrow r">Recommendations</div>
+    <h2 class="r d1">Straight from the<br><em>people who know me.</em></h2>
+    <div class="tgrid" id="tgrid">
+      <!-- Injected from siba.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="eyebrow r">Get In Touch</div>
+    <h2 class="r d1">Let's build something<br><em>that actually works.</em></h2>
+    <div class="cgrid">
+      <div class="r d1" id="contact-links" style="display: grid;grid-template-columns: 1fr 1fr;gap: 13px;">
+        <!-- Injected from siba.json -->
+      </div>
+      <div class="r d2">
+        <div class="cnote">
+          <p style="margin-bottom:13px">Looking for a <strong>Head of Design or Principal UX</strong> role at a company where design has a seat at the table — not just delivery bandwidth.</p>
+          <p style="margin-bottom:13px">If you're building something that needs both design leadership and hands-on craft, <strong>let's talk.</strong> Also open to consulting on AI-integrated design workflows and design system governance.</p>
+          <p>Email is fastest. Typically responds within a working day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SHOWREEL ═══ -->
+<section id="showreel" class="sec" style="background:var(--bg2);border-top:1px solid var(--bd);">
+  <div class="wrap">
+    <div class="eyebrow r">In Action</div>
+    <h2 class="r d1">Our Team's <br><em>food for thought.</em></h2>
+    <div class="video-grid r d2">
+      <div class="video-ph">
+        <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+        <div class="video-ph-label">
+          <video controls>
+  <source src="images/Presentation/V1.mp4" type="video/mp4">
+  <source src="V1.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+        </div>
+        <div class="video-ph-sub">Paste a YouTube / Vimeo iframe here</div>
+      </div>
+      <div class="video-ph">
+        <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+        <div class="video-ph-label">
+          <video controls>
+  <source src="images/Presentation/V2.mp4" type="video/mp4">
+  <source src="V2.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+        </div>
+        <div class="video-ph-sub">Paste a YouTube / Vimeo iframe here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="foot-l" id="foot-name">Siba Sankar Kabi</div>
+  <div class="foot-r" id="foot-copy">© 2026 · UX Design Leader · Bengaluru</div>
+</footer>
+
+<!-- ═══ AI AGENT MODAL ═══ -->
+<div id="modal-bg" onclick="closeModal()"></div>
+<div id="modal" role="dialog" aria-modal="true" aria-label="Siba's AI Agent">
+  <div class="modal-hdr">
+    <button class="modal-back" onclick="closeModal()">
+      <i class="ti ti-arrow-left" aria-hidden="true"></i><span>Back to portfolio</span>
+    </button>
+    <div class="modal-badge-wrap">
+      <div class="modal-badge"><span class="avail-dot"></span>Siba's AI Agent</div>
+    </div>
+    <button class="modal-x" onclick="closeModal()" aria-label="Close">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-q">
+      <i class="ti ti-search modal-q-ico" aria-hidden="true"></i>
+      <div class="modal-q-text" id="modal-q"></div>
+    </div>
+    <div id="modal-skel" class="skel">
+      <div class="sk sk-80"></div><div class="sk sk-100"></div>
+      <div class="sk sk-90"></div><div class="sk sk-70"></div>
+      <div class="sk sk-100"></div><div class="sk sk-85"></div>
+    </div>
+    <div class="modal-ans" id="modal-ans" style="display:none"></div>
+    <div id="modal-chips-wrap" style="display:none">
+      <div class="modal-sec"><i class="ti ti-tag" aria-hidden="true"></i>Related topics</div>
+      <div class="chip-row" id="modal-chips"></div>
+    </div>
+    <div id="modal-fu-wrap" style="display:none">
+      <div class="modal-sec"><i class="ti ti-message-dots" aria-hidden="true"></i>You might also ask</div>
+      <div class="fu-list" id="modal-fu"></div>
+    </div>
+    <div class="modal-search-row">
+      <i class="ti ti-search" style="font-size:16px;color:var(--t3);flex-shrink:0" aria-hidden="true"></i>
+      <input id="modal-input" type="text" placeholder="Ask me something else…" autocomplete="off"/>
+      <button id="modal-btn" onclick="modalAsk()">
+        <span class="lbl"><i class="ti ti-send" aria-hidden="true"></i>Ask</span>
+        <span class="spin"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECT CASE STUDY MODAL ═══ -->
+<div id="project-modal-bg" onclick="closeProjectModal()"></div>
+<div id="project-modal" class="project-modal">
+  <div class="project-modal-header">
+    <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="project-modal-content">
+    <div class="project-modal-image-wrapper">
+      <img id="project-modal-image" class="project-modal-image" src="" alt="Project thumbnail"/>
+    </div>
+    <div class="project-modal-body">
+      <div class="project-modal-meta">
+        <div class="project-modal-client" id="project-modal-client"></div>
+        <h2 id="project-modal-title"></h2>
+        <div class="project-modal-role" id="project-modal-role"></div>
+      </div>
+      <div class="project-modal-summary" id="project-modal-summary"></div>
+      
+      <div class="project-modal-detail" id="project-modal-detail"></div>
+      
+      <div class="project-modal-outcomes" style="margin-top:26px;">
+        <h3 style="font-size:14px;font-family:var(--syne);font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--t2);margin-bottom:12px;">Key Outcomes</h3>
+        <ul id="project-modal-outcomes" style="list-style:none;padding:0;"></ul>
+      </div>
+      
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:6px;">
+        <span id="project-modal-tags"></span>
+      </div>
+      
+      <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <a id="project-modal-behance" class="btn-gold" href="" target="_blank" style="display:none;">
+          <i class="ti ti-brand-behance" aria-hidden="true"></i>View on Behance
+        </a>
+        <button id="project-modal-files" class="btn-secondary" onclick="openCaseStudyFiles()" style="display:none;">
+          <i class="ti ti-files" aria-hidden="true"></i>View Case Study
+        </button>
+        <button id="project-modal-deepdive" class="btn-secondary" onclick="openDeepDiveAgent()" style="display:none;">
+          <i class="ti ti-message-circle" aria-hidden="true"></i>Case Study Q&amp;A
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CASE STUDY DEEP-DIVE AGENT (AGENT 2) ═══ -->
+<div id="deepdive-modal-bg" onclick="closeDeepDiveAgent()"></div>
+<div id="deepdive-modal" class="deepdive-modal">
+  <div class="deepdive-modal-header">
+    <div class="deepdive-modal-title">
+      <h2 id="deepdive-project-name"></h2>
+      <p id="deepdive-project-role" style="font-size:12px;color:var(--t2);margin-top:4px;"></p>
+    </div>
+    <button class="deepdive-modal-close" onclick="closeDeepDiveAgent()" aria-label="Close">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+  </div>
+  
+  <div class="deepdive-modal-body">
+    <div id="deepdive-messages" class="deepdive-messages">
+      <div class="deepdive-message agent-msg" style="margin-bottom:16px;">
+        <div class="deepdive-msg-avatar">🎯</div>
+        <div class="deepdive-msg-content">
+          <p style="font-size:14px;line-height:1.6;color:var(--t2);margin:0;">
+            Hi! I'm Siba's agent for this project. Ask me anything about the process, decisions, challenges, research, methodology, or outcomes. I'll answer as if you're interviewing me about how this project actually unfolded.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="deepdive-input-area">
+      <textarea id="deepdive-input" class="deepdive-input" placeholder="Ask about the research, design decisions, challenges, team, timeline, methodology..." autocomplete="off"></textarea>
+      <button id="deepdive-send-btn" class="deepdive-send-btn" onclick="sendDeepDiveQuestion()">
+        <span class="deepdive-send-text">Ask</span>
+        <span class="deepdive-spin"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CASE STUDY FILE VIEWER ═══ -->
+<div id="cs-file-panel" role="dialog" aria-modal="true" aria-label="Case Study Files">
+  <div class="csf-header">
+    <button class="csf-back" onclick="closeCaseStudyFiles()">
+      <i class="ti ti-arrow-left" aria-hidden="true"></i><span>Back</span>
+    </button>
+    <div class="csf-meta">
+      <div class="csf-client" id="cs-file-client"></div>
+      <div class="csf-title" id="cs-file-title"></div>
+    </div>
+    <button class="csf-ai-btn" id="csf-ai-btn" onclick="toggleAiSummary()">
+      <i class="ti ti-sparkles" aria-hidden="true"></i><span> AI Summary</span>
+    </button>
+    <button class="csf-close" onclick="closeCaseStudyFiles()" aria-label="Close">&#10005;</button>
+  </div>
+  <div class="csf-loading-note" id="csf-loading-note">
+    <i class="ti ti-clock" aria-hidden="true"></i> Case study may take a moment to load due to large file size.
+  </div>
+  <div class="csf-tabs-bar">
+    <div id="cs-file-tabs" class="csf-tabs"></div>
+  </div>
+  <div class="csf-ai-panel" id="csf-ai-panel">
+    <div class="csf-ai-inner">
+      <div class="csf-ai-label"><i class="ti ti-sparkles"></i> AI Project Brief</div>
+      <div class="csf-ai-text" id="csf-ai-text"></div>
+    </div>
+  </div>
+  <div class="csf-body" id="cs-file-body">
+    <div class="csf-content" id="cs-file-content"></div>
+  </div>
+</div>
+
+<!-- Main script — reads data/siba.json and builds everything -->
+<script src="js/main.js"></script>
+
+<script>
+/* ── CONTENT PROTECTION ─────────────────────────────────────────────
+   Blocks casual copying, right-click, and DevTools shortcuts.
+   NOTE: OS-level screenshots (Cmd+Shift+4, Print Screen, screen
+   recorders) cannot be blocked by any web technology — these measures
+   are friction, not a true lock.
+   ──────────────────────────────────────────────────────────────────── */
+(function() {
+
+  // 1. Disable right-click on EVERYTHING — capture phase fires before
+  //    any element handler, so nothing can escape by calling stopPropagation.
+  //    Three layers: capture listener + window listener + body attribute (set in HTML).
+  var _block = function(e) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; };
+  document.addEventListener('contextmenu', _block, true);   // capture phase
+  window.addEventListener('contextmenu',   _block, true);   // window level
+  document.addEventListener('contextmenu', _block, false);  // bubble phase (belt-and-suspenders)
+
+  // Re-attach whenever new content is added to the DOM (modals, panels, dynamic cards)
+  // Also strip any download attributes from newly added elements
+  if (window.MutationObserver) {
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        m.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) {
+            node.addEventListener('contextmenu', _block, true);
+            node.querySelectorAll && node.querySelectorAll('*').forEach(function(el) {
+              el.addEventListener('contextmenu', _block, true);
+              if (el.hasAttribute('download')) el.removeAttribute('download');
+            });
+            if (node.hasAttribute('download')) node.removeAttribute('download');
+          }
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+
+  // 5. Strip all existing download attributes on page load
+  document.querySelectorAll('[download]').forEach(function(el) {
+    el.removeAttribute('download');
+  });
+
+  // 6. Intercept any click on a link pointing to a file (pdf, doc, docx, xls, zip, img)
+  var _fileExt = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|png|jpg|jpeg|gif|svg|webp)(\?|#|$)/i;
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el) return;
+    var href = el.getAttribute('href') || '';
+    // Block direct file downloads; allow same-page anchors and mailto/tel
+    if (_fileExt.test(href) && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
+    }
+  }, true);
+
+  // 2. Block common DevTools & save shortcuts (capture phase)
+  document.addEventListener('keydown', function(e) {
+    const key = e.key;
+    const ctrl = e.ctrlKey || e.metaKey;
+
+    // F12 — DevTools
+    if (key === 'F12') { e.preventDefault(); return false; }
+
+    // Ctrl/Cmd + Shift + I/J/C — DevTools panels
+    if (ctrl && e.shiftKey && (key === 'I' || key === 'i' ||
+                                key === 'J' || key === 'j' ||
+                                key === 'C' || key === 'c')) {
+      e.preventDefault(); return false;
+    }
+
+    // Ctrl/Cmd + U — View source
+    if (ctrl && (key === 'U' || key === 'u')) { e.preventDefault(); return false; }
+
+    // Ctrl/Cmd + S — Save page
+    if (ctrl && (key === 'S' || key === 's')) { e.preventDefault(); return false; }
+
+    // Ctrl/Cmd + P — Print
+    if (ctrl && (key === 'P' || key === 'p')) { e.preventDefault(); return false; }
+
+    // Ctrl/Cmd + A — Select all (on non-input elements)
+    if (ctrl && (key === 'A' || key === 'a') &&
+        !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault(); return false;
+    }
+  }, true); // capture phase
+
+  // 3. Block drag on all images (capture phase, covers dynamic images too)
+  document.addEventListener('dragstart', function(e) {
+    e.preventDefault(); return false;
+  }, true);
+
+  // 4. Detect DevTools open via window size delta (desktop only)
+  var _devToolsOpen = false;
+  setInterval(function() {
+    var widthDelta  = window.outerWidth  - window.innerWidth  > 160;
+    var heightDelta = window.outerHeight - window.innerHeight > 160;
+    if ((widthDelta || heightDelta) && !_devToolsOpen) {
+      _devToolsOpen = true;
+      document.body.style.filter = 'blur(8px)';
+    } else if (!widthDelta && !heightDelta && _devToolsOpen) {
+      _devToolsOpen = false;
+      document.body.style.filter = '';
+    }
+  }, 1000);
+
+})();
+</script>
+</body>
+</html>
