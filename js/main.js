@@ -372,36 +372,72 @@ const CASE_STUDY_FILES = {
     title: 'Healthcare Platform Redesign — Pine App',
     client: 'Capgemini × Baptist Healthcare',
     files: [
-      { name: 'Customer Experience',   type: 'pdf',   src: 'images/CaseStudy/PineApp Refresh Customer Experience.pdf' },
-      { name: 'Login Flow',            type: 'pdf',   src: 'images/CaseStudy/PineApp Refresh Login flow.pdf' },
-      { name: 'Visual Design',         type: 'pdf',   src: 'images/CaseStudy/PineApp Refresh Visual Design.pdf' },
-      { name: 'Research',              type: 'image', src: 'images/CaseStudy/PineApp Refresh with Research.jpg' },
+      {
+        name: 'Customer Experience', type: 'pdf',
+        src: 'images/CaseStudy/PineApp Refresh Customer Experience.pdf',
+        desc: 'End-to-end patient journey redesign across the Pine App — covering experience mapping, digital touchpoint strategy, information architecture, and how Siba restructured the full patient lifecycle from onboarding through appointment management and health record access.',
+        angle: 'the patient journey architecture and experience strategy decisions'
+      },
+      {
+        name: 'Login Flow', type: 'pdf',
+        src: 'images/CaseStudy/PineApp Refresh Login flow.pdf',
+        desc: 'Authentication UX redesign balancing strict healthcare security requirements with one-handed usability for clinical staff — covering biometric, PIN, and SSO flows, session timeout logic, and the friction-reduction decisions made after moderated usability testing with nurses.',
+        angle: 'the authentication design decisions and the tension between security and clinical usability'
+      },
+      {
+        name: 'Visual Design', type: 'pdf',
+        src: 'images/CaseStudy/PineApp Refresh Visual Design.pdf',
+        desc: 'Final visual direction using Morphism/Glassmorphism aesthetics — colour system, typography scale, iconography, component library, dark mode strategy, and the accessibility compliance work (WCAG AA) that shaped every visual decision.',
+        angle: 'the visual design direction, component choices, and accessibility rationale'
+      },
+      {
+        name: 'Research', type: 'image',
+        src: 'images/CaseStudy/PineApp Refresh with Research.jpg',
+        desc: 'Mixed-methods research synthesis — 24 in-depth user interviews, 6 contextual inquiry sessions with clinical staff, heuristic evaluation of the legacy system, and two rounds of A/B usability testing that validated the final Morphism visual direction over the alternative.',
+        angle: 'the research methodology, what was discovered, and how findings shaped the design decisions'
+      },
     ]
   },
   tamm: {
     title: 'Conversational AI Design System',
     client: 'TAMM · Dubai Government',
     files: [
-      { name: 'Full Case Study', type: 'pdf',   src: 'images/CaseStudy/TAMM.pdf' },
+      {
+        name: 'Full Case Study', type: 'pdf',
+        src: 'images/CaseStudy/TAMM.pdf',
+        desc: 'Designing a conversational AI design system for the TAMM government super-app — covering dialogue UX, intent mapping, multi-language support (Arabic/English), and the component library that enabled 40+ government services to onboard the AI assistant without custom design work.',
+        angle: 'the conversational AI design challenges, government service complexity, and the system thinking behind the design language'
+      },
     ]
   },
   goodyear: {
     title: 'B2C & B2B Website Redesign',
     client: 'Goodyear APAC',
     files: [
-      { name: 'Full Case Study', type: 'pdf',   src: 'images/CaseStudy/Goodyear.pdf' },
+      {
+        name: 'Full Case Study', type: 'pdf',
+        src: 'images/CaseStudy/Goodyear.pdf',
+        desc: 'Simultaneous B2C and B2B website redesign across Goodyear APAC — dual-audience IA, fleet owner journey mapping, quote-to-payment flow redesign, and the B2B portal design that removed friction points discovered during contextual research with fleet managers.',
+        angle: 'the dual-audience design challenge, B2B journey friction points, and the decisions that drove the commerce improvements'
+      },
     ]
   },
   vs: {
     title: 'Fashion e-Commerce Design System',
     client: "Victoria's Secret",
     files: [
-      { name: 'Full Case Study', type: 'pdf',   src: 'images/CaseStudy/Victoria secret.pdf' },
+      {
+        name: 'Full Case Study', type: 'pdf',
+        src: 'images/CaseStudy/Victoria secret.pdf',
+        desc: "Fashion e-commerce design system for Victoria's Secret — component library, design token architecture, product discovery UX, and the pattern library that unified the brand's digital touchpoints across web and mobile.",
+        angle: "the design system architecture decisions, component governance, and how it unified the brand's digital experience"
+      },
     ]
   },
 };
 
 let _currentCsProject = null;
+let _currentCsFileIdx  = 0;
 
 function detectCaseStudyProject(query) {
   if (!DB) return null;
@@ -430,6 +466,7 @@ function openCaseStudyFiles(projectId) {
     `<button class="csf-tab${i === 0 ? ' active' : ''}" onclick="switchCsFileTab(${i})">${f.name}</button>`
   ).join('');
 
+  _currentCsFileIdx = 0;
   hideAiSummary();
   $('csf-ai-text').innerHTML = '';
   showCsFile(data.files[0]);
@@ -441,8 +478,11 @@ function openCaseStudyFiles(projectId) {
 function switchCsFileTab(idx) {
   const data = CASE_STUDY_FILES[_currentCsProject];
   if (!data) return;
+  _currentCsFileIdx = idx;
   document.querySelectorAll('.csf-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   showCsFile(data.files[idx]);
+  hideAiSummary();
+  $('csf-ai-text').innerHTML = '';
   $('cs-file-body').scrollTop = 0;
 }
 
@@ -483,22 +523,33 @@ async function toggleAiSummary() {
   panel.classList.add('open');
   btn.classList.add('active');
 
-  const pid = _currentCsProject;
+  const pid  = _currentCsProject;
+  const fidx = _currentCsFileIdx;
   if (!pid) return;
 
-  // Serve from cache — no re-fetch needed
-  if (_aiSummaryCache[pid]) {
-    $('csf-ai-text').innerHTML = _aiSummaryCache[pid];
+  const cacheKey = `${pid}:${fidx}`;
+
+  // Serve from cache — each tab has its own entry
+  if (_aiSummaryCache[cacheKey]) {
+    $('csf-ai-text').innerHTML = _aiSummaryCache[cacheKey];
     return;
   }
 
   const project = DB?.projects?.find(p => p.id === pid);
+  const file    = CASE_STUDY_FILES[pid]?.files[fidx];
   if (!project) { $('csf-ai-text').innerHTML = '<p>Could not load project data.</p>'; return; }
 
   $('csf-ai-text').innerHTML = `<div class="csf-ai-skel"><div class="csf-sk csf-sk-90"></div><div class="csf-sk csf-sk-100"></div><div class="csf-sk csf-sk-80"></div><div class="csf-sk csf-sk-70"></div></div>`;
 
-  const query = `Write a 130-word professional summary of the "${project.name}" project by Siba Sankar Kabi. Focus on: the business challenge, Siba's specific role, the design approach taken, and the 2-3 most important measurable outcomes. Plain prose only — no bullet points, no markdown.`;
-  const systemPrompt = `You are writing a UX case study brief. Use ONLY the data below. Do not invent facts.\nProject: "${project.name}"\nClient: ${project.client}\nRole: ${project.role}\nSummary: ${project.summary}\n${project.detail ? 'Detail: ' + project.detail.substring(0, 700) : ''}\nOutcomes: ${(project.outcomes || []).join('; ')}\nOutput: plain text, 130-150 words, no headers, no bullets.`;
+  const docName   = file?.name || project.name;
+  const docDesc   = file?.desc || project.summary || '';
+  const docAngle  = file?.angle || 'the design approach and key outcomes';
+
+  const query = `You're reviewing the "${docName}" document from Siba Sankar Kabi's ${project.name} case study. Write a 120–140 word brief focused specifically on ${docAngle}. Be specific about the design decisions and why they were made — write like a thoughtful colleague who actually reviewed the work, not a marketing blurb. Plain prose only, no bullet points or headers.`;
+
+  const systemPrompt = `You are Siba's AI portfolio agent. You know his work deeply and speak with genuine insight — not vague praise.\nSpeak in a warm, direct, first-person-adjacent voice (like a trusted colleague explaining the work to a hiring manager).\nUse ONLY the facts below. Never invent data points.\n\nProject: "${project.name}"\nClient: ${project.client}\nSiba's role: ${project.role}\nDocument being viewed: "${docName}"\nWhat this document covers: ${docDesc}\n${project.detail ? 'Project detail: ' + project.detail.substring(0, 500) : ''}\nOutcomes: ${(project.outcomes || []).join('; ')}\n\nOutput: 120–140 words, plain prose, no headers, no bullet points, no markdown.`;
+
+  const snapPid = pid, snapFidx = fidx;
 
   try {
     const r = await fetch('/api/search', {
@@ -509,30 +560,33 @@ async function toggleAiSummary() {
     if (r.ok) {
       const d = await r.json();
       if (d.text) {
-        // SECURITY: sanitize at the API boundary before building HTML
         const clean = sanitizeApiText(d.text)
           .replace(/\|\|\|CHIPS:.*?\|\|\|/gs,'')
           .replace(/\|\|\|FOLLOWUP:.*?\|\|\|/gs,'')
           .trim();
         const html = `<p>${clean.replace(/\n\n+/g,'</p><p>')}</p>`;
-        _aiSummaryCache[pid] = html;
-        if (_currentCsProject === pid) $('csf-ai-text').innerHTML = html;
+        _aiSummaryCache[cacheKey] = html;
+        if (_currentCsProject === snapPid && _currentCsFileIdx === snapFidx) $('csf-ai-text').innerHTML = html;
         return;
       }
     }
   } catch (_) {}
 
-  // Fallback: build directly from project JSON — always project-specific
-  const html = _buildCsSummaryFallback(project);
-  _aiSummaryCache[pid] = html;
-  if (_currentCsProject === pid) $('csf-ai-text').innerHTML = html;
+  // Fallback: build directly from file + project data — always tab-specific
+  const html = _buildCsSummaryFallback(project, file);
+  _aiSummaryCache[cacheKey] = html;
+  if (_currentCsProject === snapPid && _currentCsFileIdx === snapFidx) $('csf-ai-text').innerHTML = html;
 }
 
-function _buildCsSummaryFallback(project) {
+function _buildCsSummaryFallback(project, file) {
   const parts = [];
-  if (project.summary) parts.push(`<p>${project.summary}</p>`);
+  if (file?.desc) {
+    parts.push(`<p>${file.desc}</p>`);
+  } else if (project.summary) {
+    parts.push(`<p>${project.summary}</p>`);
+  }
   if (project.detail) {
-    const snippet = project.detail.split('. ').slice(0, 4).join('. ').trim();
+    const snippet = project.detail.split('. ').slice(0, 3).join('. ').trim();
     if (snippet) parts.push(`<p>${snippet}.</p>`);
   }
   if (project.outcomes?.length) {

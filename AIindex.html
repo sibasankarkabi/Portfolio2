@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Siba Sankar Kabi — Senior Manager &amp; Lead UX Designer</title>
+<meta name="description" content="Portfolio of Siba Sankar Kabi — Senior Manager &amp; Lead UX Designer, Bengaluru Design &amp; CX Studio Head at Capgemini India. 17+ years of crafting human-centred digital experiences."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/tabler-icons.min.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav>
+  <a href="#" class="nav-logo">S<em>.</em>Kabi</a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#aitools">AI Tools</a></li>
+    <li><a href="#agents">Agents</a></li><li><a href="#experience">Journey</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <button class="nav-search-btn" onclick="focusSearch()">
+    <span class="pulse"></span> Ask my agent
+  </button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<!-- Exact structure from uploaded index.html -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+
+    <!-- LEFT: bio -->
+    <div>
+      <div class="hero-chip reveal">
+        <div class="hero-chip-dot"><i class="ti ti-map-pin"></i></div>
+        Bengaluru · Capgemini India · Open to opportunities
+      </div>
+      <h1 class="hero-name reveal reveal-d1">Siba<em>&nbsp;Sankar</em>&nbsp;Kabi</h1>
+      <p class="hero-role reveal reveal-d2">Senior Manager &amp; Lead UX Designer</p>
+      <p class="hero-desc reveal reveal-d2">Leading the Bengaluru Design &amp; CX Studio at Capgemini — crafting human-centred, AI-augmented digital experiences across 17 years and 6 industries. GEM Award winner. Studio head for 24 designers.</p>
+      <div class="hero-stats reveal reveal-d3">
+        <div class="stat"><div class="stat-n">17+</div><div class="stat-l">Years Exp.</div></div>
+        <div class="stat"><div class="stat-n">24</div><div class="stat-l">Team Size</div></div>
+        <div class="stat"><div class="stat-n">15+</div><div class="stat-l">RFPs Led</div></div>
+        <div class="stat"><div class="stat-n">13%</div><div class="stat-l">ACV Increase</div></div>
+      </div>
+      <div class="hero-btns reveal reveal-d4">
+        <a href="mailto:sksankar0@gmail.com" class="btn-dark">
+          <i class="ti ti-send"></i> Get In Touch
+        </a>
+        <button class="btn-search" onclick="focusSearch()">
+          <i class="ti ti-search"></i> Ask my AI agent
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: floating avatar card — exact from uploaded -->
+    <div class="hero-right">
+      <div class="avatar-card">
+        <div class="award-ribbon"><i class="ti ti-award"></i> GEM Award</div>
+        <div class="avatar-initials">SSK</div>
+        <div class="avatar-badges">
+          <div class="a-badge"><span class="badge-live"></span> Bengaluru CX Studio Head</div>
+          <div class="a-badge"><i class="ti ti-users"></i> 24 UX Professionals</div>
+          <div class="a-badge"><i class="ti ti-certificate"></i> HFI Certified CXA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI SEARCH — embedded in hero below the grid, light theme -->
+  <div class="hero-search-strip reveal">
+    <div class="ais-inner">
+      <div class="ais-eyebrow"><span class="pulse"></span> Powered by Claude AI · Answers from siba.json</div>
+      <div class="ais-bar" id="ais-bar">
+        <i class="ti ti-search search-ico"></i>
+        <input id="ais-input" type="text"
+          placeholder="e.g. Tell me about the Baptist Healthcare project…"
+          autocomplete="off" spellcheck="false"/>
+        <button class="ais-btn" id="ais-btn" onclick="runSearch()">
+          <span class="btn-txt"><i class="ti ti-sparkles"></i> Ask AI</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </div>
+      <div class="ais-pills" id="ais-pills">
+        <!-- Injected by main.js from siba.json quick_search_pills -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="ticker">
+    <span class="tick-item">UX Strategy <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Design Systems <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Healthcare UX <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Conversational AI <span class="tick-sep">✦</span></span>
+    <span class="tick-item">AI-Augmented Design <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Team Leadership <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Atomic Design <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Double Diamond <span class="tick-sep">✦</span></span>
+    <span class="tick-item">RFP Strategy <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Figma MCP <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Design Thinking <span class="tick-sep">✦</span></span>
+    <span class="tick-item">UX Research <span class="tick-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ═══ IMPACT NUMBERS ═══ -->
+<section id="impact" style="padding:80px 56px;">
+  <div class="impact-grid">
+    <div class="impact-card reveal">
+      <div class="impact-n">13<span>%</span></div>
+      <div class="impact-l">Increase in annual contract value from RFP leadership</div>
+    </div>
+    <div class="impact-card reveal reveal-d1">
+      <div class="impact-n">32<span>%</span></div>
+      <div class="impact-l">Reduction in front-end dev time via design systems</div>
+    </div>
+    <div class="impact-card reveal reveal-d2">
+      <div class="impact-n">18<span>%</span></div>
+      <div class="impact-l">Increase in patient bookings — Baptist Healthcare</div>
+    </div>
+    <div class="impact-card reveal reveal-d3">
+      <div class="impact-n">40<span>%</span></div>
+      <div class="impact-l">Faster ideation with AI-assisted tools</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK ═══ -->
+<section id="work" class="section">
+  <div class="container">
+    <div class="s-label reveal">Selected Work</div>
+    <h2 class="s-title reveal reveal-d1">Projects that <em>moved</em> the needle.</h2>
+    <div class="work-grid">
+
+      <div class="work-card wide reveal">
+        <div class="work-thumb wt1">
+          <img src="images/work-baptist.jpg" alt="Baptist Healthcare" style="width:100%;height:100%;object-fit:cover;filter:brightness(.72);"/>
+          <div class="thumb-pattern"></div>
+          <span class="thumb-tag">Healthcare · UX Lead · Award Winning</span>
+        </div>
+        <div class="work-body">
+          <button class="work-arrow" onclick="openCaseStudy('baptist')"><i class="ti ti-arrow-up-right"></i></button>
+          <div class="work-client">Capgemini × Baptist Healthcare</div>
+          <div class="work-title">Healthcare Platform Redesign — Pine App</div>
+          <div class="work-desc">Led end-to-end redesign of Baptist Healthcare's multi-module platform (PineApp, Phressia Dashboard, Shopify Pharmacy, Chatbot). Won 4 award categories. 18% increase in patient bookings. Used Figma Make + Claude AI to accelerate design system creation.</div>
+          <div class="work-tags">
+            <span class="wtag">UX Strategy</span><span class="wtag">Design System</span>
+            <span class="wtag">Accessibility</span><span class="wtag">Chatbot UX</span>
+            <span class="wtag">AI-Assisted</span><span class="wtag">Award Winning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-thumb wt2">
+          <img src="images/work-tamm.jpg" alt="TAMM Dubai" style="width:100%;height:100%;object-fit:cover;filter:brightness(.72);"/>
+          <div class="thumb-pattern"></div>
+          <span class="thumb-tag">AI · Gov Tech · Dubai</span>
+        </div>
+        <div class="work-body">
+          <button class="work-arrow" onclick="openCaseStudy('tamm')"><i class="ti ti-arrow-up-right"></i></button>
+          <div class="work-client">TAMM · Dubai Government</div>
+          <div class="work-title">Conversational AI Design System</div>
+          <div class="work-desc">Enhanced enterprise design system for a conversational AI government platform. 35% reduction in B2B manual support tickets. Scalable component library and unified design language.</div>
+          <div class="work-tags">
+            <span class="wtag">Design System</span><span class="wtag">Conversational AI</span><span class="wtag">Gov Tech</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-d1">
+        <div class="work-thumb wt3">
+          <img src="images/work-goodyear.jpg" alt="Goodyear APAC" style="width:100%;height:100%;object-fit:cover;filter:brightness(.72);"/>
+          <div class="thumb-pattern"></div>
+          <span class="thumb-tag">E-Commerce · APAC</span>
+        </div>
+        <div class="work-body">
+          <button class="work-arrow" onclick="openCaseStudy('goodyear')"><i class="ti ti-arrow-up-right"></i></button>
+          <div class="work-client">Goodyear APAC</div>
+          <div class="work-title">B2C &amp; B2B Website Redesign</div>
+          <div class="work-desc">UX strategy, personas, journey maps, IA, and business metric mapping. Design system → 32% reduction in front-end dev time. Future-ready APAC roadmap aligned with KPIs.</div>
+          <div class="work-tags">
+            <span class="wtag">UX Strategy</span><span class="wtag">Journey Mapping</span><span class="wtag">Design System</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-d2">
+        <div class="work-thumb wt4">
+          <img src="images/work-vs.jpg" alt="Victoria's Secret" style="width:100%;height:100%;object-fit:cover;filter:brightness(.72);"/>
+          <div class="thumb-pattern"></div>
+          <span class="thumb-tag">Fashion · Design System</span>
+        </div>
+        <div class="work-body">
+          <button class="work-arrow" onclick="openCaseStudy('vs')"><i class="ti ti-arrow-up-right"></i></button>
+          <div class="work-client">Victoria's Secret</div>
+          <div class="work-title">Fashion e-Commerce Design System</div>
+          <div class="work-desc">Scalable Atomic Design system across mobile and web. Accessibility audits, style guides, UI kits, and seamless engineering handoff. 100% visual consistency across global markets.</div>
+          <div class="work-tags">
+            <span class="wtag">Atomic Design</span><span class="wtag">Accessibility</span><span class="wtag">UI Kit</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI TOOLS — exact structure from uploaded HTML ═══ -->
+<section id="aitools" class="section" style="padding-top:80px;padding-bottom:80px;">
+  <div class="container">
+    <div class="s-label reveal">AI-Augmented Workflow</div>
+    <h2 class="s-title reveal reveal-d1">Designing <em>faster</em> with AI.</h2>
+    <p style="font-size:15px;color:var(--ink3);max-width:600px;margin-bottom:0;" class="reveal reveal-d2">
+      "AI is not changing <strong>WHAT</strong> we do — it is changing <strong>HOW FAST</strong> it is done."
+    </p>
+    <div class="tools-grid">
+      <div class="tool-pill reveal">
+        <span class="tool-icon">🤖</span>
+        <div class="tool-name">Claude</div>
+        <div class="tool-role">Logic &amp; Ideation</div>
+      </div>
+      <div class="tool-pill reveal reveal-d1">
+        <span class="tool-icon">💬</span>
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-role">Ideation</div>
+      </div>
+      <div class="tool-pill reveal reveal-d2">
+        <span class="tool-icon">🔍</span>
+        <div class="tool-name">Perplexity</div>
+        <div class="tool-role">Research</div>
+      </div>
+      <div class="tool-pill reveal reveal-d3">
+        <span class="tool-icon">⚡</span>
+        <div class="tool-name">Grok</div>
+        <div class="tool-role">Real-time Data</div>
+      </div>
+      <div class="tool-pill reveal">
+        <span class="tool-icon">📓</span>
+        <div class="tool-name">Notebook LM</div>
+        <div class="tool-role">Synthesis</div>
+      </div>
+      <div class="tool-pill reveal reveal-d1">
+        <span class="tool-icon">🎨</span>
+        <div class="tool-name">Figma Make</div>
+        <div class="tool-role">Component Gen</div>
+      </div>
+      <div class="tool-pill reveal reveal-d2">
+        <span class="tool-icon">🖼️</span>
+        <div class="tool-name">Flux / Nano</div>
+        <div class="tool-role">Asset Creation</div>
+      </div>
+      <div class="tool-pill reveal reveal-d3">
+        <span class="tool-icon">🧩</span>
+        <div class="tool-name">UIZard</div>
+        <div class="tool-role">Rapid Prototyping</div>
+      </div>
+      <div class="tool-pill reveal">
+        <span class="tool-icon">📊</span>
+        <div class="tool-name">Gamma</div>
+        <div class="tool-role">Presentations</div>
+      </div>
+      <div class="tool-pill reveal reveal-d1">
+        <span class="tool-icon">🔗</span>
+        <div class="tool-name">MCP</div>
+        <div class="tool-role">Data-to-Design</div>
+      </div>
+      <div class="tool-pill reveal reveal-d2">
+        <span class="tool-icon">🎯</span>
+        <div class="tool-name">Figma</div>
+        <div class="tool-role">Core Design</div>
+      </div>
+      <div class="tool-pill reveal reveal-d3">
+        <span class="tool-icon">🗺️</span>
+        <div class="tool-name">Miro</div>
+        <div class="tool-role">Workshops</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="s-label reveal">Design Process</div>
+    <h2 class="s-title reveal reveal-d1">How I <em>think</em>.</h2>
+    <div class="process-row">
+      <div class="proc-step reveal">
+        <div class="proc-dot"><i class="ti ti-ear"></i></div>
+        <div class="proc-n">01</div>
+        <div class="proc-name">Empathise</div>
+        <div class="proc-desc">User interviews, surveys, contextual inquiry — Claude AI for persona creation and synthesis</div>
+      </div>
+      <div class="proc-step reveal reveal-d1">
+        <div class="proc-dot"><i class="ti ti-focus-2"></i></div>
+        <div class="proc-n">02</div>
+        <div class="proc-name">Define</div>
+        <div class="proc-desc">Affinity mapping, HMW statements, problem framing — Notebook LM for synthesis</div>
+      </div>
+      <div class="proc-step reveal reveal-d2">
+        <div class="proc-dot"><i class="ti ti-bulb"></i></div>
+        <div class="proc-n">03</div>
+        <div class="proc-name">Ideate</div>
+        <div class="proc-desc">Design sprints, sketching — UIZard &amp; Figma Make to accelerate concept exploration</div>
+      </div>
+      <div class="proc-step reveal reveal-d3">
+        <div class="proc-dot"><i class="ti ti-device-mobile"></i></div>
+        <div class="proc-n">04</div>
+        <div class="proc-name">Prototype</div>
+        <div class="proc-desc">Lo-fi to hi-fi wireframes — Figma prototyping with AI-generated component variants</div>
+      </div>
+      <div class="proc-step reveal reveal-d4">
+        <div class="proc-dot"><i class="ti ti-test-pipe"></i></div>
+        <div class="proc-n">05</div>
+        <div class="proc-name">Test</div>
+        <div class="proc-desc">Usability testing embedded in sprint cycles — scaled test touchpoints by 50%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ AGENTS HUB ═══ -->
+<section id="agents" class="section">
+  <div class="container">
+    <div class="s-label reveal">AI Agent Suite</div>
+    <h2 class="s-title reveal reveal-d1">Six agents. One portfolio.<br><em>Every answer covered.</em></h2>
+    <p class="agents-intro reveal reveal-d2">Each agent below answers a different question a recruiter or hiring manager might have. Click any card to launch the agent — no scrolling, no guessing.</p>
+    <div class="agents-grid">
+
+      <!-- Agent 1: Personal Knowledge (already live, links to existing modal) -->
+      <div class="agent-card reveal">
+        <div class="agent-icon" style="background:#dcfce7;color:#16a34a"><i class="ti ti-user-circle" aria-hidden="true"></i></div>
+        <div class="agent-label">Agent 01 <span class="agent-badge badge-live">Live</span></div>
+        <div class="agent-title">Personal Knowledge Agent</div>
+        <div class="agent-desc">Ask anything about Siba — career, projects, metrics, philosophy, availability. Answers from his personal knowledge base in real time.</div>
+        <button class="agent-launch" onclick="document.getElementById('ais-input').focus();document.querySelector('.hero-search-strip').scrollIntoView({behavior:'smooth'})">
+          <i class="ti ti-arrow-up" aria-hidden="true"></i> Go to search
+        </button>
+      </div>
+
+      <!-- Agent 2: Case Study Deep-Dive -->
+      <div class="agent-card featured reveal reveal-d1">
+        <div class="agent-icon" style="background:var(--blue-lt);color:var(--blue)"><i class="ti ti-briefcase" aria-hidden="true"></i></div>
+        <div class="agent-label">Agent 02 <span class="agent-badge badge-new">New</span></div>
+        <div class="agent-title">Case Study Deep-Dive Agent</div>
+        <div class="agent-desc">Pick a project. Ask anything about it — the problem, the process, the constraints, the decisions, the outcomes, what Siba would do differently today. Goes far deeper than any case study page can.</div>
+        <button class="agent-launch blue" onclick="openAgent('casestudy')">
+          <i class="ti ti-search" aria-hidden="true"></i> Explore a project
+        </button>
+      </div>
+
+      <!-- Agent 3: Recruiter Fit -->
+      <div class="agent-card featured reveal reveal-d1">
+        <div class="agent-icon" style="background:var(--gold-lt);color:var(--gold)"><i class="ti ti-user-check" aria-hidden="true"></i></div>
+        <div class="agent-label">Agent 03 <span class="agent-badge badge-wow">Must Try</span></div>
+        <div class="agent-title">Recruiter Fit Agent</div>
+        <div class="agent-desc">Paste a job description. The agent reads it alongside Siba's full profile and tells you exactly how he matches — which projects are most relevant, his strongest selling points for that role, and suggested interview questions.</div>
+        <button class="agent-launch blue" onclick="openAgent('recruiter')">
+          <i class="ti ti-clipboard-check" aria-hidden="true"></i> Check fit for a role
+        </button>
+      </div>
+
+      <!-- Agent 4: Design Decisions -->
+      <div class="agent-card reveal">
+        <div class="agent-icon" style="background:#EDE9E0;color:var(--ink2)"><i class="ti ti-bulb" aria-hidden="true"></i></div>
+        <div class="agent-label">Agent 04 <span class="agent-badge badge-new">New</span></div>
+        <div class="agent-title">Design Decision Agent</div>
+        <div class="agent-desc">Ask why Siba made specific design choices — layouts, flows, components, colours. Surfaces the trade-offs and reasoning behind the work.</div>
+        <button class="agent-launch" onclick="openAgent('decisions')">
+          <i class="ti ti-question-mark" aria-hidden="true"></i> Ask about decisions
+        </button>
+      </div>
+
+      <!-- Agent 5: AI Workflow Demo -->
+      <div class="agent-card reveal reveal-d1">
+        <div class="agent-icon" style="background:#E1F5EE;color:#0F6E56"><i class="ti ti-robot" aria-hidden="true"></i></div>
+        <div class="agent-label">Agent 05 <span class="agent-badge badge-new">New</span></div>
+        <div class="agent-title">AI Workflow Demo Agent</div>
+        <div class="agent-desc">Pick a design challenge. See exactly how Siba uses Claude, Figma Make, UIZard, and MCP together to tackle it — step by step.</div>
+        <button class="agent-launch" onclick="openAgent('workflow')">
+          <i class="ti ti-player-play" aria-hidden="true"></i> See AI in action
+        </button>
+      </div>
+
+      <!-- Agent 6: Leadership -->
+      <div class="agent-card reveal reveal-d2">
+        <div class="agent-icon" style="background:var(--blue-lt);color:var(--blue)"><i class="ti ti-users" aria-hidden="true"></i></div>
+        <div class="agent-label">Agent 06 <span class="agent-badge badge-new">New</span></div>
+        <div class="agent-title">Leadership Agent</div>
+        <div class="agent-desc">Ask how Siba runs his studio — critique culture, career pathing, stakeholder management, RFP strategy, team growth. Answers for senior hiring managers evaluating leadership fit.</div>
+        <button class="agent-launch" onclick="openAgent('leadership')">
+          <i class="ti ti-building" aria-hidden="true"></i> Ask about leadership
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AGENT PANEL (shared modal for agents 2–6) ═══ -->
+<div id="agent-panel-overlay" onclick="closeAgentPanel()"></div>
+<div id="agent-panel" role="dialog" aria-modal="true">
+  <div class="ap-header">
+    <button class="ap-back" onclick="closeAgentPanel()">
+      <i class="ti ti-arrow-left" aria-hidden="true"></i><span>Back to portfolio</span>
+    </button>
+    <div class="ap-badge-wrap">
+      <div class="ap-badge" id="ap-badge"><span class="pulse"></span> <span id="ap-badge-name">Agent</span></div>
+    </div>
+    <button class="ap-close" onclick="closeAgentPanel()" aria-label="Close">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="ap-body" id="ap-body">
+    <!-- content injected per agent -->
+  </div>
+</div>
+
+<!-- ═══ EXPERIENCE TIMELINE — exact structure from uploaded HTML ═══ -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="s-label reveal">Career Journey</div>
+    <h2 class="s-title reveal reveal-d1">17 years of <em>craft</em>.</h2>
+    <div class="tl">
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr">Capgemini<br>2022 – Present</div>
+          <div class="tl-loc">Bengaluru</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">Senior Manager — Lead UX Designer &amp; Studio Head</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Capgemini India Ltd</div>
+          <div class="tl-desc">Leading the Bengaluru Design &amp; CX Studio. Directly managing 6 UX designers, strategic oversight of 24. Spearheaded 15+ RFPs → 13% ACV increase. Pioneered Gen AI and Conversational UX integration. 90%+ team retention.</div>
+          <div class="tl-chips">
+            <span class="award-chip"><i class="ti ti-award"></i> GEM Award Winner</span>
+            <span class="tl-chip">Studio Head</span>
+            <span class="tl-chip">Team of 24</span>
+            <span class="tl-chip">RFP Strategy</span>
+            <span class="tl-chip">Gen AI Integration</span>
+            <span class="tl-chip">MCP Training</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr">Oracle<br>2018 – 2022</div>
+          <div class="tl-loc">Bengaluru</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">UX Designer</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Oracle India Pvt Ltd</div>
+          <div class="tl-desc">Oracle for Startups portal (StartupBeat) — user flows, wireframes, prototypes. OJET 11 &amp; Redwood Design System. GTM, Mentorship, Migration, Virtual Library modules.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">Enterprise UX</span>
+            <span class="tl-chip">Redwood DS</span>
+            <span class="tl-chip">Multi-platform</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr">Oracle<br>2017 – 2018</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">UX Designer — Startup Accelerator</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Primus Global (Oracle India)</div>
+          <div class="tl-desc">Oracle Cookbook navigation and Redwood Design System. OSCA products: GTM, Alumni, Cloud Usage, Mentor Pool. CRM dashboards for startups.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">Oracle Cookbook</span>
+            <span class="tl-chip">Redwood DS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr">Funizen<br>2016 – 2017</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">UI/UX Designer</div>
+          <div class="tl-org"><i class="ti ti-gamepad"></i> Funizen Solutions (Gamemela)</div>
+          <div class="tl-desc">Online gaming platform — user research, usability testing, iterative redesign across Android, web, desktop. Full case study on Behance.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">Gaming UX</span>
+            <span class="tl-chip">User Research</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr">Cherish<br>2012 – 2016</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">Art Director — Visual Designer</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Cherish Maternity Pvt Ltd</div>
+          <div class="tl-desc">E-commerce portal, product packaging, banners. High-profile client deliverables for Mahindra, HCL, and ITC internal projects.</div>
+          <div class="tl-chips">
+            <span class="tl-chip">E-commerce</span>
+            <span class="tl-chip">Visual Design</span>
+            <span class="tl-chip">Art Direction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta reveal">
+          <div class="tl-yr">Jivity<br>2011 – 2012</div>
+        </div>
+        <div class="tl-card reveal reveal-d1">
+          <div class="tl-role">Web Designer</div>
+          <div class="tl-org"><i class="ti ti-building"></i> Jivity India Pvt Ltd</div>
+          <div class="tl-desc">E-commerce websites and front-end development for client projects including Mahindra and HCL internal portals.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT / CTA ═══ -->
+<section id="cta">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="cta-eyebrow">Let's connect</div>
+    <h2 class="cta-title">Ready to build something<br><em>remarkable</em>?</h2>
+    <p class="cta-sub">Open to senior UX leadership roles, design consulting,<br>and AI-integrated experience design partnerships.</p>
+    <div class="cta-btns">
+      <a href="mailto:sksankar0@gmail.com" class="btn-cream"><i class="ti ti-mail"></i> Send an email</a>
+      <a href="https://www.linkedin.com/in/siba-sankar-kabi-57134013" target="_blank" class="btn-outline-w"><i class="ti ti-brand-linkedin"></i> Connect on LinkedIn</a>
+    </div>
+    <div class="cta-links">
+      <a href="tel:+917259985080" class="cta-link"><i class="ti ti-phone"></i> +91 7259985080</a>
+      <a href="https://www.sankarkabi.co.in/" target="_blank" class="cta-link"><i class="ti ti-briefcase"></i> Portfolio</a>
+      <a href="https://www.behance.net/sankarkabi" target="_blank" class="cta-link"><i class="ti ti-brand-behance"></i> Behance</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-l">Siba Sankar Kabi</div>
+  <div class="foot-r">© 2026 · Senior Manager &amp; Lead UX Designer · Bengaluru</div>
+</footer>
+
+<!-- ═══ AI ANSWER MODAL ═══ -->
+<div id="ai-modal-overlay" onclick="closeModal()"></div>
+<div id="ai-modal" role="dialog" aria-modal="true" aria-label="AI Answer">
+  <div class="aim-header">
+    <button class="aim-back" onclick="closeModal()">
+      <i class="ti ti-arrow-left"></i>
+      <span>Back to portfolio</span>
+    </button>
+    <div class="aim-title-row">
+      <div class="aim-badge"><span class="pulse"></span> Siba's AI Agent</div>
+    </div>
+    <button class="aim-close" onclick="closeModal()" title="Close">
+      <i class="ti ti-x"></i>
+    </button>
+  </div>
+  <div class="aim-body">
+    <div class="aim-query-wrap">
+      <i class="ti ti-search aim-q-icon"></i>
+      <div class="aim-query-text" id="aim-query-text"></div>
+    </div>
+    <div id="aim-answer-wrap">
+      <div class="aim-skeleton" id="aim-skeleton">
+        <div class="sk-line sk-w80"></div>
+        <div class="sk-line sk-w100"></div>
+        <div class="sk-line sk-w90"></div>
+        <div class="sk-line sk-w70"></div>
+        <div class="sk-line sk-w100"></div>
+        <div class="sk-line sk-w85"></div>
+      </div>
+      <div class="aim-answer-text" id="aim-answer-text" style="display:none"></div>
+    </div>
+    <div class="aim-chips-wrap" id="aim-chips-wrap" style="display:none">
+      <div class="aim-section-label"><i class="ti ti-tag"></i> Related topics</div>
+      <div class="aim-chips" id="aim-chips"></div>
+    </div>
+    <div class="aim-followup-wrap" id="aim-followup-wrap" style="display:none">
+      <div class="aim-section-label"><i class="ti ti-message-dots"></i> You might also ask</div>
+      <div class="aim-followups" id="aim-followups"></div>
+    </div>
+    <div class="aim-search-again">
+      <div class="aim-search-bar">
+        <i class="ti ti-search" style="color:rgba(255,255,255,.3);font-size:16px;flex-shrink:0;"></i>
+        <input id="aim-input" type="text" placeholder="Ask another question about Siba…" autocomplete="off"/>
+        <button id="aim-btn" onclick="runModalSearch()">
+          <span class="btn-txt"><i class="ti ti-sparkles"></i> Ask</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CASE STUDY VIEWER MODAL ═══ -->
+<div id="cs-viewer-overlay" onclick="closeCaseStudy()"></div>
+<div id="cs-viewer-panel" role="dialog" aria-modal="true" aria-label="Case Study">
+  <div class="csv-header">
+    <button class="csv-back" onclick="closeCaseStudy()">
+      <i class="ti ti-arrow-left"></i><span>Back to portfolio</span>
+    </button>
+    <div class="csv-meta">
+      <div class="csv-client" id="csv-client"></div>
+      <div class="csv-title" id="csv-title"></div>
+    </div>
+    <button class="csv-close" onclick="closeCaseStudy()" aria-label="Close">
+      <i class="ti ti-x"></i>
+    </button>
+  </div>
+  <div class="csv-tabs-bar">
+    <div class="csv-tabs" id="csv-tabs"></div>
+  </div>
+  <div class="csv-body" id="csv-body">
+    <div class="csv-content" id="csv-content"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
