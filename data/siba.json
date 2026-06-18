@@ -16,6 +16,125 @@
     "availability": "Open to senior UX leadership roles, consulting, and AI-integrated design partnerships"
   },
 
+  "personal": {
+    "full_name": "Siba Sankar Kabi",
+    "goes_by": "Sankar",
+    "born": "May 5, 1982",
+    "hometown": "Rourkela, Odisha",
+    "grew_up_in": ["Kendrapara", "Bonaigarh", "Cuttack", "Rourkela"],
+    "current_city": "Bengaluru, India",
+    "languages": ["Odia (native)", "Hindi", "English", "understands some Kannada"],
+
+    "family": {
+      "wife": {
+        "name": "Sasmita Panigrahi",
+        "married_on": "July 15, 2018",
+        "note": "She's from Odisha too. Her recipes — especially Odia food — are Sankar's favourite meals."
+      },
+      "children": [
+        {
+          "name": "Janhvi",
+          "gender": "girl",
+          "birth_order": "first (elder)",
+          "school": "1st standard"
+        },
+        {
+          "name": "Devansh",
+          "gender": "boy",
+          "birth_order": "second (youngest)",
+          "school": "nursery"
+        }
+      ],
+      "siblings": [
+        { "name": "Sanjay Champati", "relation": "brother" },
+        { "name": "Rakesh Patra", "relation": "brother" },
+        { "name": "Lipikka Sahoo", "relation": "sister" },
+        { "name": "Snigdha Sahoo", "relation": "sister" },
+        { "name": "Monica Sahoo", "relation": "sister" }
+      ],
+      "nephew": "Satya Kabi"
+    },
+
+    "friends": [
+      {
+        "name": "Subhankar Rout",
+        "linkedin": "https://www.linkedin.com/in/subhankarrout/",
+        "portfolio": "https://www.subhankarrout.in/",
+        "what_he_does": "Senior Product Designer at Capgemini. Also an author (two books) and filmmaker. Built the Chitra Design System.",
+        "how_we_know": "Colleague at Capgemini. We work on design together."
+      },
+      {
+        "name": "Harshil Pujara",
+        "linkedin": "https://www.linkedin.com/in/harshilpujara/",
+        "what_he_does": "Works in design at Capgemini.",
+        "how_we_know": "Colleague and friend."
+      },
+      {
+        "name": "Asiya Firdose",
+        "linkedin": "https://www.linkedin.com/in/asiya-firdose-hfi-cua-505a5655/",
+        "what_she_does": "UX professional — HFI Certified Usability Analyst (CUA). Works in design at Capgemini.",
+        "how_we_know": "Colleague and friend."
+      }
+    ],
+    "friend_activities": "We work together, party together, most of us are foodies. We go go-karting, watch and play cricket matches, play badminton tournaments together.",
+
+    "food": {
+      "preferences": "Prefers vegetables and home-cooked food. Sometimes enjoys non-veg and eggs. Not a sweet tooth at all.",
+      "loves_most": "Odia/Odisha recipes — especially food made by his wife Sasmita, his mother-in-law, and his mom. It's comfort food at its purest.",
+      "dislikes": "Too cold food and too hot food — temperature extremes are a no.",
+      "personality": "More of a flavour person than a dessert person. Homemade Odia food over any restaurant, any day."
+    },
+
+    "music": {
+      "era": "Deep love for 80s and 90s Hindi and Odia music. Also follows recent Odia albums.",
+      "favourite_artists": [
+        "Sonu Nigam",
+        "A.R. Rahman",
+        "S.P. Balasubrahmanyam",
+        "Chitra",
+        "Alka Yagnik",
+        "Kumar Sanu",
+        "Kishore Kumar"
+      ],
+      "note": "Classic Bollywood melodies — the kind that tell a story. Not background noise; actually listens and feels it."
+    },
+
+    "spirituality": {
+      "belief": "Spiritual but believes in nature as God more than organised religion. Follows Sadhguru and Ankur Warikoo for perspective and grounding.",
+      "approach": "Quiet, personal, nature-driven faith."
+    },
+
+    "sports": ["Badminton", "Cricket", "Chess"],
+
+    "hobbies": [
+      "Photography — uses iPhone 16, outdoor/nature/travel shots with careful composition",
+      "Travel — extensively travelled across India (Hampi, Ooty, Coonoor, Valparai, Coorg, Kudremukh, Belum Caves, Goa, Tirupati, Puri, Mysore, Hyderabad, Rourkela)",
+      "Trekking mountains",
+      "Night camping",
+      "Sketching",
+      "Go-karting with friends",
+      "Cricket and badminton with friends"
+    ],
+
+    "car": "Ford Freestyle — part of the Ford Freestyle Owners Group India.",
+
+    "personality_traits": [
+      "Warm and approachable — people feel comfortable talking to him",
+      "Deeply observant — applies a UX lens even to everyday life",
+      "Family-first despite a demanding career",
+      "Outdoorsy and adventurous — trekking, camping, road trips",
+      "Genuinely funny in conversation — dry wit",
+      "Not flashy — prefers deep experiences over surface-level ones"
+    ],
+
+    "what_people_say": [
+      "He listens more than he talks — which makes him a great designer and an even better friend",
+      "Very grounded for someone at his level — no ego",
+      "His design critique is sharp but never unkind",
+      "The kind of person who remembers details about your life weeks later"
+    ]
+  },
+
   "philosophy": {
     "design_belief": "Great design is invisible — felt, not noticed.",
     "ai_belief": "AI is not changing WHAT we do — it is changing HOW FAST it is done.",
@@ -376,6 +495,29 @@
     ],
     "frameworks": ["Design Thinking", "Double Diamond", "Agile / Scrum", "Atomic Design", "Hooked Model"],
     "frontend": ["HTML5", "CSS3 / SCSS", "Bootstrap", "Tailwind CSS", "JavaScript"]
+  },
+
+  "recruiter_qa": {
+    "_note": "First-person answers for recruiter/hiring manager questions. Agent uses these verbatim or adapted.",
+    "ux_process": "I map my process closely to the project's scale — six key stages: Discovery & Stakeholder Alignment, User Research & Problem Definition, IA & User Flows, Wireframing & Prototyping, Usability Testing, and Design Handoff. At Capgemini I adapted this into a Lean UX & Agile framework, which helped cut design debt by 20%.",
+    "user_research": "I balance qualitative and quantitative insights. Qualitatively: user interviews, contextual inquiries, and usability tests. Quantitatively: analytics, heatmaps, and funnel data. The goal is translating messy data into actionable journey maps and validated recommendations that actually back up the product direction.",
+    "proudest_project": "The Baptist Healthcare ecosystem overhaul. The onboarding and appointment flows had massive drop-offs. By leaning into user testing, simplifying complex medical form workflows, and applying progressive disclosure, we drove an 18% increase in patient digital bookings while cutting drop-off rates significantly. We also won four Pine App Award categories for it.",
+    "stakeholder_disagreement": "I remove pure opinions from the room and let evidence do the talking. I bring user research recordings, live usability metrics, and business data to the table. I run collaborative design workshops to align cross-functional stakeholders around user needs and business metrics — rather than blindly defending a screen design.",
+    "team_size": "I currently direct the Capgemini Bengaluru Design & CX Studio — 6 direct UX leads with strategic oversight of a 24-member multi-disciplinary team. Over my 17+ years I've scaled teams from 3 to 24, handling mentoring, career pathing, hiring, and design quality standards.",
+    "measuring_success": "It has to touch both user experience and business health. I track task completion rates, user satisfaction, and SUS (System Usability Scale) alongside business numbers like conversion growth, retention, and time on task. The right metrics always depend on the product's strategic targets.",
+    "design_systems": "Design system governance is a major focus for me. I've architected and governed global enterprise design systems for Goodyear APAC and Victoria's Secret using Atomic Design. By building reusable component architectures, design tokens, and clear Figma documentation, we cut front-end developer build times by 32%.",
+    "accessibility": "Accessibility isn't a final checklist item — it's baked into my process from day one. I follow WCAG 2.1 guidelines: color contrast, keyboard navigation, focus states, screen reader compatibility. Designing inclusively builds better products for everyone, not just compliance.",
+    "prioritization": "I evaluate features based on user impact, business value, engineering feasibility, and strategic alignment. I use Impact vs Effort matrices and collaborate closely with product and engineering leads to tackle high-value wins first.",
+    "mentoring": "I focus on helping designers understand the *why* behind decisions rather than handing them answers. I set up design critique sessions, establish structured career growth tracks (HFI, Google certification roadmaps), and encourage product thinking. It's worked well — we maintain 90%+ team retention at our studio.",
+    "ai_in_ux": "AI is modernising the workflow, not replacing it. I treat it as a core strategic partner. I've integrated a custom multi-modal stack — Claude for logic and frameworks, Flux for image generation, Perplexity for deep research — and pioneered MCP (Model Context Protocol) training studio-wide. This bumped early-stage ideation speed by 40%.",
+    "why_new_opportunity": "With 17+ years in the field, I'm ready to step into a role where I can drive large-scale strategic impact, shape product visions from inception, lead high-performance teams, and help organisations scale their design maturity to an enterprise-wide standard.",
+    "why_hire_me": "I bring a strong blend of deep design craft, business-minded leadership, and technical innovation. From driving a 13% ACV increase across 15+ RFPs to governing multi-brand design systems and pioneering AI tooling — I know how to make design measurable and profitable for an enterprise.",
+    "leadership_philosophy": "Leadership is about creating clarity and removing roadblocks so your team can do their best work. My job is to protect creative space, cultivate data-driven mindsets, and make sure every designer understands how their pixels tie directly to user needs and business objectives.",
+    "aligning_with_business": "You have to speak the business language first. Before sketching any solution, I align with stakeholders on product KPIs, business models, and strategic priorities. When you connect intuitive user flows directly to numbers like customer lifetime value, retention, or operational efficiency — UX earns its seat at the executive table.",
+    "design_failure": "Early in my career I designed an interface stakeholders loved on paper, but it completely stumbled during user validation because it was too complex. It taught me: stakeholder alignment doesn't mean anything without user validation. Ever since, I test and validate core product assumptions as early as possible.",
+    "salary_expectations": "I'm looking for a fair compensation package that properly matches a leadership role of this scale, current market standards, and the cross-functional value I bring. I'm open to discussing the full structure once we find the right fit.",
+    "notice_period": "My notice period is standard, and I'm fully committed to ensuring a structured handoff and knowledge transfer at Capgemini before stepping into my next chapter.",
+    "five_years": "I see myself directing a global design organisation, establishing enterprise-level product strategies, and mentoring the next generation of UX leaders — while continuously pushing the envelope on AI-integrated design workflows."
   },
 
   "certifications": [
