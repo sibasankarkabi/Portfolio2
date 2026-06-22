@@ -166,9 +166,9 @@ function buildWork() {
 
 const CS_THUMBS = {
   baptist: 'images/CaseStudy/Baptist.jpg',
-  tamm:    'images/CaseStudy/Tamm.png',
-  goodyear:'images/CaseStudy/Goodyear.png',
-  vs:      'images/CaseStudy/VS.png',
+  tamm:    'images/CaseStudy/Tamm.jpg',
+  goodyear:'images/CaseStudy/Goodyear.jpg',
+  vs:      'images/CaseStudy/VS.jpg',
 };
 
 function workCard(p, wide, delay = 0) {
@@ -214,6 +214,10 @@ function buildPortfolio() {
         </div>
       </div>`
     ).join('');
+    // Default filter tab is "UX Design" — hide non-matching cards on first render
+    document.querySelectorAll('#port-grid .pcard').forEach(c => {
+      if (c.dataset.cat !== 'ux') c.style.display = 'none';
+    });
   }
 }
 

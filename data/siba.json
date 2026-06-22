@@ -902,6 +902,104 @@
       "cat": "logo",
       "image": "images/Portfolio/graphics2.jpg",
       "link": null
+    },
+    {
+      "name": "Autocare — To-Be Journey Map",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Autocare - To-Be Journey.jpg",
+      "link": null
+    },
+    {
+      "name": "B2C Tyre Buyer — To-Be Journey Map",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-B2C To Be Journey.jpg",
+      "link": null
+    },
+    {
+      "name": "Healthcare App — Vision Concept",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-BaptistLD.jpg",
+      "link": null
+    },
+    {
+      "name": "Patient App — Customer Journey Map",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-CJM.jpg",
+      "link": null
+    },
+    {
+      "name": "Fleet Owner — Detailed Journey Map",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-DetailedCJM.jpg",
+      "link": null
+    },
+    {
+      "name": "Field Service Technician — Journey Map",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Field Service Technician JOURNEY MAP_ Field Miantenance.jpg",
+      "link": null
+    },
+    {
+      "name": "Food Delivery App — Wireframes & Sketches",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Frame 68.jpg",
+      "link": null
+    },
+    {
+      "name": "Tire Finder — Form Field Documentation",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Global Form Documentation.jpg",
+      "link": null
+    },
+    {
+      "name": "Link & CTA — Component Guidelines",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Global Link Guidelines-1.jpg",
+      "link": null
+    },
+    {
+      "name": "Competitor Analysis — Tire Retail",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Goodyear-Competitive-analysis.png",
+      "link": null
+    },
+    {
+      "name": "Fashion E-Commerce — UI Guidelines",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Guidelines.jpg",
+      "link": null
+    },
+    {
+      "name": "Fashion E-Commerce — Button Guidelines",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Guidelines_Buttons.jpg",
+      "link": null
+    },
+    {
+      "name": "Subway Smart Ordering — Concept Storyboard",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-Journey_For_Mark.jpg",
+      "link": null
+    },
+    {
+      "name": "Driving License Portal — Concept Storyboard",
+      "type": "UX Case Study",
+      "cat": "ux",
+      "image": "images/Portfolio/UX-storyboard.jpg",
+      "link": null
     }
   ],
   "quick_search_pills": [
