@@ -23,6 +23,9 @@ function safeUrl(url) {
   if (!url || typeof url !== 'string') return '#';
   const trimmed = url.trim();
   if (/^(https?:\/\/|mailto:|tel:|\/|#)/i.test(trimmed)) return trimmed;
+  // Allow plain relative paths (e.g. "images/josh.jpg") — no scheme separator,
+  // so javascript:/data:/vbscript: (which all contain a colon) stay blocked.
+  if (/^[a-zA-Z0-9_\-./]+$/.test(trimmed) && !trimmed.includes(':')) return trimmed;
   return '#';
 }
 
@@ -75,7 +78,6 @@ function buildPage() {
   buildContact();
   buildFooter();
   initReveal();
-  initSkillBars();
   initTicker();
   dismissLoader();
 }
@@ -116,11 +118,8 @@ function buildAbout() {
   if ($('about-body'))  $('about-body').textContent = `Running a studio at Capgemini Bengaluru. Before that — Oracle, gaming startups, fashion e-commerce, maternity brands. Every project, the same north star: make it feel inevitable.`;
 
   if ($('skill-stack')) {
-    $('skill-stack').innerHTML = DB.skills.proficiency.map(s =>
-      `<div class="skill-row">
-        <div class="skill-head"><span class="skill-name">${s.name}</span><span class="skill-pct">${s.pct}%</span></div>
-        <div class="skill-track"><div class="skill-bar" data-pct="${s.pct}"></div></div>
-      </div>`
+    $('skill-stack').innerHTML = DB.skills.categories.map(name =>
+      `<div class="skill-flat-item"><span class="skill-dot"></span>${escapeHtml(name)}</div>`
     ).join('');
   }
 
@@ -204,14 +203,14 @@ function buildPortfolio() {
   const items = (DB.portfolio_items || []).filter(item => item.image || item.link);
   if ($('port-grid')) {
     $('port-grid').innerHTML = items.map((item, i) => `
-      <div class="pcard r" data-cat="${item.cat}">
+      <div class="pcard r" data-cat="${item.cat}" ${item.image ? `onclick="openLightbox(this)" data-img="${escapeHtml(item.image)}" data-name="${escapeHtml(item.name)}"` : ''}>
         ${item.image
-          ? `<img src="${item.image}" alt="${item.name}" loading="lazy"/>`
+          ? `<img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy"/>`
           : `<div class="pcard-ph"><i class="ti ${icons[i % icons.length]}" aria-hidden="true"></i></div>`}
         <div class="pcard-over">
           <div class="pcard-name">${item.name}</div>
           <div class="pcard-type">${item.type}</div>
-          ${item.link ? `<a href="${item.link}" target="_blank" class="pcard-link"><i class="ti ti-external-link" aria-hidden="true"></i>View</a>` : ''}
+          ${item.link ? `<a href="${item.link}" target="_blank" class="pcard-link" onclick="event.stopPropagation()"><i class="ti ti-external-link" aria-hidden="true"></i>View</a>` : ''}
         </div>
       </div>`
     ).join('');
@@ -221,6 +220,13 @@ function buildPortfolio() {
 function buildTestimonials() {
   if ($('tgrid')) {
     $('tgrid').innerHTML = DB.testimonials.map((t, i) => {
+      if (t.placeholder) {
+        return `
+        <div class="tcard tcard-placeholder r${i ? ' d'+i : ''}">
+          <i class="ti ti-message-2-plus" aria-hidden="true"></i>
+          <p class="ttext">${escapeHtml(t.text)}</p>
+        </div>`;
+      }
       // Escape all values from JSON before injecting into HTML.
       // siba.json is self-authored, but defensive escaping prevents
       // an accidental special character from breaking the template.
@@ -283,20 +289,6 @@ function initReveal() {
   document.querySelectorAll('.r').forEach(el => obs.observe(el));
 }
 
-function initSkillBars() {
-  const obs = new IntersectionObserver(es => {
-    es.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.skill-bar').forEach(b => {
-          b.style.width = b.dataset.pct + '%';
-          b.classList.add('on');
-        });
-      }
-    });
-  }, { threshold: .2 });
-  document.querySelectorAll('.skill-stack').forEach(el => obs.observe(el));
-}
-
 function filterExp(btn, org) {
   document.querySelectorAll('.xbtn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
@@ -310,9 +302,7 @@ function filterPort(btn, cat) {
   btn.classList.add('on');
   document.querySelectorAll('.pcard').forEach(c => {
     const show = cat === 'all' || c.dataset.cat === cat;
-    c.style.opacity       = show ? '1'    : '0.18';
-    c.style.pointerEvents = show ? 'auto' : 'none';
-    c.style.transform     = show ? ''     : 'scale(.96)';
+    c.style.display = show ? '' : 'none';
   });
 }
 
@@ -736,6 +726,24 @@ function generateCaseStudyAnswer(question, caseStudy, project) {
 /* ══════════════════════════════════════════════════════════
    AI AGENT — reads ONLY from data/siba.json
    ══════════════════════════════════════════════════════════ */
+
+function openLightbox(el) {
+  const img  = el.getAttribute('data-img');
+  const name = el.getAttribute('data-name');
+  $('lightbox-img').src = img;
+  $('lightbox-img').alt = name || '';
+  $('lightbox-cap').textContent = name || '';
+  $('lightbox-bg').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  $('lightbox-bg').classList.remove('on');
+  document.body.style.overflow = '';
+  $('lightbox-img').src = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('lightbox-bg') && $('lightbox-bg').classList.contains('on')) closeLightbox();
+});
 
 function openModal(q) {
   $('modal-bg').classList.add('on');
@@ -1794,7 +1802,7 @@ function localChatAnswer(query) {
       txt = rqa.stakeholder_disagreement || `I remove opinions from the room and let evidence do the talking — user research recordings, usability metrics, business data. Collaborative design workshops align people around user needs and business metrics, not personal screen preferences.`;
       fus = ['How do you measure success?', 'Tell me about your leadership style', 'How do you prioritize work?'];
     } else if (/how many.*manage|team size|people.*manage|manage.*team|direct report/i.test(q)) {
-      txt = rqa.team_size || `I currently manage 6 direct UX leads with strategic oversight of a 24-member team at Capgemini. Over 17+ years I've scaled teams from 3 to 24, handling mentoring, career pathing, hiring, and quality standards.`;
+      txt = rqa.team_size || `I currently manage 6 direct UX leads with strategic oversight of a 24-member team at Capgemini. Over 15+ years I've scaled teams from 3 to 24, handling mentoring, career pathing, hiring, and quality standards.`;
       fus = ['How do you mentor junior designers?', 'What\'s your leadership philosophy?', 'Tell me about team retention'];
     } else if (/measure.*success|kpi|metrics.*ux|ux.*metric|how.*measure/i.test(q)) {
       txt = rqa.measuring_success || `I track task completion rates, user satisfaction, and SUS (System Usability Scale) alongside business numbers like conversion growth, retention, and time on task. The right metrics depend on the product's strategic targets.`;
@@ -1830,7 +1838,7 @@ function localChatAnswer(query) {
       txt = rqa.five_years || `I see myself directing a global design organisation, establishing enterprise-level product strategies, and mentoring the next generation of UX leaders — while continuously pushing the envelope on AI-integrated design workflows.`;
       fus = ['Why are you looking for something new?', 'What\'s your leadership philosophy?', 'Why should we hire you?'];
     } else if (/why.*new|why.*leaving|why.*move|new.*opportunit|what.*looking for/i.test(q)) {
-      txt = rqa.why_new_opportunity || `With 17+ years in the field, I'm ready to step into a role where I can drive large-scale strategic impact, shape product visions from inception, and help organisations scale their design maturity to an enterprise-wide standard.`;
+      txt = rqa.why_new_opportunity || `With 15+ years in the field, I'm ready to step into a role where I can drive large-scale strategic impact, shape product visions from inception, and help organisations scale their design maturity to an enterprise-wide standard.`;
       fus = ['Where do you see yourself in 5 years?', 'Why should we hire you?', 'What\'s your leadership philosophy?'];
     } else if (/why hire|should.*hire|why you|what.*bring|differentiator|stand out/i.test(q)) {
       txt = rqa.why_hire_me || `I bring deep design craft, business-minded leadership, and technical innovation in one package. 13% ACV increase across 15+ RFPs, multi-brand design systems at scale, and pioneering AI tooling for an entire studio. I make design measurable and profitable for an enterprise.`;

@@ -16,8 +16,8 @@
   <!-- Icons — SRI hash pins the exact file content; if jsDelivr CDN is ever compromised
        and serves a modified file, the browser refuses to load it. -->
   <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/tabler-icons.min.css"
-        integrity="sha384-/Bmojb1H/9dHvtYa2TzEQ1MldjNefaS+t7DcnOYHpP+yer5gvd3LONWEpWhHK+Yo="
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/dist/tabler-icons.min.css"
+        integrity="sha384-3WxKVNXzEl1V41qEx7KGLfbgBFyBTnec6vrnNKMOK5bzwLRvCd2X4iW2SjZFbEnH"
         crossorigin="anonymous"/>
 
   <!-- Stylesheet -->
@@ -33,7 +33,7 @@
       position: fixed;
       inset: 0;
       z-index: 999999;
-      background: #0C0C0B;
+      background: #061722;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -52,13 +52,13 @@
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: #C8A84B;
+      color: #0CB0A1;
     }
     .loader-ring {
       width: 44px;
       height: 44px;
-      border: 3px solid rgba(200, 168, 75, .15);
-      border-top-color: #C8A84B;
+      border: 3px solid rgba(12, 176, 161, .18);
+      border-top-color: #0CB0A1;
       border-radius: 50%;
       animation: loader-spin .75s linear infinite;
     }
@@ -66,7 +66,7 @@
       font-family: 'DM Sans', 'Segoe UI', sans-serif;
       font-size: 12px;
       letter-spacing: .06em;
-      color: rgba(255,255,255,.28);
+      color: rgba(200,220,255,.35);
     }
     @keyframes loader-spin { to { transform: rotate(360deg); } }
   </style>
@@ -123,7 +123,7 @@
         <strong>GEM Award Winner</strong> — Design Excellence, Capgemini 2025–26
       </div>
       <div class="hero-stats reveal reveal-d3">
-        <div class="stat"><div class="stat-n">17+</div><div class="stat-l">Years Exp.</div></div>
+        <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Years Exp.</div></div>
         <div class="stat"><div class="stat-n">24</div><div class="stat-l">Team Size</div></div>
         <div class="stat"><div class="stat-n">15+</div><div class="stat-l">RFPs Led</div></div>
         <div class="stat"><div class="stat-n">13%</div><div class="stat-l">ACV Increase</div></div>
@@ -161,7 +161,7 @@
     </div>
     </div>
     <!-- RIGHT: floating avatar card — exact from uploaded -->
-    
+
   </div>
 
   <!-- AI Agent search — lives in the hero -->
@@ -181,17 +181,17 @@
         <span class="spin"></span>
       </button>
     </div>
-    
+
     <div class="pill-row" id="pill-row">
       <!-- Pills injected from siba.json by main.js -->
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-user" aria-hidden="true"></i>Who is Siba?</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i>Baptist Healthcare</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i>Healthcare platform project</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-award" aria-hidden="true"></i>GEM Award story</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-robot" aria-hidden="true"></i>AI tools & workflow</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-users" aria-hidden="true"></i>Studio leadership</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-bulb" aria-hidden="true"></i>Design philosophy</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-chart-line" aria-hidden="true"></i>Business results</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-message-chatbot" aria-hidden="true"></i>TAMM Dubai</button>
+      <button class="pill" onclick="qSearch(this)"><i class="ti ti-message-chatbot" aria-hidden="true"></i>Government AI project</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-quote" aria-hidden="true"></i>What colleagues say</button>
       <button class="pill" onclick="qSearch(this)"><i class="ti ti-mail" aria-hidden="true"></i>How to reach me</button>
     </div>
@@ -226,7 +226,7 @@
         <p class="body-text r d1">Spent the last decade and a half translating complex business challenges into experiences people actually enjoy using. My strength is seeing both the big picture and the pixel.</p>
         <blockquote class="pull-quote r d2" id="about-quote">"AI is not changing WHAT we do — it is changing HOW FAST it is done."</blockquote>
         <p class="body-text r d2" id="about-body">Running a 24-person design studio at Capgemini Bengaluru. Before that — Oracle, gaming startups, fashion e-commerce, maternity brands. Every project, the same north star: make it feel inevitable.</p>
-        <div class="tag-lbl" style="margin-top: 60px;">Skill Proficiency</div>
+        <div class="tag-lbl" style="margin-top: 60px;">Core Expertise</div>
         <div class="skill-stack r d3" id="skill-stack">
           <!-- Injected from siba.json -->
         </div>
@@ -261,7 +261,7 @@
   <div class="container">
     <div class="s-label reveal">AI-Augmented Workflow</div>
     <h2 class="s-title reveal reveal-d1">Designing <em>faster</em> with AI.</h2>
-    <p style="font-size:15px;color:var(--t2);max-width:600px;margin-bottom:0;" class="reveal reveal-d2">
+    <p style="font-size:15px;color:var(--t4);max-width:600px;margin-bottom:0;" class="reveal reveal-d2">
       "AI is not changing <strong>WHAT</strong> we do — it is changing <strong>HOW FAST</strong> it is done."
     </p>
     <div class="tools-grid">
@@ -271,8 +271,6 @@
       <div class="tool-pill reveal reveal-d3"><span class="tool-icon">⚡</span><div class="tool-name">Grok</div><div class="tool-role">Real-time Data</div></div>
       <div class="tool-pill reveal"><span class="tool-icon">📓</span><div class="tool-name">Notebook LM</div><div class="tool-role">Synthesis</div></div>
       <div class="tool-pill reveal reveal-d1"><span class="tool-icon">🎨</span><div class="tool-name">Figma Make</div><div class="tool-role">Component Gen</div></div>
-      <div class="tool-pill reveal reveal-d2"><span class="tool-icon">🖼️</span><div class="tool-name">Flux / Nano</div><div class="tool-role">Asset Creation</div></div>
-      <div class="tool-pill reveal reveal-d3"><span class="tool-icon">🧩</span><div class="tool-name">UIZard</div><div class="tool-role">Rapid Prototyping</div></div>
       <div class="tool-pill reveal"><span class="tool-icon">📊</span><div class="tool-name">Gamma</div><div class="tool-role">Presentations</div></div>
       <div class="tool-pill reveal reveal-d1"><span class="tool-icon">🔗</span><div class="tool-name">MCP</div><div class="tool-role">Data-to-Design</div></div>
       <div class="tool-pill reveal reveal-d2"><span class="tool-icon">🎯</span><div class="tool-name">Figma</div><div class="tool-role">Core Design</div></div>
@@ -435,6 +433,17 @@
   </div>
 </section>
 
+<!-- ═══ PORTFOLIO LIGHTBOX ═══ -->
+<div id="lightbox-bg" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">
+    <i class="ti ti-x" aria-hidden="true"></i>
+  </button>
+  <figure class="lightbox-figure" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt=""/>
+    <figcaption id="lightbox-cap"></figcaption>
+  </figure>
+</div>
+
 <!-- ═══ TESTIMONIALS ═══ -->
 <section id="testimonials" class="sec">
   <div class="wrap">
@@ -461,38 +470,6 @@
           <p style="margin-bottom:13px">If you're building something that needs both design leadership and hands-on craft, <strong>let's talk.</strong> Also open to consulting on AI-integrated design workflows and design system governance.</p>
           <p>Email is fastest. Typically responds within a working day.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SHOWREEL ═══ -->
-<section id="showreel" class="sec" style="background:var(--bg2);border-top:1px solid var(--bd);">
-  <div class="wrap">
-    <div class="eyebrow r">In Action</div>
-    <h2 class="r d1">Our Team's <br><em>food for thought.</em></h2>
-    <div class="video-grid r d2">
-      <div class="video-ph">
-        <i class="ti ti-player-play-filled" aria-hidden="true"></i>
-        <div class="video-ph-label">
-          <video controls preload="none">
-  <source src="images/Presentation/V1.mp4" type="video/mp4">
-  <source src="V1.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
-        </div>
-        <div class="video-ph-sub">Paste a YouTube / Vimeo iframe here</div>
-      </div>
-      <div class="video-ph">
-        <i class="ti ti-player-play-filled" aria-hidden="true"></i>
-        <div class="video-ph-label">
-          <video controls preload="none">
-  <source src="images/Presentation/V2.mp4" type="video/mp4">
-  <source src="V2.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
-        </div>
-        <div class="video-ph-sub">Paste a YouTube / Vimeo iframe here</div>
       </div>
     </div>
   </div>
