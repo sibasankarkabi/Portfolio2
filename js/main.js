@@ -731,22 +731,43 @@ function generateCaseStudyAnswer(question, caseStudy, project) {
    AI AGENT — reads ONLY from data/siba.json
    ══════════════════════════════════════════════════════════ */
 
+let _lbItems = [];
+let _lbIndex = -1;
+
+function _lbShow(i) {
+  const el = _lbItems[i];
+  if (!el) return;
+  _lbIndex = i;
+  $('lightbox-img').src = el.getAttribute('data-img');
+  $('lightbox-img').alt = el.getAttribute('data-name') || '';
+  $('lightbox-cap').textContent = el.getAttribute('data-name') || '';
+}
+
 function openLightbox(el) {
-  const img  = el.getAttribute('data-img');
-  const name = el.getAttribute('data-name');
-  $('lightbox-img').src = img;
-  $('lightbox-img').alt = name || '';
-  $('lightbox-cap').textContent = name || '';
+  // Only navigate through cards visible under the current portfolio filter
+  _lbItems = Array.from(document.querySelectorAll('#port-grid .pcard[data-img]'))
+    .filter(c => c.style.display !== 'none');
+  const i = _lbItems.indexOf(el);
+  _lbShow(i === -1 ? 0 : i);
   $('lightbox-bg').classList.add('on');
   document.body.style.overflow = 'hidden';
+}
+function lightboxStep(dir) {
+  if (!_lbItems.length) return;
+  _lbShow((_lbIndex + dir + _lbItems.length) % _lbItems.length);
 }
 function closeLightbox() {
   $('lightbox-bg').classList.remove('on');
   document.body.style.overflow = '';
   $('lightbox-img').src = '';
+  _lbItems = [];
+  _lbIndex = -1;
 }
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && $('lightbox-bg') && $('lightbox-bg').classList.contains('on')) closeLightbox();
+  if (!$('lightbox-bg') || !$('lightbox-bg').classList.contains('on')) return;
+  if (e.key === 'Escape') closeLightbox();
+  else if (e.key === 'ArrowRight') lightboxStep(1);
+  else if (e.key === 'ArrowLeft') lightboxStep(-1);
 });
 
 function openModal(q) {

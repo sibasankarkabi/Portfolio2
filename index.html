@@ -437,6 +437,12 @@
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">
     <i class="ti ti-x" aria-hidden="true"></i>
   </button>
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); lightboxStep(-1)" aria-label="Previous image">
+    <i class="ti ti-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); lightboxStep(1)" aria-label="Next image">
+    <i class="ti ti-chevron-right" aria-hidden="true"></i>
+  </button>
   <figure class="lightbox-figure" onclick="event.stopPropagation()">
     <img id="lightbox-img" src="" alt=""/>
     <figcaption id="lightbox-cap"></figcaption>
