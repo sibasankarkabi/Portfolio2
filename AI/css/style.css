@@ -589,3 +589,57 @@ footer{background:#080807;padding:24px 56px;display:flex;justify-content:space-b
   .ap-back span{ display:none; }
   .ap-scenario-grid{ grid-template-columns:1fr; }
 }
+
+/* ─── NAV ACTIVE STATE ────────────────────────────────────── */
+.nav-links a.active { color: var(--blue); }
+.nav-links a.active::after { width: 100%; }
+
+/* ─── TIMELINE DRAW-LINE ──────────────────────────────────── */
+/* Real element inserted by JS that grows blue over the grey :before */
+.tl-draw-line {
+  position: absolute;
+  left: 200px;
+  top: 8px;
+  width: 1px;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--blue), var(--blue-mid));
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Timeline meta slides from left, card slides from right */
+.tl-meta.reveal  { transform: translateY(12px) translateX(-18px); }
+.tl-card.reveal  { transform: translateY(12px) translateX(18px); }
+.tl-meta.reveal.visible, .tl-card.reveal.visible { transform: none; }
+
+/* ─── CARD HOVER LIFT ─────────────────────────────────────── */
+/* work cards and tool pills already have hover states; ensure smooth */
+.work-card  { will-change: transform; }
+.tool-pill  { will-change: transform; }
+.agent-card { will-change: transform; }
+
+/* ─── HERO CHIP — gold accent when award leads ──────────────── */
+.hero-chip-dot { background: var(--gold); }
+
+/* ─── PREFERS-REDUCED-MOTION ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Static reveal — skip all entry animations */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  /* Stop decorative animations */
+  .ticker-track  { animation: none !important; }
+  .avatar-card   { animation: none !important; }
+  .hero-blob,
+  .hero-blob2    { animation: none !important; }
+  .pulse         { animation: none !important; }
+  /* Instantly complete the timeline draw line */
+  .tl-draw-line  { height: 100% !important; }
+  /* Kill cursor lag */
+  .cursor, .cursor-ring { transition: none !important; }
+  /* Disable will-change to avoid compositing cost when motion is off */
+  .work-card, .tool-pill, .agent-card { will-change: auto; }
+}
+

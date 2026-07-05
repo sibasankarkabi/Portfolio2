@@ -8,7 +8,7 @@
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
 
   <!-- Upgrade any accidental HTTP requests to HTTPS -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -69,9 +69,89 @@
       color: rgba(200,220,255,.35);
     }
     @keyframes loader-spin { to { transform: rotate(360deg); } }
+
+    /* ── ACCESS GATE ────────────────────────────────────────────────────
+       Soft, client-side check shown before the page loader. Not real
+       security (view-source bypasses it) — just keeps the URL from being
+       casually opened by a @capgemini.com colleague before launch.
+    ──────────────────────────────────────────────────────────────────── */
+    #access-gate {
+      position: fixed; inset: 0; z-index: 1000000;
+      background: rgba(6,23,34,.97);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    #access-gate.gate-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .gate-card {
+      max-width: 360px; width: 100%;
+      background: #0C1F2E; border: 1px solid rgba(12,176,161,.22);
+      border-radius: 14px; padding: 28px 26px;
+      text-align: center;
+    }
+    .gate-title {
+      font-family: 'Syne', 'Segoe UI', sans-serif;
+      font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px;
+    }
+    .gate-text {
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      font-size: 13px; line-height: 1.6; color: rgba(202,220,222,.8);
+      margin-bottom: 18px;
+    }
+    .gate-input {
+      width: 100%; background: #1C3645; border: 1px solid rgba(12,176,161,.22);
+      border-radius: 8px; padding: 11px 14px; font-size: 14px; color: #fff;
+      margin-bottom: 12px; outline: none; font-family: 'DM Sans', sans-serif;
+      box-sizing: border-box;
+    }
+    .gate-input::placeholder { color: rgba(202,214,222,.4); }
+    .gate-btn {
+      width: 100%; background: #0CB0A1; color: #061722; border: none;
+      border-radius: 8px; padding: 12px; font-family: 'Syne', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+      cursor: pointer;
+    }
+    .gate-btn:hover { opacity: .88; }
   </style>
 </head>
 <body>
+
+<!-- Access gate — must come before the page loader visually (higher z-index) -->
+<div id="access-gate" aria-label="Access check" role="dialog">
+  <div class="gate-card" id="gate-card">
+    <div class="gate-title">Quick check before you continue</div>
+    <p class="gate-text">This portfolio is currently private from my employer while I explore new roles. If you're visiting from a personal, recruiting, or company email, just hit Continue — no need to type anything.</p>
+    <input type="email" id="gate-email" class="gate-input" placeholder="your email (optional)" autocomplete="email"/>
+    <button class="gate-btn" id="gate-continue" type="button">Continue →</button>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sk_gate_passed';
+  var gate = document.getElementById('access-gate');
+  if (localStorage.getItem(KEY) === '1') {
+    gate.classList.add('gate-hidden');
+    return;
+  }
+  var card  = document.getElementById('gate-card');
+  var input = document.getElementById('gate-email');
+  var btn   = document.getElementById('gate-continue');
+  function proceed() {
+    var val = (input.value || '').trim().toLowerCase();
+    if (val.endsWith('@capgemini.com')) {
+      card.innerHTML =
+        '<div class="gate-title">Not available right now</div>' +
+        '<p class="gate-text">This portfolio isn\'t available to Capgemini accounts at the moment. Feel free to check back later.</p>';
+      return;
+    }
+    localStorage.setItem(KEY, '1');
+    gate.classList.add('gate-hidden');
+  }
+  btn.addEventListener('click', proceed);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') proceed(); });
+})();
+</script>
 
 <!-- Page loading overlay — dismissed by main.js once buildPage() completes -->
 <div id="page-loader" aria-label="Loading portfolio" role="status">
@@ -101,14 +181,19 @@
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<section id="hero">
-  <div class="hero-glow-r"></div>
-  <div class="hero-glow-l"></div>
+<section id="hero" class="bloom-hero">
+  <video class="bloom-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4" type="video/mp4" />
+  </video>
+  <div class="bloom-video-overlay"></div>
+
+  <div class="hero-glow-r" style="display:none"></div>
+  <div class="hero-glow-l" style="display:none"></div>
 
   <!-- Bio + profile photo -->
-  <div class="hero-grid">
-    <div>
-      <div class="hero-kicker r" id="hero-kicker">Studio Head · Capgemini Bengaluru</div>
+  <div class="hero-grid-with-glass">
+    <div class="glassbg">
+      <div class="hero-kicker r" id="hero-kicker">Studio Lead · Capgemini Bengaluru</div>
       <h1 class="r d1" id="hero-name">Siba<br><em>Sankar</em>&nbsp;Kabi</h1>
       <div class="hero-meta r d2">
         <span><i class="ti ti-map-pin" style="font-size:13px;color:var(--gold)" aria-hidden="true"></i>Bengaluru, India</span>
@@ -138,15 +223,15 @@
       </div>
     </div>
     <div class="r d2">
-      <div class="profile-card">
+      <div class="profile-card liquid-glass-strong">
         <div class="hero-right">
-      <div class="avatar-card">
-        <div class="avatar-badges">
-          <div class="a-badge"><span class="badge-live"></span> Bengaluru DCX Studio UX lead</div>
-          <div class="a-badge"><i class="ti ti-certificate"></i> HFI Certified CXA</div>
+          <div class="avatar-card">
+            <div class="avatar-badges">
+              <div class="a-badge"><span class="badge-live"></span> Bengaluru DCX Studio UX lead</div>
+              <div class="a-badge"><i class="ti ti-certificate"></i> HFI Certified CXA</div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         
         <div class="profile-stats" id="profile-stats"></div>
         <div class="profile-footer">
@@ -158,10 +243,8 @@
         <a class="btn-gold" href="./images/UX_Siba_Sankar_Kabi_Resume.docx" download="Siba_Sankar_Kabi_Resume.docx" data-allow-download>
           <i class="ti ti-download" aria-hidden="true"></i>Download Resume
         </a>
+      </div>
     </div>
-    </div>
-    <!-- RIGHT: floating avatar card — exact from uploaded -->
-
   </div>
 
   <!-- AI Agent search — lives in the hero -->
@@ -169,7 +252,7 @@
     <div class="search-lbl">
       <i class="ti ti-sparkles" aria-hidden="true"></i>Ask my AI agent — anything about me
     </div>
-    <div class="search-bar" id="search-bar">
+    <div class="search-bar liquid-glass" id="search-bar">
       <i class="ti ti-search search-ico" aria-hidden="true"></i>
       <input
         id="ais-input" type="text"
@@ -184,16 +267,16 @@
 
     <div class="pill-row" id="pill-row">
       <!-- Pills injected from siba.json by main.js -->
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-user" aria-hidden="true"></i>Who is Siba?</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i>Healthcare platform project</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-award" aria-hidden="true"></i>GEM Award story</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-robot" aria-hidden="true"></i>AI tools & workflow</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-users" aria-hidden="true"></i>Studio leadership</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-bulb" aria-hidden="true"></i>Design philosophy</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-chart-line" aria-hidden="true"></i>Business results</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-message-chatbot" aria-hidden="true"></i>Government AI project</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-quote" aria-hidden="true"></i>What colleagues say</button>
-      <button class="pill" onclick="qSearch(this)"><i class="ti ti-mail" aria-hidden="true"></i>How to reach me</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-user" aria-hidden="true"></i>Who is Siba?</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i>Healthcare platform project</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-award" aria-hidden="true"></i>GEM Award story</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-robot" aria-hidden="true"></i>AI tools & workflow</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-users" aria-hidden="true"></i>Studio leadership</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-bulb" aria-hidden="true"></i>Design philosophy</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-chart-line" aria-hidden="true"></i>Business results</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-message-chatbot" aria-hidden="true"></i>Government AI project</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-quote" aria-hidden="true"></i>What colleagues say</button>
+      <button class="pill liquid-glass" onclick="qSearch(this)"><i class="ti ti-mail" aria-hidden="true"></i>How to reach me</button>
     </div>
   </div>
 </section>
@@ -280,7 +363,17 @@
 </section>
 
 <!-- ═══ NUMBERS ═══ -->
-<section id="numbers" style="padding:72px 52px;">
+<section id="numbers" class="numbers-bg-section">
+  <video class="numbers-bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4" type="video/mp4" />
+  </video>
+  <div class="numbers-bg-overlay"></div>
+  <div class="numbers-gridlines" aria-hidden="true">
+    <div class="gridline g25"></div>
+    <div class="gridline g50"></div>
+    <div class="gridline g75"></div>
+  </div>
+  <div class="numbers-glow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="num-grid" id="num-grid">
       <!-- Injected from siba.json -->
@@ -450,7 +543,11 @@
 </div>
 
 <!-- ═══ TESTIMONIALS ═══ -->
-<section id="testimonials" class="sec">
+<section id="testimonials" class="testimonials-bg-section">
+  <video class="testimonials-bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4" type="video/mp4" />
+  </video>
+  <div class="testimonials-bg-overlay"></div>
   <div class="wrap">
     <div class="eyebrow r">Recommendations</div>
     <h2 class="r d1">Straight from the<br><em>people who know me.</em></h2>
