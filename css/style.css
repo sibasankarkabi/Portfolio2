@@ -18,7 +18,7 @@
   /* ── text (exact Gamma values) ── */
   --t1:    #FFFFFF;             /* Gamma: heading white */
   --t2:    #CAD6DE;             /* Gamma: body blue-grey */
-  --t3:    rgba(202,214,222,.50); /* muted */
+  --t3:    rgba(202,214,222,.70); /* muted — .70 alpha keeps 4.5:1+ on every dark tier incl. --bg4 (was .50 = 3.3–3.9:1, failed AA) */
   --t4:    rgba(6, 95, 109, 0.997);
 
   /* ── teal — primary accent, used everywhere via --gold ──
@@ -57,7 +57,7 @@
   --ink:     #061722;
   --ink2:    #112836;
   --ink3:    #1C4A6A;
-  --ink4:    #4A7A9A;
+  --ink4:    #36607C;  /* was #4A7A9A (3.7:1 on cream2) — now 4.58:1+ on cream/cream2/cream3/white */
   --gold-lt: #F5EEC8;
   --blue-mid:#1C4A8A;
   --blue-lt: #C8E0F4;
@@ -614,6 +614,16 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 }
 /* suppress focus ring on mouse click (only show for keyboard) */
 :focus:not(:focus-visible) { outline:none; }
+/* <main> receives focus from the skip link — no ring needed on the whole page */
+main:focus { outline:none; }
+
+/* Visually hidden but read by screen readers */
+.sr-only {
+  position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+
 
 /* ── UTILITY ── */
 .wrap  { max-width:1160px; margin:0 auto; }
@@ -1151,6 +1161,8 @@ h1 em { font-style:italic; color:var(--gold-text); }
 .card-body { padding:20px 22px; }
 .card-client { font-family:var(--syne); font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--t3); margin-bottom:5px; }
 .card-title  { font-family:var(--serif); font-size:20px; font-weight:400; color:var(--t1); margin-bottom:7px; line-height:1.2; }
+/* Keyboard / screen-reader entry point for the card — looks like plain title text */
+.card-open { display:block; width:100%; font:inherit; color:inherit; text-align:left; line-height:inherit; padding:0; }
 .card-desc   { font-size:13px; color:var(--t2); line-height:1.72; margin-bottom:13px; }
 .card-tags   { display:flex; flex-wrap:wrap; gap:5px; }
 .ctag { font-family:var(--syne); font-size:9px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; color:var(--t3); border:1px solid var(--bd); padding:3px 7px; border-radius:3px; }
@@ -1222,9 +1234,13 @@ h1 em { font-style:italic; color:var(--gold-text); }
   display:flex; flex-direction:column; justify-content:flex-end; padding:14px;
 }
 .pcard-link { opacity:0; transition:opacity .25s; }
-.pcard:hover .pcard-link { opacity:1; }
+.pcard:hover .pcard-link, .pcard:focus-within .pcard-link { opacity:1; }
+/* Invisible full-card button so the lightbox opens from the keyboard */
+.pcard-open { position:absolute; inset:0; z-index:1; border-radius:7px; }
+.pcard-open:focus-visible { outline-offset:-3px; }
+.pcard-link { position:relative; z-index:2; }
 .pcard-name { font-family:var(--syne); font-size:12px; font-weight:700; color:#fff; margin-bottom:2px; }
-.pcard-type { font-size:10px; color:rgba(255,255,255,.5); }
+.pcard-type { font-size:10px; color:rgba(255,255,255,.75); }
 .pcard-link { margin-top:8px; display:inline-flex; align-items:center; gap:5px; font-family:var(--syne); font-size:10px; font-weight:700; color:var(--gold-text); }
 
 /* ─── PORTFOLIO LIGHTBOX ─────────────────────── */
@@ -2228,360 +2244,79 @@ footer {
   .avail-dot              { background: Highlight; }
 }
 
-/* ══════════════════════════════════════════════════════════
-   FLOATING CHAT WIDGET
-   ═══════════════════════════════════════════════════════════ */
-
-/* ── FAB button ── */
-#fcw-btn {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 99998;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 4px 24px rgba(12,176,161,.38), 0 2px 8px rgba(0,0,0,.32);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .22s;
-  border: none;
-  outline: none;
-  -webkit-user-select: none;
-  user-select: none;
+/* ── A11Y: hide closed overlays (kept last so it layers over each overlay's own transition) ── */
+/* Closed overlays: also hide from screen readers + Tab order (opacity alone doesn't).
+   visibility flips after the fade-out finishes, and instantly on open. */
+#lightbox-bg, #modal, #cs-file-panel {
+  visibility:hidden;
+  transition-property:opacity, transform, visibility;
+  transition-duration:.35s, .4s, 0s;
+  transition-delay:0s, 0s, .4s;
 }
-#fcw-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 32px rgba(12,176,161,.5), 0 2px 8px rgba(0,0,0,.36);
-}
-#fcw-btn:active { transform: scale(.96); }
-
-#fcw-btn .fcw-btn-ico,
-#fcw-btn .fcw-btn-close {
-  position: absolute;
-  font-size: 24px;
-  color: #061722;
-  transition: opacity .2s, transform .2s;
-}
-#fcw-btn .fcw-btn-ico    { opacity: 1;  transform: scale(1) rotate(0deg); }
-#fcw-btn .fcw-btn-close  { opacity: 0;  transform: scale(.6) rotate(-90deg); }
-
-#fcw-btn.open .fcw-btn-ico   { opacity: 0;  transform: scale(.6) rotate(90deg); }
-#fcw-btn.open .fcw-btn-close { opacity: 1;  transform: scale(1) rotate(0deg); }
-
-/* unread badge */
-#fcw-btn .fcw-badge {
-  position: absolute;
-  top: 6px;
-  right: 5px;
-  width: 12px;
-  height: 12px;
-  background: #E05C4B;
-  border-radius: 50%;
-  border: 2px solid var(--bg);
-  transition: opacity .2s;
+#lightbox-bg.on, #modal.on, #cs-file-panel.on {
+  visibility:visible;
+  transition-delay:0s;
 }
 
-/* ── Panel ── */
-#fcw-panel {
-  position: fixed;
-  bottom: 100px;
-  right: 28px;
-  z-index: 99997;
-  width: 364px;
-  max-height: 560px;
-  display: flex;
-  flex-direction: column;
-  background: var(--bg2);
-  border: 1px solid var(--bd2);
-  border-radius: 20px;
-  box-shadow: 0 20px 80px rgba(0,0,0,.55), 0 4px 20px rgba(0,0,0,.3);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(18px) scale(.97);
-  pointer-events: none;
-  transition: opacity .28s var(--ease), transform .28s var(--ease);
-  -webkit-user-select: none;
-  user-select: none;
+/* ── A11Y: text over background video ─────────────────────────────────
+   Video frames change, so contrast can't rely on the video being dark.
+   Three layers keep text readable even on a bright frame:
+   1. stronger overlays, 2. a dark tint on the glass panels that hold text,
+   3. a soft dark halo on text that sits directly on the video. */
+.bloom-video-overlay {
+  background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.62) 48%, rgba(0,0,0,.76) 100%);
 }
-#fcw-panel.open {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
+.numbers-bg-overlay      { background: rgba(6,23,34,.62); }
+.testimonials-bg-overlay { background: rgba(6,23,34,.78); }
+
+.glassbg,
+.profile-card,
+.search-bar.liquid-glass,
+.pill.liquid-glass,
+.num-card            { background: rgba(6,23,34,.5); }
+.num-card:hover      { background: rgba(6,23,34,.62); }
+
+.bloom-hero,
+.numbers-bg-section,
+.testimonials-bg-section {
+  text-shadow: 0 0 1px rgba(6,23,34,.9), 0 1px 3px rgba(6,23,34,.85), 0 0 14px rgba(6,23,34,.7);
+}
+/* no halo where text already sits on a solid fill */
+.bloom-hero .btn-gold, .bloom-hero .btn-gold *, .tcard, .tcard * { text-shadow: none; }
+
+/* muted grey is too faint over video — use body grey there */
+.bloom-hero .hero-meta,
+.bloom-hero .search-lbl,
+.bloom-hero .avail-row,
+.numbers-bg-section .num-l,
+.testimonials-bg-section .tcard-placeholder .ttext { color: var(--t2); }
+/* small green tag needs a solid backing over video */
+.numbers-bg-section .num-award { background: var(--bg2); }
+
+/* ── A11Y: pause control for background video + ticker (WCAG 2.2.2) ── */
+.nav-actions { display:flex; align-items:center; gap:10px; }
+.motion-toggle {
+  display:inline-flex; align-items:center; gap:6px;
+  min-height:34px; padding:6px 12px; border-radius:4px;
+  border:1px solid var(--bd2); color:var(--t2);
+  font-family:var(--syne); font-size:11px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  transition:border-color .2s, color .2s;
+}
+.motion-toggle:hover { border-color:var(--gold-b); color:var(--t1); }
+.motion-toggle i { font-size:15px; color:var(--gold); }
+html.motion-paused .ticker-track { animation-play-state: paused; }
+/* tablet/phone: icon only (label stays for screen readers), 40px tap target */
+@media (max-width: 1100px) {
+  .motion-toggle { width:40px; height:40px; padding:0; justify-content:center; }
+  .motion-toggle .motion-label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
 }
 
-/* ── Header ── */
-.fcw-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 16px 14px;
-  border-bottom: 1px solid var(--bd);
-  background: var(--bg3);
-  flex-shrink: 0;
-}
-.fcw-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold) 0%, #9a7a2a 100%);
-  color: #061722;
-  font-family: var(--syne);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .05em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.fcw-header-info { flex: 1; min-width: 0; }
-.fcw-header-name {
-  font-family: var(--syne);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--t1);
-  letter-spacing: .02em;
-}
-.fcw-header-status {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: var(--t3);
-  margin-top: 2px;
-}
-.fcw-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4ade80;
-  flex-shrink: 0;
-}
-.fcw-header-close {
-  width: 30px;
-  height: 30px;
-  border: none;
-  background: transparent;
-  color: var(--t3);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  transition: color .15s, background .15s;
-  pointer-events: auto;
-}
-.fcw-header-close:hover { color: var(--t1); background: var(--bg4); }
-
-/* ── Messages area ── */
-.fcw-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  scroll-behavior: smooth;
-}
-.fcw-messages::-webkit-scrollbar { width: 4px; }
-.fcw-messages::-webkit-scrollbar-thumb { background: var(--bd2); border-radius: 2px; }
-
-/* ── Individual messages ── */
-.fcw-msg {
-  display: flex;
-  gap: 9px;
-  align-items: flex-end;
-  max-width: 92%;
-}
-.fcw-msg.user {
-  flex-direction: row-reverse;
-  align-self: flex-end;
-}
-.fcw-msg.bot  { align-self: flex-start; }
-
-.fcw-msg-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold) 0%, #9a7a2a 100%);
-  color: #061722;
-  font-family: var(--syne);
-  font-size: 9px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-bottom: 2px;
-}
-
-.fcw-bubble {
-  padding: 10px 14px;
-  border-radius: 16px;
-  font-family: var(--sans);
-  font-size: 13.5px;
-  line-height: 1.55;
-  word-break: break-word;
-}
-.fcw-msg.bot .fcw-bubble {
-  background: var(--bg4);
-  color: var(--t1);
-  border-bottom-left-radius: 4px;
-}
-.fcw-msg.user .fcw-bubble {
-  background: var(--gold);
-  color: #061722;
-  border-bottom-right-radius: 4px;
-  font-weight: 500;
-}
-.fcw-bubble p { margin: 0 0 6px; }
-.fcw-bubble p:last-child { margin-bottom: 0; }
-.fcw-bubble strong { font-weight: 700; }
-.fcw-bubble a { color: var(--gold-text); text-decoration: underline; }
-.fcw-msg.user .fcw-bubble a { color: inherit; }
-
-/* ── Typing indicator ── */
-.fcw-typing {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 11px 14px;
-  background: var(--bg4);
-  border-radius: 16px;
-  border-bottom-left-radius: 4px;
-}
-.fcw-typing span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--t3);
-  animation: fcw-bounce .9s ease-in-out infinite;
-}
-.fcw-typing span:nth-child(2) { animation-delay: .16s; }
-.fcw-typing span:nth-child(3) { animation-delay: .32s; }
-@keyframes fcw-bounce {
-  0%, 80%, 100% { transform: translateY(0); opacity: .4; }
-  40%           { transform: translateY(-5px); opacity: 1; }
-}
-
-/* ── Quick starters ── */
-.fcw-starters {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 4px;
-}
-.fcw-starter-btn {
-  background: transparent;
-  border: 1px solid var(--bd2);
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-family: var(--sans);
-  font-size: 12.5px;
-  color: var(--t2);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color .15s, color .15s, background .15s;
-  pointer-events: auto;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.fcw-starter-btn:hover {
-  border-color: var(--gold-b);
-  color: var(--t1);
-  background: var(--gold-t);
-}
-
-/* ── Input row ── */
-.fcw-input-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 12px 14px;
-  border-top: 1px solid var(--bd);
-  background: var(--bg3);
-  flex-shrink: 0;
-}
-.fcw-input {
-  flex: 1;
-  background: var(--bg4);
-  border: 1px solid var(--bd2);
-  border-radius: 10px;
-  padding: 9px 12px;
-  font-family: var(--sans);
-  font-size: 13px;
-  color: var(--t1);
-  outline: none;
-  transition: border-color .15s;
-  -webkit-user-select: text;
-  user-select: text;
-}
-.fcw-input::placeholder { color: var(--t3); }
-.fcw-input:focus { border-color: var(--gold-b); }
-
-.fcw-send {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: var(--gold);
-  border: none;
-  color: #061722;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: opacity .15s, transform .15s;
-}
-.fcw-send:hover { opacity: .88; transform: scale(1.05); }
-.fcw-send:active { transform: scale(.94); }
-.fcw-send:disabled { opacity: .4; cursor: default; transform: none; }
-
-/* ── Follow-up suggestion chips (appear below each bot reply) ── */
-.fcw-followups {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-left: 37px;   /* aligns under the avatar */
-  margin-top: -4px;
-  margin-bottom: 4px;
-}
-.fcw-fu-btn {
-  background: transparent;
-  border: 1px solid var(--bd2);
-  border-radius: 10px;
-  padding: 7px 12px;
-  font-family: var(--sans);
-  font-size: 12px;
-  color: var(--t2);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color .15s, color .15s, background .15s;
-  pointer-events: auto;
-  -webkit-user-select: none;
-  user-select: none;
-  line-height: 1.4;
-}
-.fcw-fu-btn:hover {
-  border-color: var(--gold-b);
-  color: var(--gold-text);
-  background: var(--gold-t);
-}
-
-/* ── Mobile responsive ── */
-@media (max-width: 480px) {
-  #fcw-panel {
-    width: calc(100vw - 24px);
-    right: 12px;
-    bottom: 90px;
-    max-height: 72vh;
-    border-radius: 16px;
-  }
-  #fcw-btn { right: 16px; bottom: 20px; }
+/* small phones: tighten the nav so logo, pause, Hire me and menu all fit at 320px+ */
+@media (max-width: 600px) {
+  nav { padding: 0 12px; gap: 8px; }
+  .logo { font-size: 15px; }
+  .nav-actions { gap: 6px; margin-left: auto; }
+  .motion-toggle { width: 36px; height: 36px; }
+  .nav-hire { padding: 7px 10px; letter-spacing: .5px; }
 }
