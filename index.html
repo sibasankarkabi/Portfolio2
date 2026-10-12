@@ -76,98 +76,9 @@
       color: rgba(200,220,255,.65);
     }
     @keyframes loader-spin { to { transform: rotate(360deg); } }
-
-    /* ── ACCESS GATE ────────────────────────────────────────────────────
-       Soft, client-side check shown before the page loader. Not real
-       security (view-source bypasses it) — just keeps the URL from being
-       casually opened by a @capgemini.com colleague before launch.
-    ──────────────────────────────────────────────────────────────────── */
-    #access-gate {
-      position: fixed; inset: 0; z-index: 1000000;
-      background: rgba(6,23,34,.97);
-      backdrop-filter: blur(6px);
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px;
-      transition: opacity .3s ease, visibility .3s ease;
-    }
-    #access-gate.gate-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .gate-card {
-      max-width: 360px; width: 100%;
-      background: #0C1F2E; border: 1px solid rgba(12,176,161,.22);
-      border-radius: 14px; padding: 28px 26px;
-      text-align: center;
-    }
-    .gate-title {
-      font-family: 'Syne', 'Segoe UI', sans-serif;
-      font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px;
-    }
-    .gate-text {
-      font-family: 'DM Sans', 'Segoe UI', sans-serif;
-      font-size: 13px; line-height: 1.6; color: rgba(202,220,222,.8);
-      margin-bottom: 18px;
-    }
-    .gate-input {
-      width: 100%; background: #1C3645; border: 1px solid rgba(12,176,161,.22);
-      border-radius: 8px; padding: 11px 14px; font-size: 14px; color: #fff;
-      margin-bottom: 12px; outline: none; font-family: 'DM Sans', sans-serif;
-      box-sizing: border-box;
-    }
-    .gate-input::placeholder { color: rgba(202,214,222,.7); }
-    .gate-btn {
-      width: 100%; background: #0CB0A1; color: #061722; border: none;
-      border-radius: 8px; padding: 12px; font-family: 'Syne', sans-serif;
-      font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
-      cursor: pointer;
-    }
-    .gate-btn:hover { opacity: .88; }
   </style>
 </head>
 <body>
-
-<!-- Access gate — must come before the page loader visually (higher z-index) -->
-<div id="access-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-text">
-  <form class="gate-card" id="gate-card" novalidate>
-    <h2 class="gate-title" id="gate-title">Quick check before you continue</h2>
-    <p class="gate-text" id="gate-text">This portfolio is currently private from my employer while I explore new roles. If you're visiting from a personal, recruiting, or company email, just hit Continue — no need to type anything.</p>
-    <label class="sr-only" for="gate-email">Your email (optional)</label>
-    <input type="email" id="gate-email" class="gate-input" placeholder="your email (optional)" autocomplete="email"/>
-    <button class="gate-btn" id="gate-continue" type="submit">Continue <span aria-hidden="true">→</span></button>
-  </form>
-</div>
-<script>
-(function () {
-  var KEY = 'sk_gate_passed';
-  var gate = document.getElementById('access-gate');
-  if (localStorage.getItem(KEY) === '1') {
-    gate.classList.add('gate-hidden');
-    return;
-  }
-  var card  = document.getElementById('gate-card');
-  var input = document.getElementById('gate-email');
-  input.focus();
-  function proceed(e) {
-    e.preventDefault();
-    var val = (input.value || '').trim().toLowerCase();
-    if (val.endsWith('@capgemini.com')) {
-      card.innerHTML =
-        '<h2 class="gate-title" id="gate-title" tabindex="-1">Not available right now</h2>' +
-        '<p class="gate-text" id="gate-text">This portfolio isn\'t available to Capgemini accounts at the moment. Feel free to check back later.</p>';
-      document.getElementById('gate-title').focus();
-      return;
-    }
-    localStorage.setItem(KEY, '1');
-    gate.classList.add('gate-hidden');
-    if (window.dialogClosed) dialogClosed(gate);
-    var main = document.getElementById('main');
-    if (main) main.focus();
-  }
-  // Trap Tab inside the gate once main.js has loaded its dialog helpers
-  document.addEventListener('DOMContentLoaded', function () {
-    if (!gate.classList.contains('gate-hidden') && window.dialogOpened) dialogOpened(gate, input);
-  });
-  card.addEventListener('submit', proceed);
-})();
-</script>
 
 <!-- Page loading overlay — dismissed by main.js once buildPage() completes -->
 <div id="page-loader" aria-label="Loading portfolio" role="status">
@@ -231,7 +142,7 @@
         <strong>GEM Award Winner</strong> — Design Excellence, Capgemini 2025–26
       </div>
       <div class="hero-stats reveal reveal-d3">
-        <div class="stat"><div class="stat-n">13+</div><div class="stat-l">Years Exp in UX.</div></div>
+        <div class="stat"><div class="stat-n">13+</div><div class="stat-l">Years of Exp in UX.</div></div>
         <div class="stat"><div class="stat-n">24</div><div class="stat-l">Team Size</div></div>
         <div class="stat"><div class="stat-n">15+</div><div class="stat-l">RFPs Led</div></div>
         <div class="stat"><div class="stat-n">13%</div><div class="stat-l">ACV Increase</div></div>
