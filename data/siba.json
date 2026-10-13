@@ -1,5 +1,5 @@
 {
-  "_readme": "YOUR personal knowledge base. The AI agent reads ONLY from this file. Edit freely — add projects, update metrics, add certifications. Save and reload. No coding needed.",
+  "_readme": "YOUR personal knowledge base. The AI agent reads ONLY from this file. Edit freely - add projects, update metrics, add certifications. Save and reload. No coding needed.",
   "identity": {
     "name": "Siba Sankar Kabi",
     "role": "Studio Head & Principal UX Strategist",
@@ -36,7 +36,7 @@
       "wife": {
         "name": "Sasmita Panigrahi",
         "married_on": "July 15, 2018",
-        "note": "She's from Odisha too. Her recipes — especially Odia food — are Sankar's favourite meals."
+        "note": "She's from Odisha too. Her recipes - especially Odia food - are Sankar's favourite meals."
       },
       "children": [
         {
@@ -93,15 +93,15 @@
       {
         "name": "Asiya Firdose",
         "linkedin": "https://www.linkedin.com/in/asiya-firdose-hfi-cua-505a5655/",
-        "what_she_does": "UX professional — HFI Certified Usability Analyst (CUA). Works in design at Capgemini.",
+        "what_she_does": "UX professional - HFI Certified Usability Analyst (CUA). Works in design at Capgemini.",
         "how_we_know": "Colleague and friend."
       }
     ],
     "friend_activities": "We work together, party together, most of us are foodies. We go go-karting, watch and play cricket matches, play badminton tournaments together.",
     "food": {
       "preferences": "Prefers vegetables and home-cooked food. Sometimes enjoys non-veg and eggs. Not a sweet tooth at all.",
-      "loves_most": "Odia/Odisha recipes — especially food made by his wife Sasmita, his mother-in-law, and his mom. It's comfort food at its purest.",
-      "dislikes": "Too cold food and too hot food — temperature extremes are a no.",
+      "loves_most": "Odia/Odisha recipes - especially food made by his wife Sasmita, his mother-in-law, and his mom. It's comfort food at its purest.",
+      "dislikes": "Too cold food and too hot food - temperature extremes are a no.",
       "personality": "More of a flavour person than a dessert person. Homemade Odia food over any restaurant, any day."
     },
     "music": {
@@ -115,7 +115,7 @@
         "Kumar Sanu",
         "Kishore Kumar"
       ],
-      "note": "Classic Bollywood melodies — the kind that tell a story. Not background noise; actually listens and feels it."
+      "note": "Classic Bollywood melodies - the kind that tell a story. Not background noise; actually listens and feels it."
     },
     "spirituality": {
       "belief": "Spiritual but believes in nature as God more than organised religion. Follows Sadhguru and Ankur Warikoo for perspective and grounding.",
@@ -127,33 +127,33 @@
       "Chess"
     ],
     "hobbies": [
-      "Photography — uses iPhone 16, outdoor/nature/travel shots with careful composition",
-      "Travel — extensively travelled across India (Hampi, Ooty, Coonoor, Valparai, Coorg, Kudremukh, Belum Caves, Goa, Tirupati, Puri, Mysore, Hyderabad, Rourkela)",
+      "Photography - uses iPhone 16, outdoor/nature/travel shots with careful composition",
+      "Travel - extensively travelled across India (Hampi, Ooty, Coonoor, Valparai, Coorg, Kudremukh, Belum Caves, Goa, Tirupati, Puri, Mysore, Hyderabad, Rourkela)",
       "Trekking mountains",
       "Night camping",
       "Sketching",
       "Go-karting with friends",
       "Cricket and badminton with friends"
     ],
-    "car": "Ford Freestyle — part of the Ford Freestyle Owners Group India.",
+    "car": "Ford Freestyle - part of the Ford Freestyle Owners Group India.",
     "personality_traits": [
-      "Warm and approachable — people feel comfortable talking to him",
-      "Deeply observant — applies a UX lens even to everyday life",
+      "Warm and approachable - people feel comfortable talking to him",
+      "Deeply observant - applies a UX lens even to everyday life",
       "Family-first despite a demanding career",
-      "Outdoorsy and adventurous — trekking, camping, road trips",
-      "Genuinely funny in conversation — dry wit",
-      "Not flashy — prefers deep experiences over surface-level ones"
+      "Outdoorsy and adventurous - trekking, camping, road trips",
+      "Genuinely funny in conversation - dry wit",
+      "Not flashy - prefers deep experiences over surface-level ones"
     ],
     "what_people_say": [
-      "He listens more than he talks — which makes him a great designer and an even better friend",
-      "Very grounded for someone at his level — no ego",
+      "He listens more than he talks - which makes him a great designer and an even better friend",
+      "Very grounded for someone at his level - no ego",
       "His design critique is sharp but never unkind",
       "The kind of person who remembers details about your life weeks later"
     ]
   },
   "philosophy": {
-    "design_belief": "Great design is invisible — felt, not noticed.",
-    "ai_belief": "AI is not changing WHAT we do — it is changing HOW FAST it is done.",
+    "design_belief": "Great design is invisible - felt, not noticed.",
+    "ai_belief": "AI is not changing WHAT we do - it is changing HOW FAST it is done.",
     "approach": "I am equally comfortable presenting strategy in a boardroom and refining micro-interactions in Figma. The thread connecting both is empathy applied at every level of the work.",
     "passions": [
       "Human-centred AI experience design",
@@ -171,8 +171,8 @@
     "direct_reports": 6,
     "extended_team": 24,
     "responsibilities": [
-      "Running the Bengaluru CX studio end-to-end — strategy, delivery, people, culture",
-      "Spearheading 15+ major RFPs — effort estimation, resource loading, UX activity scoping",
+      "Running the Bengaluru CX studio end-to-end - strategy, delivery, people, culture",
+      "Spearheading 15+ major RFPs - effort estimation, resource loading, UX activity scoping",
       "Governing multi-brand design systems for Goodyear, Victoria's Secret, and BHSF",
       "Pioneering Gen AI and MCP (Model Context Protocol) training for the entire studio",
       "Leading design critiques, creative sessions, and team mentorship programmes",
@@ -198,7 +198,7 @@
       "reason": "Consistently going above and beyond expectations across studio leadership, RFP wins, and client delivery"
     },
     {
-      "name": "Pine App Award — 4 Categories",
+      "name": "Pine App Award - 4 Categories",
       "org": "Industry",
       "reason": "Won Responsive Web & Mobile Design, Mobile Website, Patient Portal, and Mobile Application categories for the Baptist Healthcare redesign"
     }
@@ -206,7 +206,7 @@
   "projects": [
     {
       "id": "baptist",
-      "name": "Healthcare Platform Redesign — Patient Portal & Pharmacy",
+      "name": "Healthcare Platform Redesign - Patient Portal & Pharmacy",
       "client": "Capgemini × Confidential Healthcare Client",
       "role": "UX Lead | Product Strategy & Design",
       "image": "images/work-baptist.jpg",
@@ -219,25 +219,25 @@
         "AI-Assisted",
         "Mobile"
       ],
-      "summary": "End-to-end UI/UX overhaul of a multi-module patient-facing mobile health platform — used across the full care journey.",
-      "detail": "The refresh was grounded in over 200 survey responses sent to BRGs (Business Resource Groups), revealing core user goals (efficiency, prompt communication, reliable information, quick task completion) and pain points (complex interfaces, lack of personalisation, overwhelming information, accessibility gaps). I led design across five modules: Patient mobile app, Phressia Dashboard, Shopify Pharmacy, Chatbot (PineApp Connect), and the internal Employee App. The visual direction was 'Calm & Simple with Morphism' — frosted glass effects, semi-transparent layers, and 3D icons — validated against a competing 'Immersive Realistic 3D' direction through A/B testing and two rounds of moderated usability testing with real patients.",
+      "summary": "End-to-end UI/UX overhaul of a multi-module patient-facing mobile health platform - used across the full care journey.",
+      "detail": "The refresh was grounded in over 200 survey responses sent to BRGs (Business Resource Groups), revealing core user goals (efficiency, prompt communication, reliable information, quick task completion) and pain points (complex interfaces, lack of personalisation, overwhelming information, accessibility gaps). I led design across five modules: Patient mobile app, Phressia Dashboard, Shopify Pharmacy, Chatbot (PineApp Connect), and the internal Employee App. The visual direction was 'Calm & Simple with Morphism'- frosted glass effects, semi-transparent layers, and 3D icons - validated against a competing 'Immersive Realistic 3D' direction through A/B testing and two rounds of moderated usability testing with real patients.",
       "process": [
         "Research phase: 200+ patient surveys via BRGs, user interviews, competitive benchmarking (Amazon, Bank of America, Fidelity Investments login patterns)",
         "Wireframe Design → Usability Tests → A/B Testing → Moderated Testing (two full rounds)",
         "VISUAL DESIGN IDEATION: Visual Preference Testing between Morphism and Immersive 3D concepts",
-        "Final Concept Design: Calm & Simple with Morphism selected — 3D icons for cards, line icons for list views, less clutter, clear bottom navigation",
+        "Final Concept Design: Calm & Simple with Morphism selected - 3D icons for cards, line icons for list views, less clutter, clear bottom navigation",
         "Homepage Wireframes refined based on user feedback: cleaner top nav, half-image carousel (Nielsen Norman backed), 3D icons on feature cards, overlay for extra features",
-        "Login Flow: Redesigned under Okta limitations — applied progressive disclosure (Hick's Law), split screen update (Login / Create Account / Continue as Guest), biometric options, reduced cognitive load",
-        "Wellness Center repositioned higher on homepage — research showed patient education improves outcomes; community engagement promotes health equity",
+        "Login Flow: Redesigned under Okta limitations - applied progressive disclosure (Hick's Law), split screen update (Login / Create Account / Continue as Guest), biometric options, reduced cognitive load",
+        "Wellness Center repositioned higher on homepage - research showed patient education improves outcomes; community engagement promotes health equity",
         "Bottom navigation renamed: 'Visits' → 'My Visits', 'Get Care' → 'Find Care' (more action-oriented)"
       ],
       "design_decisions": [
-        "Chose Morphism over Immersive 3D: A/B test and moderated testing showed patients felt calmer and less overwhelmed with frosted glass approach — critical for a healthcare context where anxiety is already high",
-        "Progressive disclosure in login: Applied Hick's Law — the time it takes to make a decision increases with choices. Reduced login screen to three clear paths with progressive reveal",
+        "Chose Morphism over Immersive 3D: A/B test and moderated testing showed patients felt calmer and less overwhelmed with frosted glass approach - critical for a healthcare context where anxiety is already high",
+        "Progressive disclosure in login: Applied Hick's Law - the time it takes to make a decision increases with choices. Reduced login screen to three clear paths with progressive reveal",
         "Half-image carousel indicator: Nielsen Norman research backs half-visible images as stronger affordance for scrollable carousels than dot indicators",
         "Notification redesign: Differentiated actionable vs informational updates. Added swipe gestures (LinkedIn model) for quick management",
-        "Information categorisation in My Account: Grouped by actions-to-be-taken rather than data type — directly addressing the 'overwhelming information' pain point from research",
-        "Records highlighted for immediate attention: Surface critical records first — addresses 'prompt communication' and 'inconsistent updates' pain points"
+        "Information categorisation in My Account: Grouped by actions-to-be-taken rather than data type - directly addressing the 'overwhelming information' pain point from research",
+        "Records highlighted for immediate attention: Surface critical records first - addresses 'prompt communication' and 'inconsistent updates' pain points"
       ],
       "team": [
         "Phil Wilson (Digital Experience Practice Lead)",
@@ -256,10 +256,10 @@
         "Won 4 award categories: Responsive Web & Mobile Design, Mobile Website, Patient Portal, Mobile Application",
         "40% faster design system component creation using Claude + Figma Make",
         "Reduced appointment drop-off rates significantly",
-        "57% of customers unlikely to recommend a poorly designed app — this refresh directly addressed brand perception risk",
+        "57% of customers unlikely to recommend a poorly designed app - this refresh directly addressed brand perception risk",
         "Validated through 2 rounds of moderated usability testing and A/B testing with real patients"
       ],
-      "what_id_do_differently": "I'd bring in accessibility testing earlier — we discovered some contrast ratio issues in the Morphism concept only at the moderated testing stage, which required rework. Running a dedicated accessibility audit in parallel with visual preference testing would have saved two sprints.",
+      "what_id_do_differently": "I'd bring in accessibility testing earlier - we discovered some contrast ratio issues in the Morphism concept only at the moderated testing stage, which required rework. Running a dedicated accessibility audit in parallel with visual preference testing would have saved two sprints.",
       "ai_tools_used": [
         "Claude",
         "Figma Make"
@@ -281,21 +281,21 @@
         "Middle East",
         "Component Library"
       ],
-      "summary": "Built the UX design and component library for a conversational AI platform serving 700+ government services across the region — starting with traffic fine payment as the pilot service.",
-      "detail": "This was a unified government services platform for a Middle Eastern government. The brief was to create an AI chat experience that offers personalised, intelligent conversations for citizens — starting with traffic fine payment as a proof of concept across 700+ available services. I worked alongside Özgür Mutlu Genc (UI/UX Design Manager) and Kishor Sathe (UX/UI Lead, client side) on a 4-month engagement. The work spanned component audit, competitive analysis, user flow design, wireframing, style guide creation, UI design, and high-fidelity prototype delivery.",
+      "summary": "Built the UX design and component library for a conversational AI platform serving 700+ government services across the region - starting with traffic fine payment as the pilot service.",
+      "detail": "This was a unified government services platform for a Middle Eastern government. The brief was to create an AI chat experience that offers personalised, intelligent conversations for citizens - starting with traffic fine payment as a proof of concept across 700+ available services. I worked alongside Özgür Mutlu Genc (UI/UX Design Manager) and Kishor Sathe (UX/UI Lead, client side) on a 4-month engagement. The work spanned component audit, competitive analysis, user flow design, wireframing, style guide creation, UI design, and high-fidelity prototype delivery.",
       "process": [
         "Component Audit: Audited existing web pages, extracted recurring elements, categorised screenshots by component type and frequency. Compiled a prioritised list of essential components for the design system.",
-        "Competitor Analysis: Examined direct and indirect competitors for conversational AI patterns. Observed sharp, modern, welcoming styling — aimed to evoke similar trust and approachability for government context.",
-        "User Flow: Mapped full service flow for traffic fine payment — how users interact with current service, what is working, key pain points identified",
+        "Competitor Analysis: Examined direct and indirect competitors for conversational AI patterns. Observed sharp, modern, welcoming styling - aimed to evoke similar trust and approachability for government context.",
+        "User Flow: Mapped full service flow for traffic fine payment - how users interact with current service, what is working, key pain points identified",
         "Key pain points addressed: Breadcrumb navigation (users lost in multi-step flows), search bar improvements, chart/graph interaction, adaptive conversation flows, robust privacy controls",
-        "Change Log process: Structured change management with dated requests — e.g. removing restriction status items that cannot be verified at runtime, replacing mobile/address selectors with proper form fields",
+        "Change Log process: Structured change management with dated requests - e.g. removing restriction status items that cannot be verified at runtime, replacing mobile/address selectors with proper form fields",
         "Design System: 11+ services covered, 76+ components built, adaptive conversation flows, easy-to-navigate interface, self-improving AI technology hooks",
         "High-fidelity prototype delivered with full presentation"
       ],
       "design_decisions": [
-        "Adaptive conversation flows over rigid decision trees: Government services have high variability — a rigid chatbot fails edge cases. Designed for contextual branching that could be extended to all 700+ services",
-        "Progressive disclosure for fine details: Citizens have varying digital literacy. Started with summary information, allowed progressive reveal of detail — reduced cognitive overload",
-        "Privacy controls as first-class UI element: Government AI handling personal data. Made privacy settings visible and accessible — not buried in settings",
+        "Adaptive conversation flows over rigid decision trees: Government services have high variability - a rigid chatbot fails edge cases. Designed for contextual branching that could be extended to all 700+ services",
+        "Progressive disclosure for fine details: Citizens have varying digital literacy. Started with summary information, allowed progressive reveal of detail - reduced cognitive overload",
+        "Privacy controls as first-class UI element: Government AI handling personal data. Made privacy settings visible and accessible - not buried in settings",
         "Breadcrumb navigation: Users were getting lost in multi-step payment flows. Explicit breadcrumbs reduced abandonment at payment confirmation step",
         "Accessibility-first colour system: Government platform must serve all citizens. Contrast ratios and touch target sizes were non-negotiable constraints"
       ],
@@ -312,13 +312,13 @@
         "Scalable component library adopted across all digital touchpoints",
         "Cohesive design language across government AI services"
       ],
-      "what_id_do_differently": "I'd push harder for citizen co-design sessions earlier in the process. We had strong competitor analysis and internal stakeholder input, but government services often serve users with very different digital confidence levels — more diverse user testing in phase one would have sharpened the accessibility decisions.",
+      "what_id_do_differently": "I'd push harder for citizen co-design sessions earlier in the process. We had strong competitor analysis and internal stakeholder input, but government services often serve users with very different digital confidence levels - more diverse user testing in phase one would have sharpened the accessibility decisions.",
       "ai_tools_used": [],
       "scale": "700+ government services, Middle East region"
     },
     {
       "id": "goodyear",
-      "name": "Global Tire Manufacturer — B2C & B2B Redesign (APAC)",
+      "name": "Global Tire Manufacturer - B2C & B2B Redesign (APAC)",
       "client": "Confidential Tire Manufacturer (APAC)",
       "role": "Lead Experience Designer | UX Strategist",
       "image": "images/work-goodyear.jpg",
@@ -332,24 +332,24 @@
         "Automotive",
         "E-Commerce"
       ],
-      "summary": "Led the discovery and UX strategy phase for a global tire manufacturer's APAC digital transformation — B2C and B2B website redesign across multiple markets.",
+      "summary": "Led the discovery and UX strategy phase for a global tire manufacturer's APAC digital transformation - B2C and B2B website redesign across multiple markets.",
       "detail": "I served as Lead Experience Designer on the client's APAC team alongside Pratibha (Digital Transformation Lead), Sithi (Visual Designer), and Charan (UX Designer & Researcher). The project began with a structured discovery phase focused on understanding what the client knew, benchmarking the client's existing APAC geo sites, and learning from competitors including Bridgestone, Michelin, Continental, and indirect competitors like Apple's digital experience approach. Key transformation drivers from the client included: increasing average session duration for new users to 3 minutes, reducing bounce rate from 53.2% to below 35%, converting 3%+ of website visitors to eNews subscribers, and crafting an omnichannel experience from digital to physical store.",
       "process": [
-        "Week 1 — Unravel: Kick-off workshops with key stakeholders, understanding business goals, defining success metrics, reviewing current state artefacts",
-        "Weeks 2–3 — Weave the Golden Thread: User interviews, CUG sessions, secondary research, competitor study, persona mapping, as-is customer journey & gap analysis, design language review",
-        "Weeks 4–5 — Realise the Potential: To-be customer journey, feature set derivation, technology landscape definition, finalising visual design language, high-fidelity prototype for critical path, sprint plan definition",
+        "Week 1 - Unravel: Kick-off workshops with key stakeholders, understanding business goals, defining success metrics, reviewing current state artefacts",
+        "Weeks 2-3 - Weave the Golden Thread: User interviews, CUG sessions, secondary research, competitor study, persona mapping, as-is customer journey & gap analysis, design language review",
+        "Weeks 4-5 - Realise the Potential: To-be customer journey, feature set derivation, technology landscape definition, finalising visual design language, high-fidelity prototype for critical path, sprint plan definition",
         "Benchmarked US and international client sites across: User-centric design, personalisation, tire selector tool, comparison features, educational content, customer reviews, analytics/monitoring",
-        "Competitor analysis: Bridgestone, Michelin, Continental, Hankook, Cooper (direct); Apple, Amazon (indirect) — evaluated ease of use, navigation, search, product information, mobile features, AI capabilities",
+        "Competitor analysis: Bridgestone, Michelin, Continental, Hankook, Cooper (direct); Apple, Amazon (indirect) - evaluated ease of use, navigation, search, product information, mobile features, AI capabilities",
         "Conducted 34 one-to-one interviews with national and international users across English-speaking markets",
         "Personas developed: Harry (Fleet Owner, Charlotte NC, 38) focused on maximising fleet efficiency and ROI; Smith (Field Service Technician, 30) managing work orders via mobile; Nathalie (Customer Service Representative) dispatching technicians and managing work orders",
         "Journey maps created: Mapped quote creation, field maintenance, work order generation, invoice generation, and payment completion stages with pain points and opportunities at each stage"
       ],
       "design_decisions": [
-        "Persona-based personalised content over generic product pages: Fleet owners (B2B) and individual consumers (B2C) have fundamentally different decision journeys — separated content architecture accordingly",
+        "Persona-based personalised content over generic product pages: Fleet owners (B2B) and individual consumers (B2C) have fundamentally different decision journeys - separated content architecture accordingly",
         "Tire selector tool as primary homepage CTA: Research showed users arrive knowing their vehicle, not the tire specification. The selector reduces friction at the most critical conversion point",
         "Omnichannel journey design: Digital-to-store handoff was a key business goal. Designed appointment booking and store locator as seamless continuations, not separate experiences",
         "Educational content integration: B2B customers (fleet owners) need technical data; B2C customers need guidance. Content architecture served both without overwhelming either",
-        "Component library approach: Designing a governed system rather than bespoke pages — directly enabled the 32% reduction in front-end development time"
+        "Component library approach: Designing a governed system rather than bespoke pages - directly enabled the 32% reduction in front-end development time"
       ],
       "team": [
         "Pratibha (Digital Transformation Leader)",
@@ -364,7 +364,7 @@
         "34 one-to-one user interviews conducted across national and international markets",
         "Full double-diamond discovery delivered: stakeholder workshops, personas, as-is/to-be journey maps, information architecture, high-fidelity prototype"
       ],
-      "what_id_do_differently": "The fleet owner (B2B) persona was developed later in the process than ideal — we started with a B2C lens and had to substantially restructure the IA mid-discovery when B2B requirements became clearer. Starting with dual-track persona work in week one would have saved time and produced a sharper architecture sooner.",
+      "what_id_do_differently": "The fleet owner (B2B) persona was developed later in the process than ideal - we started with a B2C lens and had to substantially restructure the IA mid-discovery when B2B requirements became clearer. Starting with dual-track persona work in week one would have saved time and produced a sharper architecture sooner.",
       "ai_tools_used": [],
       "transformation_goals": [
         "Increase session duration for new users to 3 minutes",
@@ -378,7 +378,7 @@
     },
     {
       "id": "vs",
-      "name": "Global Fashion Retailer — E-Commerce Design System",
+      "name": "Global Fashion Retailer - E-Commerce Design System",
       "client": "Confidential Fashion Retailer",
       "role": "UX/UI Designer | Design System Lead",
       "image": "images/work-vs.jpg",
@@ -391,23 +391,23 @@
         "Design System",
         "Global"
       ],
-      "summary": "Built the Atomic Design system for a global fashion retailer's e-commerce platform — mobile and web — establishing 100% visual consistency across global markets.",
+      "summary": "Built the Atomic Design system for a global fashion retailer's e-commerce platform - mobile and web - establishing 100% visual consistency across global markets.",
       "detail": "Designed and documented a comprehensive Atomic Design system covering the full e-commerce experience: product listing pages, product detail pages (PDP), shopping bag, checkout, size charts, promotional banners, and user account flows. The system defined a complete typographic scale (fs-xs at 9.48/12 through fs-6xl at 27.37/40), a full size/colour selection component library, shopping bag interactions, offer code management, and progressive shipping threshold indicators. All components were built accessibility-compliant with correct contrast ratios and touch target sizes, and the handoff documentation made engineering integration seamless.",
       "process": [
         "Atomic Design methodology: Atoms (typography scale, colour tokens, icons) → Molecules (size selectors, colour swatches, rating components) → Organisms (product cards, PDPs, shopping bag) → Templates → Pages",
-        "Typography system: Defined 9-step scale from fs-xs (9.48/12, 0.79rem) to fs-6xl (27.37/40) — consistent across mobile and web",
+        "Typography system: Defined 9-step scale from fs-xs (9.48/12, 0.79rem) to fs-6xl (27.37/40) - consistent across mobile and web",
         "Product Detail Page (PDP): Size chart integration, band/cup selector, colour swatch system with +16 overflow pattern, model sizing notes (e.g. 'Mia is 5'10\" and wears large'), multiple model photography system",
         "Shopping bag: Progressive shipping threshold bar ($0 → $100), offer code module, cross-sell recommendations, save for later functionality",
-        "Size system: Comprehensive band (30–38) + cup (AA–DDD/F) matrix for bras; XS–XXL for apparel; Short/Regular/Long length variants with height guidance",
+        "Size system: Comprehensive band (30-38) + cup (AA - DDD/F) matrix for bras; XS - XXL for apparel; Short/Regular/Long length variants with height guidance",
         "Review system: Verified purchase indicators, fit/comfort/quality ratings, body type and size-worn attribution for social proof",
         "Promotional system: 'New Savings', 'New Sizes', clearance pricing components, carousel for multiple marketing sections",
         "Accessibility audit: Contrast ratios, touch targets, screen reader annotations throughout"
       ],
       "design_decisions": [
-        "Half-visible images for carousels: Backed by Nielsen Norman Group — stronger affordance that content is scrollable than dot indicators. Applied throughout PLP and shopping bag recommendations",
+        "Half-visible images for carousels: Backed by Nielsen Norman Group - stronger affordance that content is scrollable than dot indicators. Applied throughout PLP and shopping bag recommendations",
         "Progressive shipping threshold: Research shows real-time progress toward a goal (the $100 threshold bar) increases average order value. Placed it contextually across bag, checkout, and PDP",
         "Multiple model photography with size attribution: Fashion UX research shows customers convert better when they can find a model with their measurements. Designed the model note system (height + size worn) as a first-class component",
-        "+16 overflow pattern for colour/size variants: Avoids overwhelming the PDP with excessive options while maintaining discoverability — clicking reveals full range",
+        "+16 overflow pattern for colour/size variants: Avoids overwhelming the PDP with excessive options while maintaining discoverability - clicking reveals full range",
         "Atomic Design over page templates: The global scale of this retailer (multiple markets, seasonal campaigns, constant new launches) demands a system, not pages. Atoms compose into organisms that can be recombined for any campaign without breaking consistency"
       ],
       "team": [
@@ -427,7 +427,7 @@
     },
     {
       "id": "oracle",
-      "name": "Oracle for Startups — StartupBeat Portal",
+      "name": "Oracle for Startups - StartupBeat Portal",
       "client": "Oracle India Pvt Ltd",
       "role": "UX Designer",
       "image": null,
@@ -439,11 +439,11 @@
         "Oracle",
         "Startup Ecosystem"
       ],
-      "summary": "End-to-end UX for Oracle's startup portal — GTM, Credit to Scale, Mentorship, Migration, Virtual Library modules across iOS, Android, and web.",
+      "summary": "End-to-end UX for Oracle's startup portal - GTM, Credit to Scale, Mentorship, Migration, Virtual Library modules across iOS, Android, and web.",
       "detail": "Built using OJET 11 and the Oracle Redwood Design System across iOS, Android, and web. Each of the 6 modules (GTM, Credit to Scale, Mentorship, Migration, Virtual Library, User Management) was a distinct research and design cycle with its own user interviews, flows, and prototypes.",
       "process": [
         "OJET 11 and Redwood Design System governance throughout",
-        "Separate user research cycles per module — startup founders have very different needs at GTM stage vs Migration stage",
+        "Separate user research cycles per module - startup founders have very different needs at GTM stage vs Migration stage",
         "Cross-platform design: iOS, Android, and web with responsive and native pattern adaptation",
         "User Management module: Role-based access design for startup teams with multiple stakeholders"
       ],
@@ -459,14 +459,14 @@
         "Shipped across iOS, Android, and web",
         "6 distinct modules delivered end-to-end",
         "Oracle Redwood Design System governance maintained",
-        "4-year engagement (Oct 2018 – Nov 2022)"
+        "4-year engagement (Oct 2018 - Nov 2022)"
       ],
-      "what_id_do_differently": "I'd invest more in cross-module navigation testing. Users frequently needed to move between the Mentorship and GTM modules, but we designed them as separate flows initially — the integration points required rework in later sprints.",
+      "what_id_do_differently": "I'd invest more in cross-module navigation testing. Users frequently needed to move between the Mentorship and GTM modules, but we designed them as separate flows initially - the integration points required rework in later sprints.",
       "ai_tools_used": []
     },
     {
       "id": "gamemela",
-      "name": "Gamemela — Online Gaming Platform",
+      "name": "Gamemela - Online Gaming Platform",
       "client": "Funizen Solutions Pvt Ltd",
       "role": "UI/UX Designer",
       "image": "images/port-1.jpg",
@@ -477,8 +477,8 @@
         "Case Study",
         "E-Commerce"
       ],
-      "summary": "Full end-to-end UX for a gaming discovery and purchase platform — research through hi-fi artwork across Android, web, and desktop.",
-      "detail": "Users could discover, play, and purchase game codes and keys. The project ran the full Double Diamond — user interviews, usability testing, wireframes, and final hi-fi designs across Android, web, and desktop.",
+      "summary": "Full end-to-end UX for a gaming discovery and purchase platform - research through hi-fi artwork across Android, web, and desktop.",
+      "detail": "Users could discover, play, and purchase game codes and keys. The project ran the full Double Diamond - user interviews, usability testing, wireframes, and final hi-fi designs across Android, web, and desktop.",
       "process": [
         "User research: Interviews with gamers to understand discovery behaviour, purchase decision triggers, trust signals for digital key purchases",
         "Double Diamond: Discover → Define → Develop → Deliver",
@@ -487,7 +487,7 @@
       ],
       "design_decisions": [
         "Trust-first design for digital key purchases: Buying game keys online involves perceived risk (invalid keys, scams). Designed seller verification and key validity indicators as primary trust signals",
-        "Discovery-first homepage: Unlike Steam (library-focused), Gamemela users came to discover new games — curated discovery took priority over search"
+        "Discovery-first homepage: Unlike Steam (library-focused), Gamemela users came to discover new games - curated discovery took priority over search"
       ],
       "team": [
         "Siba Sankar Kabi (UI/UX Designer)"
@@ -507,8 +507,8 @@
       "org": "cap",
       "role": "Studio Head & Principal UX Strategist",
       "company": "Capgemini India Ltd",
-      "period": "Oct 2022 – Present",
-      "desc": "Built and now run the Bengaluru CX studio — six direct reports, twenty-four across the extended team. Spearheaded 15+ RFPs contributing to a 13% ACV jump. Pioneered GenAI and MCP tooling for the studio. 90%+ retention through structured career pathing.",
+      "period": "Oct 2022 - Present",
+      "desc": "Built and now run the Bengaluru CX studio - six direct reports, twenty-four across the extended team. Spearheaded 15+ RFPs contributing to a 13% ACV jump. Pioneered GenAI and MCP tooling for the studio. 90%+ retention through structured career pathing.",
       "chips": [
         "GEM Award",
         "RFP Strategy",
@@ -519,10 +519,10 @@
     },
     {
       "org": "oracle",
-      "role": "UX Designer — Enterprise Products",
+      "role": "UX Designer - Enterprise Products",
       "company": "Oracle India Pvt Ltd",
-      "period": "Oct 2018 – Nov 2022",
-      "desc": "End-to-end UX for Oracle for Startups portal (StartupBeat). OJET 11 and Redwood Design System. GTM, Credit to Scale, Mentorship, Migration, and Virtual Library modules — each a distinct research and design cycle.",
+      "period": "Oct 2018 - Nov 2022",
+      "desc": "End-to-end UX for Oracle for Startups portal (StartupBeat). OJET 11 and Redwood Design System. GTM, Credit to Scale, Mentorship, Migration, and Virtual Library modules - each a distinct research and design cycle.",
       "chips": [
         "Enterprise UX",
         "Redwood DS",
@@ -531,10 +531,10 @@
     },
     {
       "org": "oracle",
-      "role": "UX Designer — Startup Accelerator",
+      "role": "UX Designer - Startup Accelerator",
       "company": "Primus Global / Oracle India",
-      "period": "May 2017 – Oct 2018",
-      "desc": "Oracle Cookbook navigation and Redwood DS for OSCA products — GTM, Alumni, Cloud Usage, Mentor Pool. CRM dashboards for the global startup ecosystem.",
+      "period": "May 2017 - Oct 2018",
+      "desc": "Oracle Cookbook navigation and Redwood DS for OSCA products - GTM, Alumni, Cloud Usage, Mentor Pool. CRM dashboards for the global startup ecosystem.",
       "chips": [
         "Oracle Cookbook",
         "Redwood DS"
@@ -543,8 +543,8 @@
     {
       "org": "early",
       "role": "UI/UX Designer",
-      "company": "Funizen Solutions — Gamemela",
-      "period": "Apr 2016 – May 2017",
+      "company": "Funizen Solutions - Gamemela",
+      "period": "Apr 2016 - May 2017",
       "desc": "Full UX process for a gaming discovery and purchase platform. Research through hi-fi artwork. Full case study on Behance.",
       "chips": [
         "Gaming UX",
@@ -555,7 +555,7 @@
       "org": "early",
       "role": "Art Director & Visual Designer",
       "company": "Cherish Maternity Pvt Ltd",
-      "period": "Apr 2012 – Mar 2016",
+      "period": "Apr 2012 - Mar 2016",
       "desc": "E-commerce portal, product packaging, banners. Client work for Mahindra, HCL, and ITC. Managed projects from concept through server deployment.",
       "chips": [
         "E-commerce",
@@ -567,7 +567,7 @@
       "org": "early",
       "role": "Web Designer",
       "company": "Jivity India Pvt Ltd",
-      "period": "Jul 2011 – Mar 2012",
+      "period": "Jul 2011 - Mar 2012",
       "desc": "Web design and front-end development for client projects.",
       "chips": [
         "Web Design",
@@ -621,7 +621,7 @@
       },
       {
         "name": "Gamma",
-        "use": "Stakeholder presentations — 50% faster turnaround"
+        "use": "Stakeholder presentations - 50% faster turnaround"
       },
       {
         "name": "Flux / Nano Banana",
@@ -656,31 +656,31 @@
   },
   "recruiter_qa": {
     "_note": "First-person answers for recruiter/hiring manager questions. Agent uses these verbatim or adapted.",
-    "ux_process": "I map my process closely to the project's scale — six key stages: Discovery & Stakeholder Alignment, User Research & Problem Definition, IA & User Flows, Wireframing & Prototyping, Usability Testing, and Design Handoff. At Capgemini I adapted this into a Lean UX & Agile framework, which helped cut design debt by 20%.",
+    "ux_process": "I map my process closely to the project's scale - six key stages: Discovery & Stakeholder Alignment, User Research & Problem Definition, IA & User Flows, Wireframing & Prototyping, Usability Testing, and Design Handoff. At Capgemini I adapted this into a Lean UX & Agile framework, which helped cut design debt by 20%.",
     "user_research": "I balance qualitative and quantitative insights. Qualitatively: user interviews, contextual inquiries, and usability tests. Quantitatively: analytics, heatmaps, and funnel data. The goal is translating messy data into actionable journey maps and validated recommendations that actually back up the product direction.",
     "proudest_project": "The Baptist Healthcare ecosystem overhaul. The onboarding and appointment flows had massive drop-offs. By leaning into user testing, simplifying complex medical form workflows, and applying progressive disclosure, we drove an 18% increase in patient digital bookings while cutting drop-off rates significantly. We also won four Pine App Award categories for it.",
-    "stakeholder_disagreement": "I remove pure opinions from the room and let evidence do the talking. I bring user research recordings, live usability metrics, and business data to the table. I run collaborative design workshops to align cross-functional stakeholders around user needs and business metrics — rather than blindly defending a screen design.",
-    "team_size": "I currently direct the Capgemini Bengaluru Design & CX Studio — 6 direct UX leads with strategic oversight of a 24-member multi-disciplinary team. Over my 13+ years I've scaled teams from 3 to 24, handling mentoring, career pathing, hiring, and design quality standards.",
+    "stakeholder_disagreement": "I remove pure opinions from the room and let evidence do the talking. I bring user research recordings, live usability metrics, and business data to the table. I run collaborative design workshops to align cross-functional stakeholders around user needs and business metrics - rather than blindly defending a screen design.",
+    "team_size": "I currently direct the Capgemini Bengaluru Design & CX Studio - 6 direct UX leads with strategic oversight of a 24-member multi-disciplinary team. Over my 13+ years I've scaled teams from 3 to 24, handling mentoring, career pathing, hiring, and design quality standards.",
     "measuring_success": "It has to touch both user experience and business health. I track task completion rates, user satisfaction, and SUS (System Usability Scale) alongside business numbers like conversion growth, retention, and time on task. The right metrics always depend on the product's strategic targets.",
     "design_systems": "Design system governance is a major focus for me. I've architected and governed global enterprise design systems for Goodyear APAC and Victoria's Secret using Atomic Design. By building reusable component architectures, design tokens, and clear Figma documentation, we cut front-end developer build times by 32%.",
-    "accessibility": "Accessibility isn't a final checklist item — it's baked into my process from day one. I follow WCAG 2.1 guidelines: color contrast, keyboard navigation, focus states, screen reader compatibility. Designing inclusively builds better products for everyone, not just compliance.",
+    "accessibility": "Accessibility isn't a final checklist item - it's baked into my process from day one. I follow WCAG 2.1 guidelines: color contrast, keyboard navigation, focus states, screen reader compatibility. Designing inclusively builds better products for everyone, not just compliance.",
     "prioritization": "I evaluate features based on user impact, business value, engineering feasibility, and strategic alignment. I use Impact vs Effort matrices and collaborate closely with product and engineering leads to tackle high-value wins first.",
-    "mentoring": "I focus on helping designers understand the *why* behind decisions rather than handing them answers. I set up design critique sessions, establish structured career growth tracks (HFI, Google certification roadmaps), and encourage product thinking. It's worked well — we maintain 90%+ team retention at our studio.",
-    "ai_in_ux": "AI is modernising the workflow, not replacing it. I treat it as a core strategic partner. I've integrated a custom multi-modal stack — Claude for logic and frameworks, Flux for image generation, Perplexity for deep research — and pioneered MCP (Model Context Protocol) training studio-wide. This bumped early-stage ideation speed by 40%.",
+    "mentoring": "I focus on helping designers understand the *why* behind decisions rather than handing them answers. I set up design critique sessions, establish structured career growth tracks (HFI, Google certification roadmaps), and encourage product thinking. It's worked well - we maintain 90%+ team retention at our studio.",
+    "ai_in_ux": "AI is modernising the workflow, not replacing it. I treat it as a core strategic partner. I've integrated a custom multi-modal stack - Claude for logic and frameworks, Flux for image generation, Perplexity for deep research - and pioneered MCP (Model Context Protocol) training studio-wide. This bumped early-stage ideation speed by 40%.",
     "why_new_opportunity": "With 13+ years in the field, I'm ready to step into a role where I can drive large-scale strategic impact, shape product visions from inception, lead high-performance teams, and help organisations scale their design maturity to an enterprise-wide standard.",
-    "why_hire_me": "I bring a strong blend of deep design craft, business-minded leadership, and technical innovation. From driving a 13% ACV increase across 15+ RFPs to governing multi-brand design systems and pioneering AI tooling — I know how to make design measurable and profitable for an enterprise.",
+    "why_hire_me": "I bring a strong blend of deep design craft, business-minded leadership, and technical innovation. From driving a 13% ACV increase across 15+ RFPs to governing multi-brand design systems and pioneering AI tooling - I know how to make design measurable and profitable for an enterprise.",
     "leadership_philosophy": "Leadership is about creating clarity and removing roadblocks so your team can do their best work. My job is to protect creative space, cultivate data-driven mindsets, and make sure every designer understands how their pixels tie directly to user needs and business objectives.",
-    "aligning_with_business": "You have to speak the business language first. Before sketching any solution, I align with stakeholders on product KPIs, business models, and strategic priorities. When you connect intuitive user flows directly to numbers like customer lifetime value, retention, or operational efficiency — UX earns its seat at the executive table.",
+    "aligning_with_business": "You have to speak the business language first. Before sketching any solution, I align with stakeholders on product KPIs, business models, and strategic priorities. When you connect intuitive user flows directly to numbers like customer lifetime value, retention, or operational efficiency - UX earns its seat at the executive table.",
     "design_failure": "Early in my career I designed an interface stakeholders loved on paper, but it completely stumbled during user validation because it was too complex. It taught me: stakeholder alignment doesn't mean anything without user validation. Ever since, I test and validate core product assumptions as early as possible.",
     "salary_expectations": "I'm looking for a fair compensation package that properly matches a leadership role of this scale, current market standards, and the cross-functional value I bring. I'm open to discussing the full structure once we find the right fit.",
     "notice_period": "My notice period is standard, and I'm fully committed to ensuring a structured handoff and knowledge transfer at Capgemini before stepping into my next chapter.",
-    "five_years": "I see myself directing a global design organisation, establishing enterprise-level product strategies, and mentoring the next generation of UX leaders — while continuously pushing the envelope on AI-integrated design workflows."
+    "five_years": "I see myself directing a global design organisation, establishing enterprise-level product strategies, and mentoring the next generation of UX leaders - while continuously pushing the envelope on AI-integrated design workflows."
   },
   "certifications": [
-    "HFI Certified UX Analyst (CXA) — Human Factors International",
-    "Google UX Foundation Certificate (2020–21)",
+    "HFI Certified UX Analyst (CXA) - Human Factors International",
+    "Google UX Foundation Certificate (2020-21)",
     "Google AI Professional Certificate",
-    "Claude Code in Action — Anthropic",
+    "Claude Code in Action - Anthropic",
     "Certified Agile Scrum Master (2021)",
     "Intro to ChatGPT and Generative AI"
   ],
@@ -688,12 +688,12 @@
     {
       "degree": "Bachelor of Science",
       "institution": "Sambalpur University",
-      "year": "2000–2003"
+      "year": "2000-2003"
     },
     {
       "degree": "Multimedia Design",
       "institution": "Animaster Multimedia Institute, Bangalore",
-      "year": "2006–2008"
+      "year": "2006-2008"
     }
   ],
   "testimonials": [
@@ -702,14 +702,14 @@
       "role": "Senior Director, DCX, Capgemini",
       "photo": "images/pratibha.jpg",
       "initials": "PS",
-      "text": "Siba brings a rare combination of strategic thinking and hands-on execution to every engagement. On the Goodyear APAC transformation, he led the experience design with clarity and conviction — navigating complex stakeholder landscapes, synthesising research into sharp design decisions, and delivering outcomes that directly moved our KPIs. His ability to communicate design intent to both technical and business audiences is exceptional."
+      "text": "Siba brings a rare combination of strategic thinking and hands-on execution to every engagement. On the Goodyear APAC transformation, he led the experience design with clarity and conviction - navigating complex stakeholder landscapes, synthesising research into sharp design decisions, and delivering outcomes that directly moved our KPIs. His ability to communicate design intent to both technical and business audiences is exceptional."
     },
     {
       "name": "Joshua A. Davies",
       "role": "Senior UX Designer, Oracle Cloud",
       "photo": "images/josh.jpg",
       "initials": "JD",
-      "text": "He respected the desire for user-focused design and prioritised it with every implementation — which contributed directly to our product's success. He wasn't afraid to push back constructively and always had users' best interests at heart. An excellent teammate and absolute joy to work with. Any company would be lucky to have him."
+      "text": "He respected the desire for user-focused design and prioritised it with every implementation - which contributed directly to our product's success. He wasn't afraid to push back constructively and always had users' best interests at heart. An excellent teammate and absolute joy to work with. Any company would be lucky to have him."
     },
     {
       "name": "Lourdes Saca",
@@ -724,19 +724,19 @@
       "role": "",
       "photo": null,
       "initials": "?",
-      "text": "Recommendation pending — add a quote from a direct report or stakeholder from my current Capgemini studio leadership role."
+      "text": "Recommendation pending - add a quote from a direct report or stakeholder from my current Capgemini studio leadership role."
     }
   ],
   "portfolio_items": [
     {
-      "name": "Gamemela — Full Flow",
+      "name": "Gamemela - Full Flow",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/port-1.jpg",
       "link": "https://www.behance.net/gallery/150078893/Game-Mela-Case-study"
     },
     {
-      "name": "Review & Rating — Pitch Day",
+      "name": "Review & Rating - Pitch Day",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/port-2.jpg",
@@ -764,7 +764,7 @@
       "link": null
     },
     {
-      "name": "Company App — Migration Management",
+      "name": "Company App - Migration Management",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/portfolio-21.jpg",
@@ -813,7 +813,7 @@
       "link": null
     },
     {
-      "name": "CA Website — Brand Refresh",
+      "name": "CA Website - Brand Refresh",
       "type": "Web Design",
       "cat": "web",
       "image": "images/Portfolio/portfolio-3.jpg",
@@ -855,28 +855,28 @@
       "link": null
     },
     {
-      "name": "Mentorship Platform — Hi-Fi Flow",
+      "name": "Mentorship Platform - Hi-Fi Flow",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/portfolio-22.jpg",
       "link": null
     },
     {
-      "name": "Oracle for Startups — Onboarding Flow",
+      "name": "Oracle for Startups - Onboarding Flow",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/portfolio-23.jpg",
       "link": null
     },
     {
-      "name": "Brand Logo Collection — Vol. 2",
+      "name": "Brand Logo Collection - Vol. 2",
       "type": "Logo & Brand",
       "cat": "logo",
       "image": "images/Portfolio/portfolio-18.jpg",
       "link": null
     },
     {
-      "name": "Brand Logo Collection — Vol. 3",
+      "name": "Brand Logo Collection - Vol. 3",
       "type": "Logo & Brand",
       "cat": "logo",
       "image": "images/Portfolio/portfolio-19.jpg",
@@ -890,7 +890,7 @@
       "link": null
     },
     {
-      "name": "Print Collateral — Brochures & Cards",
+      "name": "Print Collateral - Brochures & Cards",
       "type": "Logo & Brand",
       "cat": "logo",
       "image": "images/Portfolio/graphics1.jpg",
@@ -904,98 +904,98 @@
       "link": null
     },
     {
-      "name": "Autocare — To-Be Journey Map",
+      "name": "Autocare - To-Be Journey Map",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Autocare - To-Be Journey.jpg",
       "link": null
     },
     {
-      "name": "B2C Tyre Buyer — To-Be Journey Map",
+      "name": "B2C Tyre Buyer - To-Be Journey Map",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-B2C To Be Journey.jpg",
       "link": null
     },
     {
-      "name": "Healthcare App — Vision Concept",
+      "name": "Healthcare App - Vision Concept",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-BaptistLD.jpg",
       "link": null
     },
     {
-      "name": "Patient App — Customer Journey Map",
+      "name": "Patient App - Customer Journey Map",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-CJM.jpg",
       "link": null
     },
     {
-      "name": "Fleet Owner — Detailed Journey Map",
+      "name": "Fleet Owner - Detailed Journey Map",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-DetailedCJM.jpg",
       "link": null
     },
     {
-      "name": "Field Service Technician — Journey Map",
+      "name": "Field Service Technician - Journey Map",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Field Service Technician JOURNEY MAP_ Field Miantenance.jpg",
       "link": null
     },
     {
-      "name": "Food Delivery App — Wireframes & Sketches",
+      "name": "Food Delivery App - Wireframes & Sketches",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Frame 68.jpg",
       "link": null
     },
     {
-      "name": "Tire Finder — Form Field Documentation",
+      "name": "Tire Finder - Form Field Documentation",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Global Form Documentation.jpg",
       "link": null
     },
     {
-      "name": "Link & CTA — Component Guidelines",
+      "name": "Link & CTA - Component Guidelines",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Global Link Guidelines-1.jpg",
       "link": null
     },
     {
-      "name": "Competitor Analysis — Tire Retail",
+      "name": "Competitor Analysis - Tire Retail",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Goodyear-Competitive-analysis.png",
       "link": null
     },
     {
-      "name": "Fashion E-Commerce — UI Guidelines",
+      "name": "Fashion E-Commerce - UI Guidelines",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Guidelines.jpg",
       "link": null
     },
     {
-      "name": "Fashion E-Commerce — Button Guidelines",
+      "name": "Fashion E-Commerce - Button Guidelines",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Guidelines_Buttons.jpg",
       "link": null
     },
     {
-      "name": "Subway Smart Ordering — Concept Storyboard",
+      "name": "Subway Smart Ordering - Concept Storyboard",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-Journey_For_Mark.jpg",
       "link": null
     },
     {
-      "name": "Driving License Portal — Concept Storyboard",
+      "name": "Driving License Portal - Concept Storyboard",
       "type": "UX Case Study",
       "cat": "ux",
       "image": "images/Portfolio/UX-storyboard.jpg",
@@ -1045,16 +1045,16 @@
     }
   ],
   "ux_knowledge": {
-    "_source": "Nielsen Norman Group (nngroup.com) — the world's leading UX research and consulting firm, founded by Jakob Nielsen and Don Norman.",
+    "_source": "Nielsen Norman Group (nngroup.com) - the world's leading UX research and consulting firm, founded by Jakob Nielsen and Don Norman.",
     "_note": "Use this knowledge to answer UX methodology, theory, and process questions. Always connect concepts to real project experience where relevant.",
     "usability": {
       "definition": "Usability is a quality attribute that assesses how easy user interfaces are to use. It encompasses both the design characteristic itself and methods for improving ease-of-use during development.",
       "five_components": [
-        "Learnability — How quickly users accomplish basic tasks on first encounter",
-        "Efficiency — Speed of task performance once users understand the design",
-        "Memorability — Ease of regaining proficiency after periods of non-use",
-        "Errors — Frequency, severity, and recoverability from user mistakes",
-        "Satisfaction — Overall pleasantness and subjectivity of the experience"
+        "Learnability - How quickly users accomplish basic tasks on first encounter",
+        "Efficiency - Speed of task performance once users understand the design",
+        "Memorability - Ease of regaining proficiency after periods of non-use",
+        "Errors - Frequency, severity, and recoverability from user mistakes",
+        "Satisfaction - Overall pleasantness and subjectivity of the experience"
       ],
       "why_it_matters": "On the web, usability is a necessary condition for survival. Users abandon difficult websites immediately. Investing roughly 10% of project budget on usability typically doubles quality metrics.",
       "how_to_improve": "The fundamental method is user testing with representative users performing realistic tasks. Test with ~5 users to identify major problems. Use iterative design, testing between refinements."
@@ -1105,7 +1105,7 @@
       {
         "id": 7,
         "name": "Flexibility and Efficiency of Use",
-        "principle": "Shortcuts — hidden from novice users — may speed up interaction for expert users so the design caters to both inexperienced and experienced users.",
+        "principle": "Shortcuts - hidden from novice users - may speed up interaction for expert users so the design caters to both inexperienced and experienced users.",
         "why": "Accommodates different skill levels. Accelerators like keyboard shortcuts, personalization and customization improve expert productivity.",
         "example": "Keyboard shortcuts (Ctrl+C, Ctrl+V). Power user modes. Customisable dashboards."
       },
@@ -1121,7 +1121,7 @@
         "name": "Help Users Recognize, Diagnose, and Recover from Errors",
         "principle": "Error messages should be expressed in plain language (no error codes), precisely indicate the problem, and constructively suggest a solution.",
         "why": "Error recovery is inevitable. Clear, actionable error messages reduce user frustration and support task completion.",
-        "example": "'Wrong Way' road signs. Gmail's 'Message not sent — Retry' with a clear action."
+        "example": "'Wrong Way' road signs. Gmail's 'Message not sent - Retry' with a clear action."
       },
       {
         "id": 10,
@@ -1134,26 +1134,26 @@
     "design_thinking": {
       "definition": "An ideology paired with a structured process emphasizing a hands-on, user-centric approach to problem solving that drives innovation and competitive advantage.",
       "six_phases": [
-        "Empathize — Conduct user research to understand what people do, say, think, and feel",
-        "Define — Identify user problems and unmet needs from research data",
-        "Ideate — Generate diverse, creative ideas addressing identified gaps",
-        "Prototype — Build tangible representations to test concept viability",
-        "Test — Validate solutions with real users and gather feedback",
-        "Implement — Execute the vision to reach end users (the most critical phase)"
+        "Empathize - Conduct user research to understand what people do, say, think, and feel",
+        "Define - Identify user problems and unmet needs from research data",
+        "Ideate - Generate diverse, creative ideas addressing identified gaps",
+        "Prototype - Build tangible representations to test concept viability",
+        "Test - Validate solutions with real users and gather feedback",
+        "Implement - Execute the vision to reach end users (the most critical phase)"
       ],
       "core_principles": [
-        "User-centered — begins with real user data, never assumptions",
-        "Iterative — phases loop back, teams frequently return to research after prototyping",
-        "Flexible — functions as scaffolding, not rigid prescription",
-        "Scalable — applicable from small features to organizational restructuring"
+        "User-centered - begins with real user data, never assumptions",
+        "Iterative - phases loop back, teams frequently return to research after prototyping",
+        "Flexible - functions as scaffolding, not rigid prescription",
+        "Scalable - applicable from small features to organizational restructuring"
       ],
       "origin": "The formal framework emerged in the 1990s through David Kelley, Tim Brown, and Roger Martin at IDEO, building on decades of human-centered design."
     },
     "research_methods": {
       "overview": "UX research has 20 primary methods organized across 3 dimensions and 4 product phases.",
       "three_dimensions": {
-        "attitudinal_vs_behavioral": "Attitudinal captures stated beliefs (surveys, focus groups). Behavioral observes actual usage (usability testing, A/B testing, eyetracking). They often diverge — what people say differs from what they do.",
-        "qualitative_vs_quantitative": "Qualitative answers WHY and HOW — based on observing or hearing behaviors directly. Quantitative answers HOW MANY and HOW MUCH — gathered through measurement instruments.",
+        "attitudinal_vs_behavioral": "Attitudinal captures stated beliefs (surveys, focus groups). Behavioral observes actual usage (usability testing, A/B testing, eyetracking). They often diverge - what people say differs from what they do.",
+        "qualitative_vs_quantitative": "Qualitative answers WHY and HOW - based on observing or hearing behaviors directly. Quantitative answers HOW MANY and HOW MUCH - gathered through measurement instruments.",
         "context_of_use": "Ranges from natural/near-natural use to scripted use, limited product interaction, or no product interaction at all."
       },
       "twenty_methods": [
@@ -1179,41 +1179,41 @@
         "Surveys"
       ],
       "by_phase": {
-        "strategize": "Generative research — field studies, interviews, concept testing. Goal: find directions and opportunities.",
-        "design": "Formative research — usability testing, card sorting, tree testing. Goal: improve usability.",
-        "launch_and_assess": "Summative research — A/B testing, benchmarking, analytics. Goal: measure performance."
+        "strategize": "Generative research - field studies, interviews, concept testing. Goal: find directions and opportunities.",
+        "design": "Formative research - usability testing, card sorting, tree testing. Goal: improve usability.",
+        "launch_and_assess": "Summative research - A/B testing, benchmarking, analytics. Goal: measure performance."
       },
       "top_recommendation": "If you can do only one activity to improve an existing system, do qualitative (think-aloud) usability testing. It is the most effective usability improvement method."
     },
     "journey_mapping": {
       "definition": "A visualization of the process that a person goes through in order to accomplish a goal. It compiles user actions into a timeline, enriches it with thoughts and emotions, then condenses everything into a visual narrative.",
       "five_components": [
-        "Actor — the persona experiencing the journey; one user perspective per map",
-        "Scenario + Expectations — the situation addressed, including the user's goal and specific expectations",
-        "Journey Phases — high-level stages organizing the experience (e.g., discover, try, buy, use, support)",
-        "Actions, Mindsets, Emotions — user behaviors, thoughts/questions, and emotional responses throughout phases",
-        "Opportunities — insights revealing how to optimize the experience and address pain points"
+        "Actor - the persona experiencing the journey; one user perspective per map",
+        "Scenario + Expectations - the situation addressed, including the user's goal and specific expectations",
+        "Journey Phases - high-level stages organizing the experience (e.g., discover, try, buy, use, support)",
+        "Actions, Mindsets, Emotions - user behaviors, thoughts/questions, and emotional responses throughout phases",
+        "Opportunities - insights revealing how to optimize the experience and address pain points"
       ],
       "related_artifacts": {
         "experience_maps": "Broader, generic human behavior without specific product focus",
-        "service_blueprints": "Internal business perspective supporting the customer journey — the operational 'how'",
+        "service_blueprints": "Internal business perspective supporting the customer journey - the operational 'how'",
         "user_story_maps": "Tactical planning tool for feature implementation and sprint planning"
       },
       "best_for": "Scenarios involving multiple events, sequential processes, or multi-channel interactions requiring a comprehensive view."
     },
     "service_blueprints": {
-      "definition": "A diagram that visualizes the relationships between different service components — people, props (physical or digital evidence), and processes.",
+      "definition": "A diagram that visualizes the relationships between different service components - people, props (physical or digital evidence), and processes.",
       "five_components": [
-        "Customer Actions — steps customers take to reach their goals",
-        "Frontstage Actions — visible employee or technology interactions with customers",
-        "Backstage Actions — behind-the-scenes support activities invisible to customers",
-        "Processes — internal steps enabling service delivery",
-        "Evidence — physical/digital props involved in service exchanges"
+        "Customer Actions - steps customers take to reach their goals",
+        "Frontstage Actions - visible employee or technology interactions with customers",
+        "Backstage Actions - behind-the-scenes support activities invisible to customers",
+        "Processes - internal steps enabling service delivery",
+        "Evidence - physical/digital props involved in service exchanges"
       ],
       "organizing_lines": [
-        "Line of Interaction — direct customer-organization exchanges",
-        "Line of Visibility — separates visible from hidden activities",
-        "Line of Internal Interaction — distinguishes customer-facing from support staff"
+        "Line of Interaction - direct customer-organization exchanges",
+        "Line of Visibility - separates visible from hidden activities",
+        "Line of Internal Interaction - distinguishes customer-facing from support staff"
       ],
       "vs_journey_maps": "Journey maps focus on the customer experience (the front stage). Service blueprints expose the organizational infrastructure behind it. Blueprints are 'part two' to journey maps.",
       "best_for": "Complex, omnichannel scenarios involving multiple touchpoints and cross-departmental coordination. Excellent for exposing systemic weaknesses and root causes of service failures."
@@ -1221,12 +1221,12 @@
     "empathy_mapping": {
       "definition": "A collaborative visualization tool that articulates what is known about a particular user type. Serves dual purposes: create shared understanding of user needs and aid in decision making.",
       "four_quadrants": {
-        "says": "Direct quotes from user research — e.g., 'I want something reliable'",
-        "thinks": "User's internal thoughts and concerns, including unspoken worries — e.g., 'Am I dumb for not understanding this?'",
-        "does": "Physical actions and behaviors — e.g., refreshes page repeatedly, compares prices across tabs",
-        "feels": "Emotional state as adjectives with context — e.g., 'Impatient due to slow page loads'"
+        "says": "Direct quotes from user research - e.g., 'I want something reliable'",
+        "thinks": "User's internal thoughts and concerns, including unspoken worries - e.g., 'Am I dumb for not understanding this?'",
+        "does": "Physical actions and behaviors - e.g., refreshes page repeatedly, compares prices across tabs",
+        "feels": "Emotional state as adjectives with context - e.g., 'Impatient due to slow page loads'"
       },
-      "types": "Individual maps (based on single user) or aggregated maps (synthesizing multiple similar users — can precede persona development).",
+      "types": "Individual maps (based on single user) or aggregated maps (synthesizing multiple similar users - can precede persona development).",
       "benefits": [
         "Removes bias and aligns teams on shared user understanding",
         "Identifies gaps in existing research",
@@ -1238,7 +1238,7 @@
       "definition": "A researcher asks a participant to perform tasks, usually using specific user interfaces, while observing behavior and gathering feedback.",
       "three_elements": {
         "facilitator": "Guides participants through testing, administers tasks, asks follow-up questions without accidentally influencing behavior",
-        "tasks": "Realistic activities the participant might perform in real life — ranging from specific to open-ended",
+        "tasks": "Realistic activities the participant might perform in real life - ranging from specific to open-ended",
         "participant": "Should represent realistic users of the product"
       },
       "approaches": {
@@ -1259,8 +1259,8 @@
         "Memorable quotes reflecting their perspective"
       ],
       "benefits": [
-        "Foster empathy — make user groups feel tangible and real",
-        "Create shared vocabulary — personas serve as shorthand across teams",
+        "Foster empathy - make user groups feel tangible and real",
+        "Create shared vocabulary - personas serve as shorthand across teams",
         "Combat design-for-everyone tendencies by focusing on specific individuals",
         "Support recruiting testers, expert reviews, and analytics segmentation"
       ],
@@ -1270,7 +1270,7 @@
       "definition": "A research method in which study participants place individually labeled cards into groups according to criteria that make the most sense to them.",
       "purpose": "Reveals user mental models and informs information architecture design, making content more discoverable and easier to navigate.",
       "types": {
-        "open": "No predefined categories — users create their own groupings. Best for understanding how users think.",
+        "open": "No predefined categories - users create their own groupings. Best for understanding how users think.",
         "closed": "Researchers provide fixed categories for validation. Best for testing existing structure.",
         "hybrid": "Mix of predefined and user-created categories."
       },
@@ -1278,10 +1278,10 @@
       "best_for": "Restructuring content organization, categorizing product offerings, designing navigation that matches user mental models."
     },
     "mental_models": {
-      "definition": "A mental model is what the user believes about the system at hand. These beliefs — whether accurate or not — guide how users predict system behavior.",
+      "definition": "A mental model is what the user believes about the system at hand. These beliefs - whether accurate or not - guide how users predict system behavior.",
       "how_they_work": "Mental models develop through users' existing knowledge and past experiences. Each user constructs their own unique model based on individual background, creating potential gaps between designer and user understanding.",
       "design_application": [
-        "Align interfaces with established user expectations (Jakob's Law — users spend most of their time on other sites)",
+        "Align interfaces with established user expectations (Jakob's Law - users spend most of their time on other sites)",
         "Redesign systems to conform to user mental models when mismatches cause friction",
         "Use think-aloud sessions to surface erroneous mental models early"
       ],
@@ -1302,7 +1302,7 @@
       ],
       "governance": "Requires dedicated management: minimum one interaction designer, one visual designer, one developer. Ideally adds part-time researcher, architect, and content writer. An executive sponsor helps secure resources.",
       "implementation": "Adopt existing systems (lowest cost) → Adapt existing to needs → Create custom proprietary system (highest investment). ROI justifies investment only when sustained, replicable design work is anticipated over years.",
-      "when_to_invest": "Design systems generate ROI when organizations anticipate sustained, replicable design work across years — not for one-off prototypes or proof-of-concept projects."
+      "when_to_invest": "Design systems generate ROI when organizations anticipate sustained, replicable design work across years - not for one-off prototypes or proof-of-concept projects."
     },
     "f_pattern_reading": {
       "definition": "An eye-tracking research finding showing users read web content in an F-shaped pattern when content lacks formatting cues.",
@@ -1340,22 +1340,22 @@
     "jakob_law": {
       "statement": "Users spend most of their time on OTHER websites. This means they expect your website to work the same way as all the other sites they already know.",
       "implication": "Designers can make users' lives easier by following established patterns and conventions. Users transfer expectations from prior experiences.",
-      "application": "Innovate only where it adds clear value. Match existing mental models for navigation, form behavior, and interaction patterns. Reserve innovation for competitive differentiators — not standard UI patterns.",
+      "application": "Innovate only where it adds clear value. Match existing mental models for navigation, form behavior, and interaction patterns. Reserve innovation for competitive differentiators - not standard UI patterns.",
       "named_after": "Jakob Nielsen, co-founder of the Nielsen Norman Group, who articulated this principle in 2000."
     },
     "ux_concepts_glossary": {
-      "information_architecture": "The structural design of shared information environments — organizing, labeling, and creating navigation systems to help users find and manage information efficiently.",
-      "interaction_design": "Designing interactive products to support the way people communicate and interact. Concerned with the behavior of products — how they respond to user input.",
+      "information_architecture": "The structural design of shared information environments - organizing, labeling, and creating navigation systems to help users find and manage information efficiently.",
+      "interaction_design": "Designing interactive products to support the way people communicate and interact. Concerned with the behavior of products - how they respond to user input.",
       "progressive_disclosure": "An interaction design technique that sequences information and actions across several screens, presenting only the minimum necessary at each step to reduce cognitive load.",
-      "affordance": "A design property that signals how an object should be used. Visual affordances communicate possible interactions — e.g., a button looks pressable.",
-      "gestalt_principles": "Psychological principles describing how humans perceive visual elements as unified wholes — including proximity, similarity, continuity, closure, and figure-ground.",
+      "affordance": "A design property that signals how an object should be used. Visual affordances communicate possible interactions - e.g., a button looks pressable.",
+      "gestalt_principles": "Psychological principles describing how humans perceive visual elements as unified wholes - including proximity, similarity, continuity, closure, and figure-ground.",
       "hicks_law": "The time it takes to make a decision increases with the number and complexity of choices. Reduce options to speed up decision-making.",
       "fitts_law": "The time to acquire a target is a function of the distance to and size of the target. Make important buttons large and close to likely cursor positions.",
       "cognitive_load": "The total amount of mental effort being used in working memory. UX design should minimize extraneous cognitive load and support germane (learning-related) load.",
       "information_scent": "The degree to which interface elements suggest the value and destination of content ahead, helping users decide whether to click a link or navigate in a direction.",
       "accessibility": "Designing products usable by people with disabilities. WCAG guidelines organize accessibility around four principles: Perceivable, Operable, Understandable, and Robust (POUR).",
-      "double_diamond": "A design process model with two diamonds — Discover and Define (problem space) followed by Develop and Deliver (solution space). Popularized by the UK Design Council.",
-      "mvp": "Minimum Viable Product — the simplest version of a product that allows a team to collect the maximum amount of validated learning about customers with the least effort.",
+      "double_diamond": "A design process model with two diamonds - Discover and Define (problem space) followed by Develop and Deliver (solution space). Popularized by the UK Design Council.",
+      "mvp": "Minimum Viable Product - the simplest version of a product that allows a team to collect the maximum amount of validated learning about customers with the least effort.",
       "atomic_design": "A methodology for creating design systems by breaking interfaces into atoms (basic HTML elements), molecules, organisms, templates, and pages. Created by Brad Frost.",
       "ux_maturity": "The degree to which an organization has integrated user experience thinking into its processes, culture, and strategy. Ranges from absent to pervasive.",
       "kano_model": "A model for prioritizing product features based on customer satisfaction. Categorizes features as Basic needs, Performance attributes, and Delighters (excitement factors).",

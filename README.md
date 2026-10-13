@@ -1,4 +1,4 @@
-# Siba Sankar Kabi — Portfolio
+# Siba Sankar Kabi - Portfolio
 ## How to use, edit and deploy
 
 ---
@@ -48,14 +48,14 @@ sankarkabi/
 | `current_role` | Studio name, team size, responsibilities list |
 | `impact_metrics` | The 4 big numbers shown in the hero card and numbers strip |
 | `awards` | GEM Award and project award descriptions |
-| `projects` | Work section cards — each project has name, client, role, summary, detail, outcomes, image path |
-| `work_history` | Experience timeline — role, company, period, description, chips |
-| `skills.proficiency` | Animated skill bars — name and percentage |
+| `projects` | Work section cards - each project has name, client, role, summary, detail, outcomes, image path |
+| `work_history` | Experience timeline - role, company, period, description, chips |
+| `skills.proficiency` | Animated skill bars - name and percentage |
 | `skills.design_tools` | Design tool tags in About section |
 | `skills.ai_tools` | AI tool tags with hover descriptions |
 | `certifications` | Credentials list |
-| `testimonials` | Colleague recommendations — name, role, photo path, quote text |
-| `portfolio_items` | Portfolio grid — name, type, category (ux/web/logo), image path, link |
+| `testimonials` | Colleague recommendations - name, role, photo path, quote text |
+| `portfolio_items` | Portfolio grid - name, type, category (ux/web/logo), image path, link |
 | `quick_search_pills` | The pill buttons below the AI search bar |
 
 ### Adding a new project
@@ -131,7 +131,7 @@ The AI search bar in the hero asks: you type a question, it answers from `data/s
 **Colours:** Open `css/style.css` and edit the `:root` block at the top:
 ```css
 :root {
-  --gold:  #C8A84B;   /* accent gold — change this to your colour */
+  --gold:  #C8A84B;   /* accent gold - change this to your colour */
   --blue:  #3D6B8E;   /* secondary blue */
   --bg:    #0C0C0B;   /* page background */
   ...
@@ -161,7 +161,7 @@ cd sankarkabi/
 python3 -m http.server 8080
 # Open http://localhost:8080
 ```
-*(You need a local server — not file://) — because the JS fetches `data/siba.json`)*
+*(You need a local server - not file://) - because the JS fetches `data/siba.json`)*
 
 ---
 

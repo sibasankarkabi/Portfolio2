@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════════
-   sankarkabi.co.in — Main Stylesheet
+   sankarkabi.co.in - Main Stylesheet
    Edit colours in :root to retheme the whole site instantly
    ═══════════════════════════════════════════════════════════ */
 
-/* ── DESIGN TOKENS — Gamma Palette (accent brightness nudged for AA) ── */
+/* ── DESIGN TOKENS - Gamma Palette (accent brightness nudged for AA) ── */
 :root {
   /* ── backgrounds (exact Gamma values) ── */
   --bg:    #061722;   /* Gamma: darkest page bg */
@@ -11,26 +11,26 @@
   --bg3:   #112836;   /* Gamma: card background */
   --bg4:   #1C3645;   /* Gamma: secondary accent bg */
 
-  /* ── borders — teal-tinted ── */
+  /* ── borders - teal-tinted ── */
   --bd:    rgba(12,176,161,.12);
   --bd2:   rgba(12,176,161,.22);
 
   /* ── text (exact Gamma values) ── */
   --t1:    #FFFFFF;             /* Gamma: heading white */
   --t2:    #CAD6DE;             /* Gamma: body blue-grey */
-  --t3:    rgba(202,214,222,.70); /* muted — .70 alpha keeps 4.5:1+ on every dark tier incl. --bg4 (was .50 = 3.3–3.9:1, failed AA) */
+  --t3:    rgba(202,214,222,.70); /* muted - .70 alpha keeps 4.5:1+ on every dark tier incl. --bg4 (was .50 = 3.3-3.9:1, failed AA) */
   --t4:    rgba(6, 95, 109, 0.997);
 
-  /* ── teal — primary accent, used everywhere via --gold ──
+  /* ── teal - primary accent, used everywhere via --gold ──
      Gamma's exact #0A988B fails AA (4.5:1) as small text on the
      lightest card tier (--bg4: 3.53:1). Nudged +5% lightness,
-     same hue/saturation, to #0CB0A1 — passes 4.65:1+ on every
+     same hue/saturation, to #0CB0A1 - passes 4.65:1+ on every
      background tier while staying visually identical to the brand teal. */
   --gold:  #79c80c;
   --gold-t:rgba(12,176,161,.10);
   --gold-b:rgba(12,176,161,.28);
 
-  /* ── plain gold-accent text (eyebrows, heading italics, labels) — exact spec value ── */
+  /* ── plain gold-accent text (eyebrows, heading italics, labels) - exact spec value ── */
   --gold-text: #15B877;
 
   /* ── teal alias (same value, for any future explicit teal usage) ── */
@@ -57,7 +57,7 @@
   --ink:     #061722;
   --ink2:    #112836;
   --ink3:    #1C4A6A;
-  --ink4:    #36607C;  /* was #4A7A9A (3.7:1 on cream2) — now 4.58:1+ on cream/cream2/cream3/white */
+  --ink4:    #36607C;  /* was #4A7A9A (3.7:1 on cream2) - now 4.58:1+ on cream/cream2/cream3/white */
   --gold-lt: #F5EEC8;
   --blue-mid:#1C4A8A;
   --blue-lt: #C8E0F4;
@@ -73,7 +73,7 @@
   --min-tap: 44px;
 }
 
-/* Light sections — darker teal for contrast on cool-blue cream backgrounds.
+/* Light sections - darker teal for contrast on cool-blue cream backgrounds.
    #066661 verified 4.64:1+ on all three cream tiers (cream/cream2/cream3). */
 #aitools, #experience, section#process {
   --blue:  #1B3F6E;
@@ -614,7 +614,7 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 }
 /* suppress focus ring on mouse click (only show for keyboard) */
 :focus:not(:focus-visible) { outline:none; }
-/* <main> receives focus from the skip link — no ring needed on the whole page */
+/* <main> receives focus from the skip link - no ring needed on the whole page */
 main:focus { outline:none; }
 
 /* Visually hidden but read by screen readers */
@@ -711,7 +711,7 @@ nav {
 }
 .nav-hire:hover { background:var(--gold); color:#000; }
 
-/* hamburger — hidden on desktop */
+/* hamburger - hidden on desktop */
 .nav-toggle {
   display:none; flex-direction:column; justify-content:center; align-items:stretch;
   gap:6px; width:40px; height:40px; padding:9px;
@@ -1161,7 +1161,7 @@ h1 em { font-style:italic; color:var(--gold-text); }
 .card-body { padding:20px 22px; }
 .card-client { font-family:var(--syne); font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--t3); margin-bottom:5px; }
 .card-title  { font-family:var(--serif); font-size:20px; font-weight:400; color:var(--t1); margin-bottom:7px; line-height:1.2; }
-/* Keyboard / screen-reader entry point for the card — looks like plain title text */
+/* Keyboard / screen-reader entry point for the card - looks like plain title text */
 .card-open { display:block; width:100%; font:inherit; color:inherit; text-align:left; line-height:inherit; padding:0; }
 .card-desc   { font-size:13px; color:var(--t2); line-height:1.72; margin-bottom:13px; }
 .card-tags   { display:flex; flex-wrap:wrap; gap:5px; }
@@ -1950,7 +1950,7 @@ footer {
 }
 .csf-title { font-family:var(--serif); font-size:17px; color:var(--t1); }
 
-/* close button — clearly visible */
+/* close button - clearly visible */
 .csf-close {
   flex-shrink:0; width:40px; height:40px; border-radius:8px;
   background:var(--bg4); border:1.5px solid var(--bd2);
@@ -1987,7 +1987,7 @@ footer {
 .csf-tab:hover { background:var(--bg4); color:var(--t2); }
 .csf-tab.active { background:var(--gold-t); border-color:var(--gold-b); color:var(--gold); }
 
-/* AI summary button — primary gold */
+/* AI summary button - primary gold */
 .csf-ai-btn {
   flex-shrink:0; display:inline-flex; align-items:center; gap:6px;
   background:var(--gold); border:1.5px solid var(--gold); color:#061722;
@@ -2093,7 +2093,7 @@ footer {
   .deepdive-spin,
   #modal-btn .spin        { animation-duration:.01ms !important; }
 
-  /* instant reveal — no fade/slide */
+  /* instant reveal - no fade/slide */
   .r {
     opacity:1 !important;
     transform:none !important;
@@ -2110,48 +2110,48 @@ footer {
   .pcard:hover,
   .citem:hover            { transform:none !important; }
 
-  /* skeleton shimmer — just a static bar */
+  /* skeleton shimmer - just a static bar */
   .sk                     { animation:none; background:var(--bg3); }
 }
 
 /* ══════════════════════════════════════════════════════════
-   TABLET BREAKPOINT — 768px to 1024px
+   TABLET BREAKPOINT - 768px to 1024px
    Fills the gap between desktop and mobile
    ══════════════════════════════════════════════════════════ */
 @media (min-width:601px) and (max-width:960px) {
-  /* Hero — two-column on tablet, tighten spacing */
+  /* Hero - two-column on tablet, tighten spacing */
   .hero-grid              { grid-template-columns: 1fr 1fr; gap: 28px; }
   .hero-kicker            { font-size: 10px; }
   h1, .h1                 { font-size: clamp(36px, 6vw, 54px); }
 
-  /* Numbers — 2×2 on tablet */
+  /* Numbers - 2×2 on tablet */
   .num-grid               { grid-template-columns: repeat(2, 1fr); gap: 18px; }
 
-  /* Work / Portfolio — 2 columns on tablet */
+  /* Work / Portfolio - 2 columns on tablet */
   .work-grid              { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .cgrid                  { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .card.wide              { grid-column: span 2; }
 
-  /* About — side by side on tablet */
+  /* About - side by side on tablet */
   .about-grid             { grid-template-columns: 1fr 1fr; gap: 28px; }
 
-  /* Steps — 3 col on tablet */
+  /* Steps - 3 col on tablet */
   .steps                  { grid-template-columns: repeat(3, 1fr); }
 
-  /* Testimonials — stack on tablet */
+  /* Testimonials - stack on tablet */
   .tgrid                  { grid-template-columns: 1fr; }
 
-  /* Tool pills — two lines of 5 */
+  /* Tool pills - two lines of 5 */
   .tools-grid             { grid-template-columns: repeat(5, 1fr); gap: 12px; }
 
-  /* AI Tools "Process" steps — 3 col on tablet */
+  /* AI Tools "Process" steps - 3 col on tablet */
   .process-row            { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .process-row::after     { display: none; }
 
   /* Sections */
   #hero, .sec, .section   { padding-left: 32px; padding-right: 32px; }
 
-  /* Touch targets — ensure 44px minimum */
+  /* Touch targets - ensure 44px minimum */
   .btn-gold, .btn-outline, .pill, .nav-links a {
     min-height: var(--min-tap);
     display: inline-flex;
@@ -2160,14 +2160,14 @@ footer {
 }
 
 /* ══════════════════════════════════════════════════════════
-   MOBILE — improved (≤600px)
+   MOBILE - improved (≤600px)
    ══════════════════════════════════════════════════════════ */
 @media (max-width:600px) {
   /* Fluid type scale */
   h1, .h1                 { font-size: clamp(30px, 8vw, 44px); line-height: 1.1; }
   h2, .sec-title          { font-size: clamp(22px, 6vw, 32px); }
 
-  /* Hero — single column, tighter */
+  /* Hero - single column, tighter */
   .hero-grid              { grid-template-columns: 1fr; gap: 28px; }
   .hero-kicker            { font-size: 10px; letter-spacing: .12em; }
   .hero-search            { margin-top: 20px; }
@@ -2175,40 +2175,40 @@ footer {
   .stat-n                 { font-size: 26px; }
   .skill-stack            { grid-template-columns: 1fr; }
 
-  /* Numbers — 2 col on mobile */
+  /* Numbers - 2 col on mobile */
   .num-grid               { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .num-val                { font-size: clamp(28px, 8vw, 44px); }
   .num-label              { font-size: 11px; }
 
-  /* Cards — single column */
+  /* Cards - single column */
   .work-grid, .cgrid, .about-grid, .tgrid { grid-template-columns: 1fr; gap: 16px; }
   .card.wide              { grid-column: span 1; }
 
-  /* Steps — 1 col on mobile */
+  /* Steps - 1 col on mobile */
   .steps                  { grid-template-columns: 1fr; gap: 12px; }
   .steps::after           { display: none; }
 
-  /* Sections — tighter padding */
+  /* Sections - tighter padding */
   #hero, .sec, #numbers   { padding-left: 18px; padding-right: 18px; }
   .sec                    { padding-top: 52px; padding-bottom: 52px; }
 
-  /* Tool pills — 2 col on mobile */
+  /* Tool pills - 2 col on mobile */
   .tools-grid             { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .tool-pill              { padding: 12px 10px; }
   .tool-name              { font-size: 11px; }
 
-  /* Career timeline — stack date/logo above the card, single column */
+  /* Career timeline - stack date/logo above the card, single column */
   .section                { padding: 64px 18px; }
   .tl::before             { left: 7px; }
   .tl-item                { grid-template-columns: 1fr; gap: 6px; padding-left: 22px; }
   .tl-item::before        { left: 0; top: 4px; }
   .tl-meta                { text-align: left; padding-top: 0; }
 
-  /* AI Tools "Process" steps — single column on mobile */
+  /* AI Tools "Process" steps - single column on mobile */
   .process-row            { grid-template-columns: 1fr; gap: 22px; }
   .process-row::after     { display: none; }
 
-  /* Modal — full width on mobile */
+  /* Modal - full width on mobile */
   .modal-hdr              { padding: 10px 14px; }
   .modal-body             { padding: 20px 16px 60px; }
   .modal-search-row       { gap: 8px; }
@@ -2220,7 +2220,7 @@ footer {
   /* Testimonials */
   .tphoto                 { width: 44px; height: 44px; }
 
-  /* Touch targets — ALL interactive elements min 44px */
+  /* Touch targets - ALL interactive elements min 44px */
   button, .btn-gold, .btn-outline, .pill, [role="button"],
   .nav-links a, .fu-item, .m-chip {
     min-height: var(--min-tap);
@@ -2236,7 +2236,7 @@ footer {
 }
 
 /* ══════════════════════════════════════════════════════════
-   ACCESSIBILITY — high contrast mode support
+   ACCESSIBILITY - high contrast mode support
    ══════════════════════════════════════════════════════════ */
 @media (forced-colors: active) {
   .btn-gold, .btn-outline { border: 2px solid ButtonText; }
@@ -2284,7 +2284,7 @@ footer {
 /* no halo where text already sits on a solid fill */
 .bloom-hero .btn-gold, .bloom-hero .btn-gold *, .tcard, .tcard * { text-shadow: none; }
 
-/* muted grey is too faint over video — use body grey there */
+/* muted grey is too faint over video - use body grey there */
 .bloom-hero .hero-meta,
 .bloom-hero .search-lbl,
 .bloom-hero .avail-row,
