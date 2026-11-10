@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>UX Leadership Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body { margin: 0; }
+[hidden] { display: none !important; }
+/* Layout: a single working column — morning summary, filter bar, role cards, then saved searches. Blue = action, gold = fit. */
+:root {
+  --bg: #f3f5f9;
+  --surface: #ffffff;
+  --sunk: #e9edf4;
+  --line: #d6dce7;
+  --ink: #141a2b;
+  --muted: #5b6479;
+  --accent: #2f4fd1;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3e8fb;
+  --gold: #b88a1b;
+  --gold-off: #dcdfe6;
+  --urgent-bg: #fdecea; --urgent-fg: #a3271b;
+  --caution-bg: #fbf3dc; --caution-fg: #7a5a06;
+  --info-bg: #e5f1ec; --info-fg: #1f6148;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1320; --surface: #171c2c; --sunk: #1f2537; --line: #2c3349; --ink: #e8ebf4; --muted: #98a1b8;
+  --accent: #8ea4ff; --accent-ink: #0f1320; --accent-soft: #232c4d; --gold: #e2b84a; --gold-off: #343b52;
+  --urgent-bg: #3a1916; --urgent-fg: #ffb2a8; --caution-bg: #352a10; --caution-fg: #f1d27c; --info-bg: #14302a; --info-fg: #8fdcbc;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #0f1320; --surface: #171c2c; --sunk: #1f2537; --line: #2c3349; --ink: #e8ebf4; --muted: #98a1b8;
+  --accent: #8ea4ff; --accent-ink: #0f1320; --accent-soft: #232c4d; --gold: #e2b84a; --gold-off: #343b52;
+  --urgent-bg: #3a1916; --urgent-fg: #ffb2a8; --caution-bg: #352a10; --caution-fg: #f1d27c; --info-bg: #14302a; --info-fg: #8fdcbc;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 22px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 6vw, 42px); font-weight: 700; line-height: 1.05; }
+h2 { font-size: 22px; font-weight: 700; }
+h3 { font-size: 19px; font-weight: 700; line-height: 1.25; }
+p { margin: 0; }
+a { color: var(--accent); }
+.mono { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.label { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.intro { display: grid; gap: 10px; }
+.intro p { color: var(--muted); max-width: 62ch; }
+.syncline { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); display: inline-block; }
+.dot.ok { background: var(--info-fg); }
+
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; }
+.tile b { font-family: var(--font-display); font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile.hot b { color: var(--accent); }
+@media (max-width: 620px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 16px; }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; background: var(--sunk); padding: 4px; border-radius: 9px; width: fit-content; max-width: 100%; }
+.seg button { border: 0; background: transparent; color: var(--ink); font: 500 14px var(--font-body); padding: 7px 12px; border-radius: 6px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.fields { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px; }
+@media (max-width: 720px) { .fields { grid-template-columns: 1fr 1fr; } .fields .wide { grid-column: 1 / -1; } }
+.field { display: grid; gap: 5px; min-width: 0; }
+input, select, textarea { font: 15px var(--font-body); color: var(--ink); background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; width: 100%; min-width: 0; }
+textarea { min-height: 70px; resize: vertical; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.bar .left, .bar .right { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: 600 14px var(--font-body); border-radius: 8px; padding: 9px 15px; cursor: pointer; border: 1px solid var(--accent); background: transparent; color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn:disabled { opacity: .55; cursor: default; }
+.scan { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 14px; }
+.scan p { color: var(--muted); font-size: 14px; flex: 1 1 220px; min-width: 0; }
+
+.list { display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 11px; min-width: 0; }
+.card.dim { opacity: .62; }
+.card h3 a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+.card h3 a:hover { text-decoration-color: var(--accent); }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--muted); font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.chip.new { background: var(--ink); color: var(--bg); }
+.chip.follow { background: var(--caution-bg); color: var(--caution-fg); }
+.flag { font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 8px; background: var(--info-bg); color: var(--info-fg); }
+.flag.urgent { background: var(--urgent-bg); color: var(--urgent-fg); }
+.flag.caution { background: var(--caution-bg); color: var(--caution-fg); }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.row select { width: auto; font-weight: 600; background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.fit { display: inline-flex; align-items: center; gap: 8px; }
+.pips { display: inline-flex; gap: 3px; }
+.pips i { width: 11px; height: 11px; border-radius: 3px; background: var(--gold-off); }
+.pips i.on { background: var(--gold); }
+.why { max-width: 70ch; }
+details { background: var(--sunk); border-radius: 8px; padding: 9px 12px; font-size: 14px; }
+details summary { cursor: pointer; color: var(--muted); font-weight: 500; }
+details pre { white-space: pre-wrap; font: 13.5px/1.5 var(--font-body); margin: 8px 0 0; color: var(--ink); }
+.notes { display: grid; gap: 6px; margin-top: 8px; }
+.pack { background: var(--accent-soft); }
+.pack summary { color: var(--accent); font-weight: 600; }
+.pk { display: grid; gap: 4px; margin-top: 12px; }
+.pkhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.pack pre { background: var(--surface); border-radius: 6px; padding: 10px 12px; margin: 0; }
+.btn.sm { padding: 4px 10px; font-size: 13px; }
+a.btn { text-decoration: none; display: inline-block; }
+.dlnote { flex-basis: 100%; font-size: 13.5px; color: var(--muted); }
+.empty { text-align: center; color: var(--muted); padding: 34px 16px; border: 1px dashed var(--line); border-radius: 12px; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; z-index: 20; max-width: calc(100% - 32px); }
+
+.searches { display: grid; gap: 14px; }
+.searches > p { color: var(--muted); max-width: 62ch; }
+.sgroup { display: grid; gap: 8px; }
+.sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+.slink { display: grid; gap: 1px; padding: 11px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); }
+.slink:hover { border-color: var(--accent); }
+.slink span { color: var(--muted); font-size: 13px; }
+.addform { display: grid; gap: 12px; }
+.addgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .addgrid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: no-preference) { .card { transition: opacity .2s; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="intro">
+    <span class="label">Siba Sankar Kabi · Job desk</span>
+    <h1>UX Leadership Search</h1>
+    <p>UX Manager, Senior Manager, Director, Head of Design and AI Experience roles in Bengaluru, Hyderabad, remote India and Europe. Each strong match has an application pack and a tailored resume. Capgemini roles are always left out.</p>
+    <div class="syncline mono"><span class="dot" id="syncDot"></span><span id="syncText">Loading…</span></div>
+  </header>
+
+  <section class="tiles" aria-label="Summary">
+    <div class="tile hot"><b id="tReady">–</b><span class="label">Ready to apply</span></div>
+    <div class="tile"><b id="tApplied">–</b><span class="label">Applied</span></div>
+    <div class="tile"><b id="tInterview">–</b><span class="label">Interviewing</span></div>
+    <div class="tile"><b id="tFollow">–</b><span class="label">Follow up due</span></div>
+  </section>
+
+  <section class="panel" aria-label="Filters">
+    <div class="seg" id="regionSeg" role="group" aria-label="Region">
+      <button type="button" data-r="all" aria-pressed="true">All regions</button>
+      <button type="button" data-r="bengaluru" aria-pressed="false">Bengaluru</button>
+      <button type="button" data-r="hyderabad" aria-pressed="false">Hyderabad</button>
+      <button type="button" data-r="remote-india" aria-pressed="false">Remote India</button>
+      <button type="button" data-r="europe" aria-pressed="false">Europe</button>
+    </div>
+    <div class="fields">
+      <div class="field wide"><label class="label" for="q">Search</label><input id="q" type="search" placeholder="Company, title, notes…"></div>
+      <div class="field"><label class="label" for="fStatus">Status</label>
+        <select id="fStatus">
+          <option value="active">Active only</option>
+          <option value="ready">Ready to apply</option>
+          <option value="new">To review</option>
+          <option value="applied">Applied</option>
+          <option value="interviewing">Interviewing</option>
+          <option value="all">Everything</option>
+        </select></div>
+      <div class="field"><label class="label" for="fFit">Min fit</label>
+        <select id="fFit"><option value="0">Any</option><option value="3">3+</option><option value="4">4+</option><option value="5">5 only</option></select></div>
+      <div class="field"><label class="label" for="fSort">Sort by</label>
+        <select id="fSort"><option value="fit">Best fit</option><option value="new">Newest found</option><option value="closing">Closing soon</option></select></div>
+    </div>
+    <div class="bar">
+      <div class="left"><button class="btn" type="button" id="clearBtn">Clear</button><span class="mono" id="countText"></span></div>
+      <div class="right"><button class="btn" type="button" id="addToggle" aria-expanded="false">Add a role</button></div>
+    </div>
+    <form class="addform" id="addForm" hidden>
+      <div class="addgrid">
+        <div class="field"><label class="label" for="aTitle">Job title</label><input id="aTitle" required></div>
+        <div class="field"><label class="label" for="aCompany">Company</label><input id="aCompany" required></div>
+        <div class="field"><label class="label" for="aLocation">Location</label><input id="aLocation" placeholder="Bengaluru (hybrid)"></div>
+        <div class="field"><label class="label" for="aRegion">Region</label>
+          <select id="aRegion"><option value="bengaluru">Bengaluru</option><option value="hyderabad">Hyderabad</option><option value="remote-india">Remote India</option><option value="europe">Europe</option></select></div>
+        <div class="field"><label class="label" for="aUrl">Job link</label><input id="aUrl" type="url" placeholder="https://…"></div>
+        <div class="field"><label class="label" for="aFit">Your fit score</label>
+          <select id="aFit"><option>5</option><option selected>4</option><option>3</option><option>2</option><option>1</option></select></div>
+      </div>
+      <div class="field"><label class="label" for="aNotes">Notes</label><textarea id="aNotes" placeholder="Referral, recruiter name, why it matters…"></textarea></div>
+      <div class="row"><button class="btn primary" type="submit">Save role</button><button class="btn" type="button" id="addCancel">Cancel</button></div>
+    </form>
+    <div class="scan">
+      <p id="scanText">Roles come from data/roles.json.</p>
+      <button class="btn" type="button" id="exportBtn">Export my statuses</button>
+    </div>
+  </section>
+
+  <section class="list" id="list" aria-live="polite">
+    <div class="empty" id="emptyState">Loading roles from data/roles.json… If this stays, open the folder with a local server (VS Code Live Server) rather than double-clicking the file.</div>
+  </section>
+
+  <section class="searches" aria-label="One-click searches">
+    <h2>One-click searches</h2>
+    <p>For the sites Claude can't read directly. Open one, sign in once, and turn on that site's job alert so it emails you too.</p>
+    <div class="sgroup"><span class="label">India</span><div class="sgrid">
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22%20OR%20%22UX%20manager%22&location=Bengaluru%2C%20Karnataka%2C%20India&f_TPR=r604800">LinkedIn – Bengaluru<span>Manager / Head / Director · last 7 days</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22%20OR%20%22UX%20manager%22&location=Hyderabad%2C%20Telangana%2C%20India&f_TPR=r604800">LinkedIn – Hyderabad<span>Manager / Head / Director · last 7 days</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22%20OR%20%22UX%20manager%22&location=India&f_WT=2&f_TPR=r604800">LinkedIn – Remote India<span>Remote only · last 7 days</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22conversational%20AI%22%20OR%20%22AI%20experience%22%20design%20lead%20OR%20manager%20OR%20director&location=India&f_TPR=r604800">LinkedIn – AI Experience roles<span>Conversational and AI design leadership · India</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.naukri.com/head-of-design-jobs-in-bangalore?experience=13">Naukri – Head of Design, Bengaluru<span>13+ yrs filter cuts the junior noise</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.naukri.com/ux-manager-jobs-in-hyderabad?experience=13">Naukri – UX Manager, Hyderabad<span>13+ yrs</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.naukri.com/design-director-jobs-in-bangalore?experience=13">Naukri – Design Director, Bengaluru<span>13+ yrs</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.instahyre.com/ux-designer-jobs-in-bangalore/">Instahyre – UX, Bengaluru<span>Recruiters contact you directly</span></a>
+    </div></div>
+    <div class="sgroup"><span class="label">Europe</span><div class="sgrid">
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22%20visa%20OR%20relocation&location=European%20Union&f_TPR=r604800">LinkedIn – European Union<span>Leadership + visa or relocation · last 7 days</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22&location=Netherlands&f_TPR=r604800">LinkedIn – Netherlands<span>Highly-skilled-migrant route is the easiest in the EU</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22&location=Germany&f_TPR=r604800">LinkedIn – Germany<span>EU Blue Card · Berlin, Munich, Hamburg</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22&location=Ireland&f_TPR=r604800">LinkedIn – Ireland<span>Dublin · Critical Skills permit</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=%22design%20manager%22%20OR%20%22head%20of%20design%22%20OR%20%22design%20director%22&location=United%20Kingdom&f_TPR=r604800">LinkedIn – United Kingdom<span>Check “Skilled Worker sponsor” in the listing</span></a>
+      <a class="slink" target="_blank" rel="noopener" href="https://relocate.me/international-jobs?query=design-manager">Relocate.me – Design manager<span>Only lists jobs with relocation support</span></a>
+    </div></div>
+  </section>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  var REGION_NAMES = { "bengaluru": "Bengaluru", "hyderabad": "Hyderabad", "remote-india": "Remote India", "europe": "Europe" };
+  var STATUSES = [["new", "To review"], ["applying", "Applying"], ["applied", "Applied"], ["interviewing", "Interviewing"], ["offer", "Offer"], ["not-fit", "Not a fit"], ["closed", "Closed"]];
+  var INACTIVE = { "not-fit": 1, "closed": 1 };
+  var STORE = "uxls-local-v1";
+  var state = { base: [], roles: [], region: "all", meta: {} };
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Your changes (status, notes, roles you add) live in this browser's localStorage.
+  function loadLocal() { try { return JSON.parse(localStorage.getItem(STORE)) || { edits: {}, added: [] }; } catch (e) { return { edits: {}, added: [] }; } }
+  function saveLocal(l) { try { localStorage.setItem(STORE, JSON.stringify(l)); } catch (e) { toast("Couldn't save in this browser."); } }
+  function merge() {
+    var l = loadLocal();
+    state.roles = state.base.concat(l.added || []).map(function (r) { return Object.assign({}, r, (l.edits || {})[r.id] || {}); });
+  }
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
+  function safeFile(u) { return /^resumes\/[A-Za-z0-9_.\-]+\.pdf$/.test(u || "") ? u : ""; }
+  function today() { return new Date().toISOString().slice(0, 10); }
+  function shortDate(iso) { if (!iso) return ""; var d = new Date(iso + (iso.length === 10 ? "T00:00:00" : "")); return isNaN(d) ? iso : d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }); }
+  function daysSince(iso) { if (!iso) return 0; return Math.floor((Date.now() - new Date(iso + "T00:00:00")) / 86400000); }
+  function daysUntil(iso) { if (!iso) return Infinity; return Math.ceil((new Date(iso + "T23:59:59") - Date.now()) / 86400000); }
+  function toast(msg) { var t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(function () { t.hidden = true; }, 3200); }
+  function followDue(r) { return r.status === "applied" && daysSince(r.appliedOn) >= 10; }
+
+  function filtered() {
+    var q = $("q").value.trim().toLowerCase(), st = $("fStatus").value, minFit = +$("fFit").value, sort = $("fSort").value;
+    var out = state.roles.filter(function (r) {
+      if (state.region !== "all" && r.region !== state.region) return false;
+      if (st === "active" && INACTIVE[r.status]) return false;
+      if (st === "ready" && !(r.pack && (r.status === "new" || r.status === "applying"))) return false;
+      if (st !== "active" && st !== "all" && st !== "ready" && r.status !== st) return false;
+      if ((r.fit || 0) < minFit) return false;
+      if (q && [r.title, r.company, r.location, r.why, r.flag, r.log, r.notes].join(" ").toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    out.sort(function (a, b) {
+      if (sort === "new") return (b.addedOn || "").localeCompare(a.addedOn || "") || (b.fit || 0) - (a.fit || 0);
+      if (sort === "closing") return daysUntil(a.closesOn) - daysUntil(b.closesOn) || (b.fit || 0) - (a.fit || 0);
+      return (INACTIVE[a.status] ? 1 : 0) - (INACTIVE[b.status] ? 1 : 0) || (b.fit || 0) - (a.fit || 0) || (b.addedOn || "").localeCompare(a.addedOn || "");
+    });
+    return out;
+  }
+  function pips(n) { var s = ""; for (var i = 1; i <= 5; i++) s += '<i class="' + (i <= n ? "on" : "") + '"></i>'; return s; }
+
+  function cardHtml(r) {
+    var url = safeUrl(r.url), file = safeFile(r.resumeFile);
+    var title = url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
+    var meta = [esc(r.company), esc(r.location)];
+    if (r.posted) meta.push("Posted " + esc(r.posted));
+    if (r.source) meta.push("via " + esc(r.source));
+    var chips = '<span class="chip">' + esc(REGION_NAMES[r.region] || r.region || "") + "</span>";
+    if (followDue(r)) chips += '<span class="chip follow">Follow up · applied ' + daysSince(r.appliedOn) + " days ago</span>";
+    var dl = daysUntil(r.closesOn);
+    var flag = r.flag ? '<p class="flag ' + esc(r.flagTone || "") + '">' + esc(r.flag) + "</p>" : "";
+    if (!flag && dl <= 5 && dl >= 0 && !INACTIVE[r.status]) flag = '<p class="flag urgent">Closes ' + esc(shortDate(r.closesOn)) + "</p>";
+    var opts = STATUSES.map(function (s) { return '<option value="' + s[0] + '"' + (s[0] === r.status ? " selected" : "") + ">" + s[1] + "</option>"; }).join("");
+    var pk = r.pack, packHtml = "";
+    if (pk && !INACTIVE[r.status]) {
+      var parts = [["coverNote", "Cover note"], ["whyCompany", "Answer to “Why this role?”"], ["outreach", "Message to the hiring manager"], ["resumeTip", "Resume tweak"]];
+      packHtml = '<details class="pack"' + (r.status === "new" ? " open" : "") + '><summary>Application pack' + (pk.applyVia ? " · apply via " + esc(pk.applyVia) : "") + "</summary>" +
+        parts.filter(function (p) { return pk[p[0]]; }).map(function (p) {
+          return '<div class="pk"><div class="pkhead"><span class="label">' + p[1] + '</span><button class="btn sm" type="button" data-copy="' + esc(r.id) + "|" + p[0] + '">Copy</button></div><pre>' + esc(pk[p[0]]) + "</pre></div>";
+        }).join("") + "</details>";
+    }
+    var resumeBtn = file ? '<a class="btn" href="' + esc(file) + '" download>Download tailored resume</a>' : "";
+    var actions = !INACTIVE[r.status] && ["applied", "interviewing", "offer"].indexOf(r.status) < 0 ?
+      '<div class="row">' + (url ? '<a class="btn primary" href="' + esc(url) + '" target="_blank" rel="noopener">Open application</a>' : "") + resumeBtn +
+      '<button class="btn" type="button" data-applied="' + esc(r.id) + '">Mark applied</button></div>' : (resumeBtn ? '<div class="row">' + resumeBtn + "</div>" : "");
+    var log = r.log ? "<details><summary>Scan log</summary><pre>" + esc(r.log) + "</pre></details>" : "";
+    var notes = "<details><summary>" + (r.notes ? "Your notes" : "Add a note") + '</summary><div class="notes"><textarea id="note-' + esc(r.id) + '" data-note="' + esc(r.id) + '" aria-label="Notes for ' + esc(r.title) + '">' + esc(r.notes || "") + '</textarea><div><button class="btn" type="button" data-savenote="' + esc(r.id) + '">Save note</button></div></div></details>';
+    return '<article class="card' + (INACTIVE[r.status] ? " dim" : "") + '"><h3>' + title + '</h3><div class="meta">' + meta.map(function (m) { return "<span>" + m + "</span>"; }).join("") + '</div><div class="chips">' + chips + "</div>" + flag +
+      '<div class="row"><select id="st-' + esc(r.id) + '" data-status="' + esc(r.id) + '" aria-label="Status for ' + esc(r.title) + '">' + opts + '</select><span class="fit"><span class="mono">Fit</span><span class="pips" aria-label="Fit ' + (r.fit || 0) + ' of 5">' + pips(r.fit || 0) + "</span></span></div>" +
+      (r.why ? '<p class="why">' + esc(r.why) + "</p>" : "") + packHtml + actions + log + notes + "</article>";
+  }
+
+  function render() {
+    merge();
+    var rows = filtered(), list = $("list");
+    if (!state.roles.length) list.innerHTML = '<div class="empty">No roles in data/roles.json yet.</div>';
+    else if (!rows.length) list.innerHTML = '<div class="empty">Nothing matches these filters. Press Clear to see every active role.</div>';
+    else list.innerHTML = rows.map(cardHtml).join("");
+    $("countText").textContent = rows.length + " of " + state.roles.length + " roles";
+    var c = { ready: 0, applied: 0, interviewing: 0, follow: 0 };
+    state.roles.forEach(function (r) {
+      if (r.pack && (r.status === "new" || r.status === "applying")) c.ready++;
+      if (r.status === "applied") c.applied++;
+      if (r.status === "interviewing") c.interviewing++;
+      if (followDue(r)) c.follow++;
+    });
+    $("tReady").textContent = c.ready; $("tApplied").textContent = c.applied; $("tInterview").textContent = c.interviewing; $("tFollow").textContent = c.follow;
+  }
+
+  function edit(id, patch) { var l = loadLocal(); l.edits = l.edits || {}; l.edits[id] = Object.assign({}, l.edits[id] || {}, patch); saveLocal(l); render(); }
+  function setStatus(id, status) {
+    var r = state.roles.find(function (x) { return x.id === id; }); if (!r) return;
+    var label = (STATUSES.find(function (s) { return s[0] === status; }) || [, status])[1];
+    var patch = { status: status, log: (r.log ? r.log + "\n" : "") + shortDate(today()) + ": marked " + label };
+    if (status === "applied" && !r.appliedOn) patch.appliedOn = today();
+    edit(id, patch); toast("Marked " + label);
+  }
+
+  document.addEventListener("change", function (e) { var id = e.target.getAttribute && e.target.getAttribute("data-status"); if (id) setStatus(id, e.target.value); });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest) return;
+    var b = e.target.closest("[data-savenote]");
+    if (b) { var id = b.getAttribute("data-savenote"); edit(id, { notes: document.getElementById("note-" + id).value.trim() }); toast("Note saved"); return; }
+    var a = e.target.closest("[data-applied]"); if (a) { setStatus(a.getAttribute("data-applied"), "applied"); return; }
+    var c = e.target.closest("[data-copy]");
+    if (c) {
+      var k = c.getAttribute("data-copy").split("|"), r = state.roles.find(function (x) { return x.id === k[0]; });
+      var text = r && r.pack ? r.pack[k[1]] || "" : "", pre = c.closest(".pk").querySelector("pre");
+      function selectIt() { var rg = document.createRange(); rg.selectNodeContents(pre); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); toast("Selected. Press copy on your keyboard."); }
+      try { navigator.clipboard.writeText(text).then(function () { toast("Copied"); }, selectIt); } catch (err) { selectIt(); }
+    }
+  });
+  ["q", "fStatus", "fFit", "fSort"].forEach(function (id) { $(id).addEventListener("input", render); });
+  $("regionSeg").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    state.region = b.getAttribute("data-r");
+    Array.prototype.forEach.call(this.children, function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    render();
+  });
+  $("clearBtn").addEventListener("click", function () {
+    $("q").value = ""; $("fStatus").value = "active"; $("fFit").value = "0"; $("fSort").value = "fit"; state.region = "all";
+    Array.prototype.forEach.call($("regionSeg").children, function (x) { x.setAttribute("aria-pressed", x.getAttribute("data-r") === "all" ? "true" : "false"); });
+    render();
+  });
+  function toggleAdd(open) { $("addForm").hidden = !open; $("addToggle").setAttribute("aria-expanded", open ? "true" : "false"); if (open) $("aTitle").focus(); }
+  $("addToggle").addEventListener("click", function () { toggleAdd($("addForm").hidden); });
+  $("addCancel").addEventListener("click", function () { toggleAdd(false); });
+  $("addForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var company = $("aCompany").value.trim(), title = $("aTitle").value.trim();
+    var l = loadLocal(); l.added = l.added || [];
+    l.added.push({ id: "mine-" + Date.now(), title: title, company: company, location: $("aLocation").value.trim(), region: $("aRegion").value,
+      url: $("aUrl").value.trim(), fit: +$("aFit").value, status: "new", notes: $("aNotes").value.trim(), source: "Added by you", addedOn: today(), log: shortDate(today()) + ": added by hand" });
+    saveLocal(l); this.reset(); toggleAdd(false); render(); toast("Role saved");
+  });
+  // Downloads your statuses and notes as JSON, so nothing is lost if you clear the browser or switch devices.
+  $("exportBtn").addEventListener("click", function () {
+    var blob = new Blob([JSON.stringify(loadLocal(), null, 2)], { type: "application/json" });
+    var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "my-job-statuses-" + today() + ".json"; a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  fetch("data/roles.json", { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (data) {
+    state.base = data.roles || []; state.meta = data;
+    $("syncDot").className = "dot ok";
+    $("syncText").textContent = "Data updated " + shortDate(data.updatedOn) + " · " + state.base.length + " roles";
+    $("scanText").textContent = "Roles come from data/roles.json" + (data.lastScanSummary ? " · last scan: " + data.lastScanSummary : "") + ". Your statuses and notes are saved in this browser.";
+    render();
+  }).catch(function () {
+    $("syncText").textContent = "Couldn't load data/roles.json";
+    $("list").innerHTML = '<div class="empty">Couldn\'t load data/roles.json. Open this folder with VS Code Live Server or GitHub Pages; double-clicking index.html blocks the file from loading.</div>';
+  });
+})();
+</script>
+</body>
+</html>
