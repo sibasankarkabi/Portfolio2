@@ -278,10 +278,15 @@ a.btn { text-decoration: none; display: inline-block; }
     var meta = [esc(r.company), esc(r.location)];
     if (r.posted) meta.push("Posted " + esc(r.posted));
     if (r.source) meta.push("via " + esc(r.source));
+    if (!r.closedOn) meta.push(r.pay ? "Pay " + esc(r.pay) : "Pay not disclosed");
     var chips = '<span class="chip">' + esc(REGION_NAMES[r.region] || r.region || "") + "</span>";
+    if (r.autoFound) chips += '<span class="chip new">Auto-found</span>';
+    if (r.checkedOn && !r.closedOn) chips += '<span class="chip">Link checked ' + esc(shortDate(r.checkedOn)) + "</span>";
     if (followDue(r)) chips += '<span class="chip follow">Follow up · applied ' + daysSince(r.appliedOn) + " days ago</span>";
     var dl = daysUntil(r.closesOn);
     var flag = r.flag ? '<p class="flag ' + esc(r.flagTone || "") + '">' + esc(r.flag) + "</p>" : "";
+    // The daily check found the posting gone; say so even if you'd set your own status on it.
+    if (r.closedOn) { flag = '<p class="flag urgent">Posting closed (found ' + esc(shortDate(r.closedOn)) + ")" + (r.closedReason ? ": " + esc(r.closedReason) : "") + "</p>"; url = ""; }
     if (!flag && dl <= 5 && dl >= 0 && !INACTIVE[r.status]) flag = '<p class="flag urgent">Closes ' + esc(shortDate(r.closesOn)) + "</p>";
     var opts = STATUSES.map(function (s) { return '<option value="' + s[0] + '"' + (s[0] === r.status ? " selected" : "") + ">" + s[1] + "</option>"; }).join("");
     var pk = r.pack, packHtml = "";
@@ -377,7 +382,7 @@ a.btn { text-decoration: none; display: inline-block; }
     state.base = data.roles || []; state.meta = data;
     $("syncDot").className = "dot ok";
     $("syncText").textContent = "Data updated " + shortDate(data.updatedOn) + " · " + state.base.length + " roles";
-    $("scanText").textContent = "Roles come from data/roles.json" + (data.lastScanSummary ? " · last scan: " + data.lastScanSummary : "") + ". Your statuses and notes are saved in this browser.";
+    $("scanText").textContent = "Every link is re-checked daily against the employer's own job board; filled or removed postings are closed automatically" + (data.lastScanSummary ? " · last check " + shortDate(data.updatedOn) + ": " + data.lastScanSummary : "") + ". Your statuses and notes are saved in this browser.";
     render();
   }).catch(function () {
     $("syncText").textContent = "Couldn't load data/roles.json";

@@ -1,0 +1,79 @@
+{
+  "minCtcLpa": 23,
+  "_minCtcLpa": "Your current CTC in lakh per annum. Roles whose disclosed pay tops out at or below this are dropped. Most Indian postings don't disclose pay; those are kept and marked 'Pay not disclosed'.",
+  "titleInclude": "(design|ux|user experience|product experience).*(manager|director|head|lead|principal|vp|vice president)|(manager|director|head|vp|vice president).*(design|ux|user experience)",
+  "titleExclude": "intern|junior|associate product designer|graphic|instructional|engineering manager|program manager|marketing|brand designer|sales|account|recruit|hardware|mechanical|interior|construction|solutions? design|network design|circuit|chip|silicon|asic|layout|verification|physical design|data center|facilities|rtl|analog|cpu|gpu|soc|design automation|firmware|validation",
+  "regions": {
+    "bengaluru": "bengaluru|bangalore",
+    "hyderabad": "hyderabad",
+    "remote-india": "india|remote.*(apac|asia)",
+    "europe": "germany|berlin|munich|netherlands|amsterdam|ireland|dublin|united kingdom|london|\\buk\\b|spain|barcelona|madrid|portugal|lisbon|poland|warsaw|france|paris|sweden|stockholm|denmark|copenhagen|estonia|tallinn|czech|prague"
+  },
+  "boards": {
+    "greenhouse": [
+      "hackerrank",
+      "newrelic",
+      "gomotive",
+      "contentful",
+      "tide",
+      "groww",
+      "druva",
+      "airtable",
+      "figma",
+      "databricks",
+      "okta",
+      "twilio",
+      "gitlab",
+      "intercom",
+      "mongodb",
+      "elastic",
+      "coinbase",
+      "stripe",
+      "toast",
+      "dropbox",
+      "pinterest",
+      "wise",
+      "cloudflare",
+      "zscaler",
+      "samsara",
+      "rubrik"
+    ],
+    "workday": [
+      "adobe/wd5/external_experienced",
+      "salesforce/wd12/External_Career_Site",
+      "paypal/wd1/jobs",
+      "nvidia/wd5/NVIDIAExternalCareerSite",
+      "autodesk/wd1/Ext",
+      "mastercard/wd1/CorporateCareers",
+      "workday/wd5/Workday",
+      "hp/wd5/ExternalCareerSite",
+      "barclays/wd3/External_Career_Site_Barclays",
+      "jll/wd1/jllcareers",
+      "4flow/wd3/4flow",
+      "finastra/wd3/FINC",
+      "target/wd5/targetcareers",
+      "thomsonreuters/wd5/External_Career_Site",
+      "intel/wd1/External"
+    ],
+    "lever": [
+      "meesho",
+      "cred",
+      "zeta",
+      "paytm",
+      "palantir",
+      "spotify"
+    ],
+    "ashby": [
+      "aspora",
+      "omnea",
+      "notion",
+      "linear",
+      "ramp",
+      "plaid",
+      "openai",
+      "cohere",
+      "sarvam",
+      "atlan"
+    ]
+  }
+}
