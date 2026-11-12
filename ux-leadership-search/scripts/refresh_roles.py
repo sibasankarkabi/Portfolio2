@@ -166,7 +166,8 @@ def check_eightfold(url):
     u = urllib.parse.urlparse(url)
     jid = re.search(r"/job/(\d+)", u.path).group(1)
     domain = "microsoft.com" if "microsoft" in u.netloc else u.netloc.split(".")[0] + ".com"
-    fetch(f"https://{u.netloc}/api/apply/v2/jobs/{jid}?domain={domain}")
+    # The older /api/apply/v2/jobs endpoint still returns closed postings; pcsx only serves open ones (404 otherwise).
+    fetch(f"https://{u.netloc}/api/pcsx/position_details?position_id={jid}&domain={domain}&hl=en")
     return {}
 
 
@@ -399,6 +400,7 @@ def main(dry):
     cutoff = (dt.date.today() - dt.timedelta(days=30)).isoformat()
     data["roles"] = [r for r in roles if not (r.get("autoFound") and r.get("status") == "closed" and r.get("closedOn", TODAY) < cutoff)]
     data["updatedOn"] = TODAY
+    data["refreshedAt"] = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")  # lets the page's Refresh button spot new data
     data["lastScanSummary"] = f"{added} new, {closed} closed, {unverified} couldn't be verified"
     print(data["lastScanSummary"])
     for e in errors:

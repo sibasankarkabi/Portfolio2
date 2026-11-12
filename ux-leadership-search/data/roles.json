@@ -1,6 +1,6 @@
 {
  "updatedOn": "2026-11-12",
- "lastScanSummary": "2 new, 17 closed, 0 couldn't be verified",
+ "lastScanSummary": "0 new, 0 closed, 0 couldn't be verified",
  "roles": [
   {
    "addedOn": "2026-11-02",
@@ -397,7 +397,7 @@
    "flag": "Posted in August. Confirm it still shows an Apply button before you spend time on it.",
    "flagTone": "caution",
    "location": "Hyderabad or Bengaluru (hybrid)",
-   "log": "29 Oct: found via designproject.io, apply link on Microsoft Careers. Open status not confirmed.",
+   "log": "29 Oct: found via designproject.io, apply link on Microsoft Careers. Open status not confirmed.\n2026-11-12: auto-closed: the employer took the posting down (HTTP 404)",
    "pack": {
     "applyVia": "Microsoft Careers (ask for a referral first)",
     "coverNote": "Hello,\n\nI'm applying for Principal Product Design Manager in Hyderabad. I have 13+ years in UX and currently lead Capgemini's Bengaluru design studio: six direct reports, oversight of a 24-person team, and design leadership on more than 15 RFPs.\n\nYour role asks for three things I've done at scale. On design systems, I worked on Oracle's Redwood Design System and built an atomic design system for a global fashion retailer. On end-to-end delivery, my team's Baptist Health PineApp won a Digital Health Award in 2025. On AI-native practice, I've led conversational AI work covering 700+ government services and trained my studio on Gen AI and MCP-based design workflows.\n\nI'd welcome a conversation about how I can help grow the design team in India.\n\nPortfolio: sankarkabi.co.in\n\nSiba Sankar Kabi",
@@ -409,13 +409,15 @@
    "posted": "3 Aug 2026",
    "region": "hyderabad",
    "source": "Microsoft Careers",
-   "status": "new",
+   "status": "closed",
    "title": "Principal Product Design Manager",
    "url": "https://apply.careers.microsoft.com/careers/job/1970393556913765-principal-product-design-manager-india-telangana-hyderabad",
    "why": "Design leadership, design systems architecture and AI-native practice are the three things they list, and all three are on your record (Redwood, studio leadership, MCP and Gen AI workflows). 8+ years design and 3+ managing is well within your range. A referral matters a lot at Microsoft, so check your network first.",
    "id": "microsoft-principal-product-design-manager",
    "resumeFile": "resumes/Siba_Sankar_Kabi_Resume_Microsoft_Principal_Product_Design_Manager.pdf",
-   "checkedOn": "2026-11-12"
+   "checkedOn": "2026-11-12",
+   "closedOn": "2026-11-12",
+   "closedReason": "the employer took the posting down (HTTP 404)"
   },
   {
    "addedOn": "2026-10-30",
@@ -800,5 +802,6 @@
    "why": "Found automatically on the company's own job board. Read the posting and set the fit yourself.",
    "log": "2026-11-12: found on 4Flow Workday board"
   }
- ]
+ ],
+ "refreshedAt": "2026-11-12T03:04:37Z"
 }

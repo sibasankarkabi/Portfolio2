@@ -192,7 +192,7 @@ a.btn { text-decoration: none; display: inline-block; }
     </form>
     <div class="scan">
       <p id="scanText">Roles come from data/roles.json.</p>
-      <button class="btn" type="button" id="exportBtn">Export my statuses</button>
+      <div class="row"><button class="btn primary" type="button" id="refreshBtn">Refresh now</button><button class="btn" type="button" id="exportBtn">Export my statuses</button></div>
     </div>
   </section>
 
@@ -239,7 +239,12 @@ a.btn { text-decoration: none; display: inline-block; }
   function saveLocal(l) { try { localStorage.setItem(STORE, JSON.stringify(l)); } catch (e) { toast("Couldn't save in this browser."); } }
   function merge() {
     var l = loadLocal();
-    state.roles = state.base.concat(l.added || []).map(function (r) { return Object.assign({}, r, (l.edits || {})[r.id] || {}); });
+    state.roles = state.base.concat(l.added || []).map(function (r) {
+      var m = Object.assign({}, r, (l.edits || {})[r.id] || {});
+      // A posting the daily check found closed stays closed, unless you'd already applied and are still tracking it.
+      if (r.closedOn && ["applied", "interviewing", "offer"].indexOf(m.status) < 0) m.status = "closed";
+      return m;
+    });
   }
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
@@ -273,7 +278,7 @@ a.btn { text-decoration: none; display: inline-block; }
   function pips(n) { var s = ""; for (var i = 1; i <= 5; i++) s += '<i class="' + (i <= n ? "on" : "") + '"></i>'; return s; }
 
   function cardHtml(r) {
-    var url = safeUrl(r.url), file = safeFile(r.resumeFile);
+    var url = r.closedOn ? "" : safeUrl(r.url), file = safeFile(r.resumeFile);
     var title = url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
     var meta = [esc(r.company), esc(r.location)];
     if (r.posted) meta.push("Posted " + esc(r.posted));
@@ -286,7 +291,7 @@ a.btn { text-decoration: none; display: inline-block; }
     var dl = daysUntil(r.closesOn);
     var flag = r.flag ? '<p class="flag ' + esc(r.flagTone || "") + '">' + esc(r.flag) + "</p>" : "";
     // The daily check found the posting gone; say so even if you'd set your own status on it.
-    if (r.closedOn) { flag = '<p class="flag urgent">Posting closed (found ' + esc(shortDate(r.closedOn)) + ")" + (r.closedReason ? ": " + esc(r.closedReason) : "") + "</p>"; url = ""; }
+    if (r.closedOn) flag = '<p class="flag urgent">Posting closed (found ' + esc(shortDate(r.closedOn)) + ")" + (r.closedReason ? ": " + esc(r.closedReason) : "") + "</p>";
     if (!flag && dl <= 5 && dl >= 0 && !INACTIVE[r.status]) flag = '<p class="flag urgent">Closes ' + esc(shortDate(r.closesOn)) + "</p>";
     var opts = STATUSES.map(function (s) { return '<option value="' + s[0] + '"' + (s[0] === r.status ? " selected" : "") + ">" + s[1] + "</option>"; }).join("");
     var pk = r.pack, packHtml = "";
@@ -378,15 +383,50 @@ a.btn { text-decoration: none; display: inline-block; }
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
   });
 
-  fetch("data/roles.json", { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (data) {
+  function getRoles() { return fetch("data/roles.json", { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+  function applyData(data) {
     state.base = data.roles || []; state.meta = data;
     $("syncDot").className = "dot ok";
     $("syncText").textContent = "Data updated " + shortDate(data.updatedOn) + " · " + state.base.length + " roles";
     $("scanText").textContent = "Every link is re-checked daily against the employer's own job board; filled or removed postings are closed automatically" + (data.lastScanSummary ? " · last check " + shortDate(data.updatedOn) + ": " + data.lastScanSummary : "") + ". Your statuses and notes are saved in this browser.";
     render();
-  }).catch(function () {
+  }
+  getRoles().then(applyData).catch(function () {
     $("syncText").textContent = "Couldn't load data/roles.json";
     $("list").innerHTML = '<div class="empty">Couldn\'t load data/roles.json. Open this folder with VS Code Live Server or GitHub Pages; double-clicking index.html blocks the file from loading.</div>';
+  });
+
+  // Refresh now: a Netlify function starts the GitHub Action that re-checks every link and searches for new roles.
+  // The Action commits roles.json and Netlify redeploys, so we watch roles.json until its refreshedAt changes.
+  var API = "/api/refresh-roles";
+  function refreshDone(msg) { var b = $("refreshBtn"); b.disabled = false; b.textContent = "Refresh now"; if (msg) toast(msg); }
+  function watchForNewData(before, startedAt) {
+    var tries = 0;
+    (function poll() {
+      if (++tries > 40) return refreshDone("Still running. It usually takes 2–4 minutes; reload the page shortly.");
+      $("refreshBtn").textContent = "Refreshing… " + Math.round((Date.now() - startedAt) / 1000) + "s";
+      Promise.all([getRoles().catch(function () { return null; }), fetch(API, { cache: "no-store" }).then(function (r) { return r.json(); }).catch(function () { return {}; })]).then(function (res) {
+        var data = res[0], run = (res[1] || {}).run;
+        if (data && data.refreshedAt && data.refreshedAt !== before) { applyData(data); return refreshDone("Updated: " + (data.lastScanSummary || "done")); }
+        if (run && run.status === "completed" && run.conclusion && run.conclusion !== "success" && Date.parse(run.startedAt) >= startedAt - 60000) return refreshDone("The refresh failed on GitHub. Check the Actions tab.");
+        setTimeout(poll, 10000);
+      });
+    })();
+  }
+  $("refreshBtn").addEventListener("click", function () {
+    var b = this, before = state.meta.refreshedAt || "", startedAt = Date.now();
+    b.disabled = true; b.textContent = "Starting…";
+    fetch(API, { method: "POST" }).then(function (r) {
+      if (r.status === 404) throw new Error("local");
+      return r.json().then(function (j) { return { code: r.status, body: j }; });
+    }).then(function (res) {
+      var j = res.body;
+      if (j.error === "not-configured") return refreshDone("Refresh isn't set up yet: add GITHUB_TOKEN in Netlify's environment variables.");
+      if (j.error) return refreshDone("Couldn't start the refresh (" + j.error + ").");
+      if (j.state === "recent") { getRoles().then(applyData).catch(function () {}); return refreshDone("Already refreshed in the last 10 minutes. Showing the latest data."); }
+      toast(j.state === "running" ? "A refresh is already running. Waiting for it…" : "Refresh started. Checking every link…");
+      watchForNewData(before, startedAt);
+    }).catch(function () { refreshDone("Refresh now only works on the live site, not on a local server."); });
   });
 })();
 </script>
